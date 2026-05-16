@@ -1014,6 +1014,41 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .protocolo-num {font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:2.5px;color:var(--mustard);margin-bottom:6px;}
 .protocolo-text {font-size:12px;line-height:1.5;color:var(--bone);}
 .protocolo-text strong {color:var(--mustard);}
+  /* ═══════════════════════════════════════
+   GUIA DE TRANSIÇÃO PARA A FINALIZAÇÃO
+═══════════════════════════════════════ */
+
+.reagreg-guia {
+  position:absolute;bottom:34px;left:50%;
+  transform:translateX(-50%);
+  background:var(--ink);color:var(--bone);
+  border:2px solid var(--mustard);
+  padding:14px 22px;
+  width:min(420px,90vw);
+  text-align:center;
+  pointer-events:auto;
+  animation:guiaFadeUp .9s ease both;
+  box-shadow:6px 6px 0 rgba(168,65,42,.5);
+}
+.reagreg-guia-stamp {
+  font-family:'Archivo Black',sans-serif;font-size:9px;letter-spacing:3px;
+  color:var(--mustard);margin-bottom:8px;
+}
+.reagreg-guia-text {
+  font-size:11px;line-height:1.5;opacity:.85;margin-bottom:14px;
+}
+.reagreg-guia-btn {
+  font-family:'Archivo Black',sans-serif;font-size:10px;letter-spacing:2.5px;
+  color:var(--ink);background:var(--mustard);border:2px solid var(--mustard);
+  padding:10px 20px;cursor:pointer;width:100%;
+  transition:background .2s;
+}
+.reagreg-guia-btn:hover {background:var(--bone);border-color:var(--bone);}
+
+@keyframes guiaFadeUp {
+  from {opacity:0;transform:translate(-50%,20px);}
+  to {opacity:1;transform:translate(-50%,0);}
+}
 </style>
 </head>
 <body>
@@ -3953,7 +3988,6 @@ function abrirReagregacao() {
     lbl.textContent = act.sigla;
     g.appendChild(lbl);
 
-    // legenda externa com o nome completo
     const legend = document.createElementNS(ns, 'text');
     legend.setAttribute('text-anchor', 'middle');
     legend.setAttribute('y', act.y > 320 ? 44 : -36);
@@ -3969,6 +4003,52 @@ function abrirReagregacao() {
   });
 
   layer.classList.add('show');
+}
+
+function passarParaTeia() {
+  // Tempo 2: fecha o painel de texto, deixa só a teia visível
+  const painel = document.querySelector('.reagreg-painel');
+  if (painel) painel.style.display = 'none';
+  // Suaviza o véu para a teia respirar
+  const veu = document.querySelector('.reagreg-veu');
+  if (veu) veu.style.background = 'rgba(26,22,17,.55)';
+  // Após 4 segundos de contemplação, surge o guia para a finalização
+  setTimeout(() => mostrarGuiaFinalizacao(), 4000);
+}
+
+function mostrarGuiaFinalizacao() {
+  // Tempo 3: surge um guia discreto que conduz ao encerramento
+  const layer = document.getElementById('reagregacao-layer');
+  if (!layer.classList.contains('show')) return;
+
+  const guia = document.createElement('div');
+  guia.className = 'reagreg-guia';
+  guia.innerHTML = `
+    <div class="reagreg-guia-stamp">A REDE ESTÁ RASTREADA</div>
+    <div class="reagreg-guia-text">Você acabou de ver as conexões. Antes de sair, vale rever os três recursos onde tudo isso ficou registrado.</div>
+    <button class="reagreg-close" onclick="passarParaTeia()">→ VER A TEIA</button>
+  `;
+  layer.appendChild(guia);
+}
+
+function fecharReagregacao() {
+  const layer = document.getElementById('reagregacao-layer');
+  layer.classList.remove('show');
+  // Limpa guia caso ainda exista
+  const guia = layer.querySelector('.reagreg-guia');
+  if (guia) guia.remove();
+  // Restaura o painel para uma eventual reabertura
+  const painel = document.querySelector('.reagreg-painel');
+  if (painel) painel.style.display = '';
+  const veu = document.querySelector('.reagreg-veu');
+  if (veu) veu.style.background = '';
+}
+
+function finalizarArtefato() {
+  fecharReagregacao();
+  setTimeout(() => {
+    document.getElementById('finalizacao-overlay').classList.add('show');
+  }, 400);
 }
 
 function fecharReagregacao() {
