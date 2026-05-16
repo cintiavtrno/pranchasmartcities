@@ -1812,7 +1812,53 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       <div><div class="reagreg-stat-num">9</div><div class="reagreg-stat-label">VINHETAS HUMANAS</div></div>
       <div><div class="reagreg-stat-num">15</div><div class="reagreg-stat-label">FIOS NA REDE</div></div>
     </div>
-    <button class="reagreg-close" onclick="fecharReagregacao()">FECHAR A REAGREGAÇÃO</button>
+    <button class="reagreg-close" onclick="passarParaTeia()">→ VER A TEIA</button>
+  </div>
+</div>
+<!-- ═══════════════════════════════════════════════
+     FINALIZAÇÃO DO ARTEFATO
+═══════════════════════════════════════════════ -->
+<div id="finalizacao-overlay">
+  <div class="finalizacao-box">
+    <div class="finalizacao-stamp">ENCERRAMENTO · ARTEFATO COMPLETO</div>
+    <div class="finalizacao-h">A PRANCHA FOI INTEIRAMENTE RASTREADA</div>
+    <div class="finalizacao-quote">"A ação não é um atributo dos humanos, mas de uma associação de actantes. Compreender essa distribuição é o primeiro gesto de uma crítica que não responsabiliza apenas indivíduos, mas dispositivos, contratos e cadeias inteiras."</div>
+    <div class="finalizacao-intro">Antes de sair, vale lembrar que três recursos permanecem disponíveis na interface, e cada um deles guarda uma camada distinta do que foi rastreado.</div>
+
+    <div class="finalizacao-recursos">
+
+      <div class="recurso-card">
+        <div class="recurso-icon">▶</div>
+        <div class="recurso-info">
+          <div class="recurso-nome">LINHA DO TEMPO</div>
+          <div class="recurso-local">Botão no canto superior direito da tela, ao lado da Caderneta.</div>
+          <div class="recurso-desc">Painel cronológico que situa o decreto fictício de Salvador dentro da trajetória real do conceito de cidade inteligente no Brasil, dos anos 90 até a vigência prevista do contrato em 2045. Mostra como cada vinheta deste artefato dialoga com eventos historicamente datados, como a criação do COR no Rio em 2010, a aprovação da LGPD em 2018, e o avanço do reconhecimento facial em estádios brasileiros entre 2022 e 2024.</div>
+        </div>
+      </div>
+
+      <div class="recurso-card">
+        <div class="recurso-icon">▤</div>
+        <div class="recurso-info">
+          <div class="recurso-nome">CADERNETA DE CAMPO</div>
+          <div class="recurso-local">Botão no canto superior direito da tela, com o ícone de tabela.</div>
+          <div class="recurso-desc">Arquivo das fichas bibliográficas que se acumularam ao longo da exploração. Cada vinheta concluída deixou ali uma citação extraída da literatura crítica que sustenta a cena, com autoria e referência. Funciona como o aparato teórico do artefato, acessível para consulta posterior.</div>
+        </div>
+      </div>
+
+      <div class="recurso-card">
+        <div class="recurso-icon">⊕</div>
+        <div class="recurso-info">
+          <div class="recurso-nome">PROTOCOLO DE COAÇÃO</div>
+          <div class="recurso-local">Botão no canto superior direito da tela, ao lado da Linha do Tempo.</div>
+          <div class="recurso-desc">Registro das cadeias de coação rastreadas a partir dos botões de inspeção dos reveals. Cada entrada descreve uma operação concreta em que um mediador (cabo submarino, banco de dados policial, algoritmo, contrato de PPP, dashboard do CCO ou sensor calibrado) obriga outro a agir de modo específico. É o inventário material da rede que o artefato descreveu.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="finalizacao-fechamento">A leitura deste artefato pode ser retomada a qualquer momento. As fichas, os rastros e a linha histórica permanecem acessíveis. Nada do que foi rastreado se apaga.</div>
+
+    <button class="finalizacao-btn" onclick="document.getElementById('finalizacao-overlay').classList.remove('show');">FECHAR</button>
   </div>
 </div>
 <div id="toast"></div>
@@ -4121,16 +4167,11 @@ function fecharReagregacao() {
   const veu = document.querySelector('.reagreg-veu');
   if (veu) veu.style.background = '';
 }
-
 function finalizarArtefato() {
   fecharReagregacao();
   setTimeout(() => {
     document.getElementById('finalizacao-overlay').classList.add('show');
   }, 400);
-}
-
-function fecharReagregacao() {
-  document.getElementById('reagregacao-layer').classList.remove('show');
 }
 </script>
 </body>
