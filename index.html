@@ -3630,8 +3630,15 @@ function renderTeiaMini(vinhetaId) {
     const g = document.createElementNS(ns, 'g');
     g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : '') + (isHumano ? ' humano' : ''));
     g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
-    g.style.cursor = 'pointer';
-    g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
+    // VERIFICA SE O ACTANTE ESTÁ NESTA CENA
+const isNaCena = act.atravessa.includes(vinhetaTag);
+
+if (!isNaCena) {
+  g.style.opacity = '0.2';
+  g.style.pointerEvents = 'none'; // Impede o clique nos fantasmas
+} else {
+  g.style.cursor = 'pointer';
+  g.onclick 
 
     // Pulso suave no nó humano para destacá-lo visualmente
     if (isHumano && !isOrigemAtual) {
