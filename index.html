@@ -1203,6 +1203,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <div class="prol-sub" style="max-width:440px;text-align:center;margin-bottom:28px;line-height:1.6;">
       Esta prancha documenta o que o decreto não descreve.<br>
       Explore as 9 vinhetas. Cada uma guarda um desafio.<br>
+      Depois de cada desafio, inspecione os dispositivos que operam na cena e trace as conexões entre eles.<br>
       Consulte a <strong>linha do tempo</strong> para o contexto histórico.<br>
       Nenhuma escolha é inocente.
     </div>
@@ -1237,7 +1238,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
         <span class="caderneta-badge" id="caderneta-badge">0</span>
       </button>
       <button class="header-btn" onclick="toggleProtocolo()">
-        ⊕ PROTOCOLO
+        ⊕ CONEXÕES TRAÇADAS
       </button>
     </div>
   </header>
@@ -1501,15 +1502,15 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
         <div id="fim-overlay">
       <div class="fim-box">
-        <div class="fim-label">IMPASSE ANTROPOCÊNTRICO · DECRETO 33.405/2020 · VIGÊNCIA: 25 ANOS</div>
+        <div class="fim-label">IMPASSE · DECRETO 33.405/2020 · VIGÊNCIA: 25 ANOS</div>
         <div class="fim-quote">"A cidade inteligente não mascara forças invisíveis, mas traduz e materializa ativamente a exclusão por meio de seus sensores, algoritmos e contratos."</div>
         <div class="fim-stats">
           <div><div class="fim-stat-num" id="fim-fichas">0</div><div class="fim-stat-label">FICHAS ARQUIVADAS</div></div>
           <div><div class="fim-stat-num">9/9</div><div class="fim-stat-label">PONTOS DE CONTATO</div></div>
           <div><div class="fim-stat-num" style="color:var(--mustard);">50%</div><div class="fim-stat-label">VISÃO INCOMPLETA</div></div>
         </div>
-        <div class="fim-text">Você mapeou as pessoas atingidas, mas a sua leitura ainda é míope. A velha sociologia faria você acreditar que existem "dinâmicas ocultas por trás" da cidade. Não se iluda: não há nada escondido. Existem apenas redes de cabos, algoritmos, sensores e contratos agindo ativamente ao lado de Dona Edna e de Marcus, mas que você ignorou como se fossem mero cenário. O social não é feito apenas de humanos. Para realmente compreender o que aconteceu, você não precisa buscar forças invisíveis. Você precisa inspecionar as máquinas e abrir as caixas-pretas destas mesmas cenas.</div>
-        <button class="fim-btn-prancha2" onclick="fecharImpasse()">→ RETORNAR E INSPECIONAR MEDIADORES</button>
+        <div class="fim-text">Você mapeou as pessoas atingidas, mas a sua leitura ainda é míope.</div>
+        <button class="fim-btn-prancha2" onclick="fecharImpasse()">→ RETORNAR E TRAÇAR CONEXÕES</button>
       </div>
     </div>
   </main>
@@ -1638,11 +1639,11 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 ═══════════════════════════════════════════════ -->
 <div id="protocolo-panel">
   <div class="protocolo-head">
-    <div class="protocolo-head-title">▤ PROTOCOLO DE COAÇÃO</div>
+    <div class="protocolo-head-title">▤ CONEXÕES TRAÇADAS</div>
     <button class="protocolo-close" onclick="toggleProtocolo()">×</button>
   </div>
   <div id="protocolo-content">
-    <div class="protocolo-empty" id="protocolo-empty">Nenhuma cadeia rastreada ainda.<br><br>Ao concluir o desafio de cada vinheta, clique em "⊕ INSPECIONAR MEDIADORES DESTA CENA" no reveal. Abra cada caixa-preta e marque as cadeias de coação que aquele mediador opera sobre os demais.</div>
+    <div class="protocolo-empty" id="protocolo-empty">Nenhuma conexão traçada ainda.<br><br>Ao concluir o desafio de cada vinheta, clique em "⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA" no reveal. Na teia mini, clique no dispositivo que força, depois no dispositivo que é forçado. Cada conexão traçada entra aqui como registro do que opera concretamente naquela cena.</div>
   </div>
 </div>
 
@@ -1811,15 +1812,15 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <g id="reagreg-nodes"></g>
   </svg>
   <div class="reagreg-painel">
-    <div class="reagreg-stamp">REAGREGAÇÃO · A REDE FOI RASTREADA</div>
+    <div class="reagreg-stamp">REAGREGAÇÃO · A REDE FOI TRAÇADA</div>
     <div class="reagreg-h">A REDE NÃO É UMA METÁFORA</div>
-    <div class="reagreg-quote">"Cada coação rastreada é uma operação técnica, jurídica ou material que de fato acontece quando o sistema funciona."</div>
+    <div class="reagreg-quote">"Cada conexão traçada é uma operação técnica, jurídica ou material que de fato acontece quando o sistema funciona."</div>
     <div class="reagreg-corpo">
       Você não desceu a um mundo escondido nem subiu a uma estrutura abstrata. Você percorreu, no mesmo plano da cidade, a rede que sempre esteve ali, ao lado de Lúcia, Marcus, Edna e dos demais. A exclusão de Marcus passa pela calibração Shirley do sensor da câmera 0834-B, pelo banco de identificação criminal da Secretaria de Segurança, pela função de similaridade do algoritmo, pelo cabo de fibra que liga a câmera ao CCO, pela tela do dashboard onde o operador clicou em ratificar. O corte de crédito de Edna passa pela cláusula 18-B do contrato da maquininha, pelo Art. 12 que classifica o score como segredo industrial, pelo servidor em São Paulo onde a função de scoring rodou. O atraso dos ônibus na via transversal passa pela ausência de sensor instalado naquela via, pela cláusula do contrato de PPP que define a pontualidade do VLT como o indicador a ser premiado, pelo painel do CCO que só exibe métricas previstas em contrato. Cada exclusão tem coordenadas. Cada coordenada tem um endereço material rastreável.<br><br>Olhando o conjunto, as nove vinhetas descrevem três coações que recaem sobre os habitantes ao mesmo tempo, e nenhuma delas pode ser pensada isoladamente. A primeira é a coação informacional, ou seja, o cidadão é obrigado a gerar matéria-prima para o sistema mesmo quando não está usando nenhum dispositivo, porque o ato de atravessar a praça, de pagar no PIX, de cruzar a entrada de serviço já é capturado, vetorizado e transmitido. A segunda é a coação categórica, ou seja, o cidadão é obrigado a caber numa categoria que a máquina consiga ler, e quando ele não cabe, a máquina não reporta incerteza, ela aproxima pela categoria mais frequente nos dados de treinamento, de modo que Marcus vira suspeito, Edna vira risco médio, e a zona onde mora a população negra vira vermelho no mapa turístico. A terceira é a coação física, ou seja, a otimização eletromecânica que ativa o verde no eixo do VLT é a mesma ativação que mantém o vermelho na via transversal, e o algoritmo que despacha alertas pelo aplicativo é o mesmo que substituiu a sirene física da encosta. Essas três coações operam simultaneamente em cada vinheta, embora cada cena destaque uma delas.<br><br>A rede, porém, não termina no humano. Ela se fecha sobre si mesma. A abordagem policial que se segue ao match facial gera um boletim que retorna ao banco de identificação criminal, engrossando a base que treinou o algoritmo. A continuidade das vendas de Edna sob o limite reduzido alimenta o mesmo banco transacional que produziu o score, e o algoritmo lê isso como confirmação de que a categoria estava certa. Os ônibus retidos na via transversal emitem coordenadas estáticas via GPS que o dashboard do CCO converte em dado de congestionamento, e esse dado vira argumento técnico a favor do VLT que os imobilizou. Os fios vermelhos sobre o mapa, somados aos fios mostarda entre os actantes, compõem uma topologia que não é apenas descritiva. É circular. A cidade inteligente não atinge as pessoas e termina ali, ela se alimenta parasitariamente das reações que ela mesma provoca, e esse retorno é o que mantém a rede em operação ao longo dos 25 anos do contrato.
     </div>
     <div class="reagreg-stats">
-      <div><div class="reagreg-stat-num">20</div><div class="reagreg-stat-label">CADEIAS RASTREADAS</div></div>
-      <div><div class="reagreg-stat-num">6</div><div class="reagreg-stat-label">CAIXAS-PRETAS ABERTAS</div></div>
+      <div><div class="reagreg-stat-num">20</div><div class="reagreg-stat-label">CONEXÕES TRAÇADAS</div></div>
+      <div><div class="reagreg-stat-num">6</div><div class="reagreg-stat-label">FICHAS TÉCNICAS ABERTAS</div></div>
       <div><div class="reagreg-stat-num">9</div><div class="reagreg-stat-label">PONTOS DE CONTATO</div></div>
       <div><div class="reagreg-stat-num">15</div><div class="reagreg-stat-label">FIOS NA REDE</div></div>
     </div>
@@ -1859,9 +1860,9 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       <div class="recurso-card">
         <div class="recurso-icon">⊕</div>
         <div class="recurso-info">
-          <div class="recurso-nome">PROTOCOLO DE COAÇÃO</div>
+          <div class="recurso-nome">CONEXÕES TRAÇADAS</div>
           <div class="recurso-local">Botão no canto superior direito da tela, ao lado da Linha do Tempo.</div>
-          <div class="recurso-desc">Registro das cadeias de coação rastreadas a partir dos botões de inspeção dos reveals. Cada entrada descreve uma operação concreta em que um mediador (cabo submarino, banco de dados policial, algoritmo, contrato de PPP, dashboard do CCO ou sensor calibrado) obriga outro a agir de modo específico. É o inventário material da rede que o artefato descreveu.</div>
+          <div class="recurso-desc">Registro das conexões que você traçou clicando origem e destino na teia mini de cada reveal. Cada entrada descreve uma operação concreta em que um dispositivo (cabo submarino, banco de dados policial, algoritmo, contrato de PPP, dashboard do CCO ou sensor calibrado) força outro a agir de modo específico. É o inventário material da rede que o artefato descreveu.</div>
         </div>
       </div>
 
@@ -1959,7 +1960,7 @@ const VINHETAS = [
       'O sistema processa, em tempo real, 1.247.000 imagens por minuto. Lúcia processa, em tempo real, 14 banheiros, 6 corredores, 2 cozinhas e o saguão.',
       'Quando o turno acaba, ela pega o ônibus de volta. O ônibus passa por debaixo do prédio. O prédio sabe que ela passou.',
     ],
-    rodape:'↳ Trabalho invisível e infraestrutura. · COI Salvador: Huawei/Oi · Ativo desde 2010, expandido c/ IA em 2025.',
+    rodape:'↳ Trabalho invisível e infraestrutura. · COI Salvador: Huawei/Oi · Ativo desde 2016.',
     challenge: {
       tipo:'decisao',
       instrucao:'Identificador LMF-0029 (L. Ferreira) acessa o edifício às 3h47 pela entrada de serviço. O sistema aguarda instrução:',
@@ -2285,12 +2286,28 @@ function renderFooter() {
 }
 
 function updateLegibilidade() {
-  const n = state.visited.size;
-  const stage = LEG_STAGES[n];
-  document.getElementById('leg-fill').style.width = stage.pct + '%';
+  const nVinhetas = state.visited.size;
+  const nConexoes = stateP2.cadeiasMapeadas.size;
+  // Componente 1: vinhetas visitadas (peso 50%)
+  const pctVinhetas = (nVinhetas / 9) * 50;
+  // Componente 2: conexões traçadas (peso 50%)
+  const pctConexoes = (nConexoes / TOTAL_CADEIAS) * 50;
+  const pctTotal = Math.round(pctVinhetas + pctConexoes);
+  
+  document.getElementById('leg-fill').style.width = pctTotal + '%';
   const el = document.getElementById('leg-status');
-  el.textContent = stage.label;
-  el.classList.toggle('alert', n === 9);
+  
+  if (pctTotal === 0) el.textContent = 'INVISÍVEL';
+  else if (pctTotal < 15) el.textContent = 'RASTREAMENTO INICIADO';
+  else if (pctTotal < 30) el.textContent = 'DETECTADO';
+  else if (pctTotal < 45) el.textContent = 'MONITORADO';
+  else if (pctTotal < 60) el.textContent = 'PERFILADO';
+  else if (pctTotal < 75) el.textContent = 'CLASSIFICADO';
+  else if (pctTotal < 90) el.textContent = 'RASTREADO';
+  else if (pctTotal < 100) el.textContent = 'TOPOLOGIA QUASE COMPLETA';
+  else el.textContent = 'COMPLETAMENTE LEGÍVEL';
+  
+  el.classList.toggle('alert', pctTotal === 100);
 }
 
 function updateFioVermelho() {
@@ -2420,8 +2437,8 @@ function configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias) {
     quote = '"A cidade inteligente não mascara forças invisíveis, mas traduz e materializa ativamente a exclusão por meio de seus sensores, algoritmos e contratos."';
     statsHtml = `
       <div><div class="fim-stat-num" id="fim-fichas">${state.fichas.length}</div><div class="fim-stat-label">FICHAS ARQUIVADAS</div></div>
-      <div><div class="fim-stat-num">9/9</div><div class="fim-stat-label">PONTOS DE CONTATO</div></div>
-      <div><div class="fim-stat-num" style="color:var(--mustard);">50%</div><div class="fim-stat-label">VISÃO INCOMPLETA</div></div>
+      <div><div class="fim-stat-num" style="color:var(--mustard);">${cadeiasMarcadas}/${TOTAL_CADEIAS}</div><div class="fim-stat-label">CONEXÕES TRAÇADAS</div></div>
+      <div><div class="fim-stat-num" style="color:var(--mustard);">${legibilidadeVisual}%</div><div class="fim-stat-label">REDE LEGÍVEL</div></div>
     `;
     corpo = 'Você mapeou as pessoas atingidas, mas a sua leitura ainda é míope. A velha sociologia faria você acreditar que existem "dinâmicas ocultas por trás" da cidade. Não se iluda: não há nada escondido. Existem apenas redes de cabos, algoritmos, sensores e contratos agindo ativamente ao lado de Dona Edna e de Marcus, mas que você ignorou como se fossem mero cenário. O social não é feito apenas de humanos. Para realmente compreender o que aconteceu, você não precisa buscar forças invisíveis. Você precisa inspecionar as máquinas e abrir as caixas-pretas destas mesmas cenas.';
     btnLabel = '→ FECHAR E INSPECIONAR OS MEDIADORES';
@@ -2445,7 +2462,7 @@ function configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias) {
     <div class="fim-stats">${statsHtml}</div>
     <div class="fim-text">${corpo}</div>
     <button class="fim-btn-prancha2" onclick="fecharImpasse()">${btnLabel}</button>
-    <div style="margin-top:14px;font-size:10px;color:var(--ink);opacity:.7;line-height:1.5;font-style:italic;">Ao fechar, clique novamente nos números das vinhetas no mapa. Em cada reveal, o botão "⊕ INSPECIONAR MEDIADORES DESTA CENA" estará disponível para abrir as caixas-pretas dos actantes que operam ali.</div>
+    <div style="margin-top:14px;font-size:10px;color:var(--ink);opacity:.7;line-height:1.5;font-style:italic;">Ao fechar, clique novamente nos números das vinhetas no mapa. Em cada reveal, o botão "⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA" abre a ficha dos dispositivos e a teia mini onde você traça as conexões clicando origem e destino.</div>
   `;
 }
 // ════════════════════════════════════════
@@ -3452,7 +3469,7 @@ function showReveal(id, titulo, texto, toast) {
       <div class="reveal-ficha-quote">${v.ficha.texto}</div>
       <div class="reveal-ficha-fonte">${v.ficha.fonte || ''}</div>
     </div>
-    <button class="btn-inspecionar" id="btn-inspecionar-${id}" onclick="abrirInspecaoInline(${id})">⊕ INSPECIONAR MEDIADORES DESTA CENA</button>
+    <button class="btn-inspecionar" id="btn-inspecionar-${id}" onclick="abrirInspecaoInline(${id})">⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA</button>
     <div id="mediadores-container-${id}"></div>
   `;
   setModalPhase('reveal');
@@ -3464,28 +3481,31 @@ function abrirInspecaoInline(vinhetaId) {
   const container = document.getElementById(`mediadores-container-${vinhetaId}`);
   if (!container || !btn) return;
 
-  // Se já está aberto, fecha
   if (container.dataset.aberto === 'true') {
     container.innerHTML = '';
     container.dataset.aberto = 'false';
     btn.classList.remove('aberto');
-    btn.textContent = '⊕ INSPECIONAR MEDIADORES DESTA CENA';
+    btn.textContent = '⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA';
     return;
   }
 
-  // Filtra actantes que atravessam esta vinheta
   const vinhetaTag = `V${vinhetaId}`;
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
 
   if (actantesNaCena.length === 0) {
-    container.innerHTML = '<div class="mediadores-section"><div class="mediadores-intro">Nenhum mediador adicional rastreado nesta cena.</div></div>';
+    container.innerHTML = '<div class="mediadores-section"><div class="mediadores-intro">Nenhum dispositivo adicional rastreado nesta cena.</div></div>';
     return;
+  }
+
+  // Inicializa estado do gesto para esta vinheta
+  if (!stateP2.traceState[vinhetaTag]) {
+    stateP2.traceState[vinhetaTag] = { origem: null, destino: null };
   }
 
   let html = `
     <div class="mediadores-section">
-      <div class="mediadores-header">⊕ MEDIADORES OPERANDO NESTA CENA</div>
-      <div class="mediadores-intro">Não há nada por trás da cidade. Há, aqui mesmo, cabos, contratos, sensores e algoritmos agindo ao lado das pessoas. Abra cada caixa-preta para rastrear o que ela faz, o que precisa, e o que obriga os demais a fazerem.</div>
+      <div class="mediadores-header">⊕ DISPOSITIVOS E CONTRATOS QUE OPERAM AQUI</div>
+      <div class="mediadores-intro">Não há nada por trás da cidade. Há, aqui mesmo, cabos, contratos, sensores e algoritmos agindo ao lado das pessoas. Abra cada um para ver o que ele faz, o que precisa, o que força os outros a fazerem, e o que recebe de volta.</div>
   `;
 
   actantesNaCena.forEach(act => {
@@ -3500,11 +3520,199 @@ function abrirInspecaoInline(vinhetaId) {
     `;
   });
 
+  // Teia mini para gesto origem-destino
+  html += `
+    <div class="teia-mini-wrap">
+      <div class="teia-mini-header">⊹ TRACE AS CONEXÕES QUE OPERAM AQUI</div>
+      <div class="teia-mini-intro">Clique no dispositivo que <strong>força</strong>, depois no dispositivo que é <strong>forçado</strong>. A rede é feita de matéria, não de imaginação.</div>
+      <div class="teia-mini-status" id="teia-status-${vinhetaId}">Aguardando primeiro clique...</div>
+      <svg class="teia-mini-svg" id="teia-mini-${vinhetaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+        <g id="teia-mini-fios-${vinhetaId}"></g>
+        <g id="teia-mini-nos-${vinhetaId}"></g>
+      </svg>
+      <div class="teia-mini-aviso" id="teia-aviso-${vinhetaId}"></div>
+    </div>
+  `;
+
   html += '</div>';
   container.innerHTML = html;
   container.dataset.aberto = 'true';
   btn.classList.add('aberto');
   btn.textContent = '▲ FECHAR INSPEÇÃO';
+
+  renderTeiaMini(vinhetaId);
+}
+
+// Posições dos 6 nós dentro do viewBox 700x360 da teia mini
+const TEIA_MINI_POS = {
+  1: { x: 175, y: 90 },
+  2: { x: 525, y: 90 },
+  3: { x: 600, y: 180 },
+  4: { x: 525, y: 270 },
+  5: { x: 175, y: 270 },
+  6: { x: 100, y: 180 }
+};
+
+function renderTeiaMini(vinhetaId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const nosLayer = document.getElementById(`teia-mini-nos-${vinhetaId}`);
+  const fiosLayer = document.getElementById(`teia-mini-fios-${vinhetaId}`);
+  if (!nosLayer || !fiosLayer) return;
+
+  nosLayer.innerHTML = '';
+  fiosLayer.innerHTML = '';
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // Desenha fios já traçados (cadeias já mapeadas)
+  ACTANTES.forEach(act => {
+    act.cadeias.forEach(c => {
+      if (stateP2.cadeiasMapeadas.has(c.id)) {
+        c.alvos.forEach(alvo => {
+          const o = TEIA_MINI_POS[act.id], d = TEIA_MINI_POS[alvo];
+          if (!o || !d) return;
+          const line = document.createElementNS(ns, 'line');
+          line.setAttribute('x1', o.x); line.setAttribute('y1', o.y);
+          line.setAttribute('x2', d.x); line.setAttribute('y2', d.y);
+          line.setAttribute('stroke', PALETA.olive);
+          line.setAttribute('stroke-width', '2');
+          line.setAttribute('opacity', '.7');
+          fiosLayer.appendChild(line);
+        });
+      }
+    });
+  });
+
+  // Desenha os 6 nós
+  ACTANTES.forEach(act => {
+    const pos = TEIA_MINI_POS[act.id];
+    if (!pos) return;
+
+    const trace = stateP2.traceState[vinhetaTag] || { origem: null, destino: null };
+    const isOrigemAtual = trace.origem === act.id;
+
+    const g = document.createElementNS(ns, 'g');
+    g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : ''));
+    g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
+    g.style.cursor = 'pointer';
+    g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
+
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 28);
+    c.setAttribute('fill', isOrigemAtual ? PALETA.brick : PALETA.bone);
+    c.setAttribute('stroke', PALETA.ink);
+    c.setAttribute('stroke-width', '2');
+    g.appendChild(c);
+
+    const num = document.createElementNS(ns, 'text');
+    num.setAttribute('text-anchor', 'middle');
+    num.setAttribute('y', '-2');
+    num.setAttribute('font-size', '13');
+    num.setAttribute('font-family', "'Archivo Black',sans-serif");
+    num.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
+    num.style.pointerEvents = 'none';
+    num.textContent = act.id;
+    g.appendChild(num);
+
+    const lbl = document.createElementNS(ns, 'text');
+    lbl.setAttribute('text-anchor', 'middle');
+    lbl.setAttribute('y', '10');
+    lbl.setAttribute('font-size', '7');
+    lbl.setAttribute('font-family', "'Archivo Black',sans-serif");
+    lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
+    lbl.setAttribute('letter-spacing', '1');
+    lbl.style.pointerEvents = 'none';
+    lbl.textContent = act.sigla;
+    g.appendChild(lbl);
+
+    const nome = document.createElementNS(ns, 'text');
+    nome.setAttribute('text-anchor', 'middle');
+    nome.setAttribute('y', pos.y > 180 ? 48 : -38);
+    nome.setAttribute('font-size', '8');
+    nome.setAttribute('font-family', "'Archivo',sans-serif");
+    nome.setAttribute('fill', PALETA.ink);
+    nome.setAttribute('letter-spacing', '1');
+    nome.setAttribute('opacity', '.75');
+    nome.style.pointerEvents = 'none';
+    nome.textContent = act.nome;
+    g.appendChild(nome);
+
+    nosLayer.appendChild(g);
+  });
+
+  atualizarStatusTeia(vinhetaId);
+}
+
+function clicarNoTeiaMini(vinhetaId, actanteId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const trace = stateP2.traceState[vinhetaTag];
+  const aviso = document.getElementById(`teia-aviso-${vinhetaId}`);
+  if (aviso) aviso.textContent = '';
+
+  if (trace.origem === null) {
+    trace.origem = actanteId;
+    renderTeiaMini(vinhetaId);
+    return;
+  }
+
+  if (trace.origem === actanteId) {
+    // Cancelou clicando no mesmo
+    trace.origem = null;
+    renderTeiaMini(vinhetaId);
+    return;
+  }
+
+  // Tem origem, agora chegou destino
+  trace.destino = actanteId;
+  const chave = `${trace.origem}-${trace.destino}`;
+  const par = PARES_VALIDOS[chave];
+
+  if (!par) {
+    if (aviso) {
+      aviso.innerHTML = '⚠ Nenhuma operação material liga esses dois aqui. A rede se faz com fios concretos, não com analogias possíveis. Tente outro par.';
+    }
+    trace.origem = null;
+    trace.destino = null;
+    renderTeiaMini(vinhetaId);
+    return;
+  }
+
+  if (stateP2.cadeiasMapeadas.has(par.cadeiaId)) {
+    if (aviso) aviso.textContent = '↺ Essa conexão já estava traçada. Tente outro par.';
+    trace.origem = null;
+    trace.destino = null;
+    renderTeiaMini(vinhetaId);
+    return;
+  }
+
+  // Par válido e novo: marca a cadeia
+  stateP2.cadeiasMapeadas.add(par.cadeiaId);
+  const actOrigem = ACTANTES.find(a => a.id === par.origemId);
+  const cadeia = actOrigem.cadeias.find(c => c.id === par.cadeiaId);
+  addProtocolo(actOrigem, cadeia);
+
+  const todasMarcadas = actOrigem.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
+  if (todasMarcadas) stateP2.completedActantes.add(par.origemId);
+
+  showToast(`CONEXÃO TRAÇADA · ${stateP2.cadeiasMapeadas.size}/${TOTAL_CADEIAS}`);
+
+  trace.origem = null;
+  trace.destino = null;
+  renderTeiaMini(vinhetaId);
+  updateLegibilidade();
+  checkFimP2();
+}
+
+function atualizarStatusTeia(vinhetaId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const trace = stateP2.traceState[vinhetaTag] || { origem: null };
+  const status = document.getElementById(`teia-status-${vinhetaId}`);
+  if (!status) return;
+  if (trace.origem === null) {
+    status.textContent = 'Aguardando primeiro clique (dispositivo que força)...';
+  } else {
+    const act = ACTANTES.find(a => a.id === trace.origem);
+    status.innerHTML = `Origem selecionada: <strong>${act.nome}</strong> · Agora clique no dispositivo que ele força.`;
+  }
 }
 
 function toggleMediador(vinhetaId, actanteId) {
@@ -3523,69 +3731,135 @@ function toggleMediador(vinhetaId, actanteId) {
   const act = ACTANTES.find(a => a.id === actanteId);
   if (!act) return;
 
-  // marca o actante como visitado (para o trigger da reagregação)
   stateP2.visitedActantes.add(actanteId);
 
-  let cadeiasHtml = '';
-  act.cadeias.forEach(c => {
-    const mapped = stateP2.cadeiasMapeadas.has(c.id);
-    cadeiasHtml += `
-      <div class="mediador-cadeia ${mapped ? 'mapped' : ''}" 
-           data-cadeia="${c.id}" 
-           data-actante="${act.id}"
-           data-alvos="${c.alvos.join(',')}"
-           onclick="marcarCadeiaInline(this)">
-        <div class="mediador-cadeia-cb"></div>
-        <div class="mediador-cadeia-text">${act.sigla} ${c.texto}</div>
+  // Define se é primeira visita (mostra ficha completa) ou revisão (mostra só contextual)
+  const vinhetaTag = `V${vinhetaId}`;
+  const primeiraVez = !stateP2.fichaJaMostrada[actanteId];
+  if (primeiraVez) stateP2.fichaJaMostrada[actanteId] = vinhetaTag;
+
+  // Recupera campos contextuais da cena, se existirem
+  const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+
+  let fichaHtml = '';
+  if (primeiraVez) {
+    // Ficha completa (5 campos gerais)
+    fichaHtml = `
+      <div class="ficha-geral">
+        <div class="ficha-geral-stamp">FICHA TÉCNICA · PRIMEIRA INSPEÇÃO</div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE FAZ</div>
+          <div class="mediador-field-text">${act.oQueFaz}</div>
+        </div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE PRECISA</div>
+          <div class="mediador-field-text">${act.oQuePrecisa}</div>
+        </div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE FORÇA OS OUTROS A FAZEREM</div>
+          <div class="mediador-field-text">${act.oQueObriga}</div>
+        </div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE OS OUTROS FORÇAM ELE A FAZER</div>
+          <div class="mediador-field-text">${act.oQueEhObrigado}</div>
+        </div>
+        <div class="mediador-field mediador-field-retorno">
+          <div class="mediador-field-label mediador-field-label-retorno">O QUE RECEBE DE VOLTA DOS HABITANTES</div>
+          <div class="mediador-field-text">${act.oQueRecebeDeVolta || 'Campo não documentado.'}</div>
+        </div>
       </div>
     `;
-  });
+  } else {
+    // Revisão: linha discreta + botão para reabrir ficha completa
+    const cenaAnterior = stateP2.fichaJaMostrada[actanteId];
+    fichaHtml = `
+      <div class="ficha-revisao">
+        <span class="ficha-revisao-stamp">Já inspecionado na ${cenaAnterior}</span>
+        <button class="ficha-revisao-btn" onclick="reabrirFichaGeral(${vinhetaId}, ${actanteId})">↺ ABRIR FICHA TÉCNICA</button>
+      </div>
+    `;
+  }
 
-  body.innerHTML = `
-    <div class="mediador-field">
-      <div class="mediador-field-label">O QUE FAZ</div>
-      <div class="mediador-field-text">${act.oQueFaz}</div>
-    </div>
-    <div class="mediador-field">
-      <div class="mediador-field-label">O QUE PRECISA</div>
-      <div class="mediador-field-text">${act.oQuePrecisa}</div>
-    </div>
-    <div class="mediador-field">
-      <div class="mediador-field-label">O QUE OBRIGA</div>
-      <div class="mediador-field-text">${act.oQueObriga}</div>
-    </div>
-    <div class="mediador-field">
-      <div class="mediador-field-label">O QUE É OBRIGADO A FAZER</div>
-      <div class="mediador-field-text">${act.oQueEhObrigado}</div>
-    </div>
-    <div class="mediador-field mediador-field-retorno">
-      <div class="mediador-field-label mediador-field-label-retorno">O QUE RECEBE DE VOLTA</div>
-      <div class="mediador-field-text">${act.oQueRecebeDeVolta || 'Campo não documentado.'}</div>
-    </div>
-    <div class="mediador-cadeias-label">CADEIAS DE COAÇÃO · MARQUE PARA RASTREAR</div>
-    ${cadeiasHtml}
-  `;
+  // Campos contextuais da cena (sempre aparecem, independentemente de primeira vez ou não)
+  let ctxHtml = '';
+  if (ctx) {
+    ctxHtml = `
+      <div class="ficha-contextual">
+        <div class="ficha-contextual-stamp">NESTA CENA · ${vinhetaTag}</div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE FAZ AQUI</div>
+          <div class="mediador-field-text">${ctx.oQueFaz}</div>
+        </div>
+        <div class="mediador-field mediador-field-retorno">
+          <div class="mediador-field-label mediador-field-label-retorno">O QUE RECEBE DE VOLTA AQUI</div>
+          <div class="mediador-field-text">${ctx.oQueRecebeDeVolta}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  body.innerHTML = fichaHtml + ctxHtml;
   body.classList.add('open');
   btn.classList.add('open');
   arrow.textContent = '−';
 }
 
-function marcarCadeiaInline(el) {
-  const cadeiaId = el.dataset.cadeia;
-  const actanteId = parseInt(el.dataset.actante);
-  if (stateP2.cadeiasMapeadas.has(cadeiaId)) return;
-
-  stateP2.cadeiasMapeadas.add(cadeiaId);
-  el.classList.add('mapped');
-
+// Reabre a ficha geral expandida quando o usuário clica em "abrir ficha técnica" numa revisão
+function reabrirFichaGeral(vinhetaId, actanteId) {
+  const body = document.getElementById(`body-${vinhetaId}-${actanteId}`);
+  if (!body) return;
   const act = ACTANTES.find(a => a.id === actanteId);
-  const cadeia = act.cadeias.find(c => c.id === cadeiaId);
-  addProtocolo(act, cadeia);
+  const vinhetaTag = `V${vinhetaId}`;
+  const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
 
-  const todasMarcadas = act.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
-  if (todasMarcadas) stateP2.completedActantes.add(actanteId);
+  let ctxHtml = '';
+  if (ctx) {
+    ctxHtml = `
+      <div class="ficha-contextual">
+        <div class="ficha-contextual-stamp">NESTA CENA · ${vinhetaTag}</div>
+        <div class="mediador-field">
+          <div class="mediador-field-label">O QUE FAZ AQUI</div>
+          <div class="mediador-field-text">${ctx.oQueFaz}</div>
+        </div>
+        <div class="mediador-field mediador-field-retorno">
+          <div class="mediador-field-label mediador-field-label-retorno">O QUE RECEBE DE VOLTA AQUI</div>
+          <div class="mediador-field-text">${ctx.oQueRecebeDeVolta}</div>
+        </div>
+      </div>
+    `;
+  }
 
-  showToast(`CADEIA RASTREADA · ${stateP2.cadeiasMapeadas.size}/${TOTAL_CADEIAS}`);
+  body.innerHTML = `
+    <div class="ficha-geral">
+      <div class="ficha-geral-stamp">FICHA TÉCNICA · REABERTA POR REVISÃO</div>
+      <div class="mediador-field">
+        <div class="mediador-field-label">O QUE FAZ</div>
+        <div class="mediador-field-text">${act.oQueFaz}</div>
+      </div>
+      <div class="mediador-field">
+        <div class="mediador-field-label">O QUE PRECISA</div>
+        <div class="mediador-field-text">${act.oQuePrecisa}</div>
+      </div>
+      <div class="mediador-field">
+        <div class="mediador-field-label">O QUE FORÇA OS OUTROS A FAZEREM</div>
+        <div class="mediador-field-text">${act.oQueObriga}</div>
+      </div>
+      <div class="mediador-field">
+        <div class="mediador-field-label">O QUE OS OUTROS FORÇAM ELE A FAZER</div>
+        <div class="mediador-field-text">${act.oQueEhObrigado}</div>
+      </div>
+      <div class="mediador-field mediador-field-retorno">
+        <div class="mediador-field-label mediador-field-label-retorno">O QUE RECEBE DE VOLTA DOS HABITANTES</div>
+        <div class="mediador-field-text">${act.oQueRecebeDeVolta || 'Campo não documentado.'}</div>
+      </div>
+    </div>
+  ` + ctxHtml;
+}
+
+function marcarCadeiaInline(el) {
+  // Função neutralizada: o gesto agora é origem-destino na teia mini.
+  // Mantida como stub para compatibilidade caso algum onclick antigo ainda chame.
+  return;
 }
 
 function fecharImpasse() {
@@ -3680,6 +3954,17 @@ const ACTANTES = [
     oQueEhObrigado: 'É obrigado a operar dentro dos padrões técnicos definidos por comitês globais como o ICPC (Comitê Internacional de Proteção de Cabos), e a obedecer aos protocolos de roteamento que privilegiam pontos de troca em território norte-americano.  Por trás desses padrões e protocolos há engenheiros que escolheram especificações, diplomatas que negociaram passagens em águas territoriais, conselhos corporativos da AT&T, da Telxius e da Google Submarine Cables que decidiram onde instalar amplificadores e qual rota privilegiar. O cabo é coagido pelas decisões dessas pessoas tanto quanto coage os pacotes que carrega.',
     oQueRecebeDeVolta: 'Recebe de volta, em fluxo contínuo, o tráfego gerado pela própria adaptação dos cidadãos à infraestrutura. Cada vez que alguém abre o aplicativo da prefeitura para consultar uma rota, paga uma taxa por reconhecimento facial em estádio, ou aceita os termos de uso porque não tem alternativa, novos pacotes atravessam o cabo. O volume de dados que justifica a manutenção e a expansão da rota SSA-MIA cresce na proporção em que a cidade obriga seus habitantes a interagir com sistemas que dependem dele. A infraestrutura que produz a dependência é a mesma que se legitima pela dependência produzida.',
     atravessa: ['V1','V2','V3','V4','V5','V6','V7','V8','V9'],
+    porCena: {
+      V1: {oQueFaz: 'Transmite, da entrada de serviço para o servidor de RH, o registro de presença de Lúcia às 3h47.', oQueRecebeDeVolta: 'Recebe de volta, no fim do mês, o relatório de produtividade que confirma a regularidade do turno e justifica a manutenção do contrato de monitoramento.'},
+      V2: {oQueFaz: 'Transmite o vetor de 512 dimensões extraído do rosto de Marcus para comparação com a base policial.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, o registro de averiguação que entra no banco e engrossa a próxima rodada de treinamento.'},
+      V3: {oQueFaz: 'Transmite os dados transacionais da maquininha de Edna para o servidor de scoring em São Paulo.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das vendas sob o novo limite, lida pelo sistema como confirmação estatística da categoria de risco atribuída.'},
+      V4: {oQueFaz: 'Atravessa o Atlântico carregando dados de 2,9 milhões de cidadãos para processamento na Virgínia.', oQueRecebeDeVolta: 'Recebe de volta cada clique de "li e aceito", cada nova abertura de aplicativo, ampliando o volume agregado que justifica a renovação dos acordos de capacidade.'},
+      V5: {oQueFaz: 'Transmite as métricas do sistema Olho-Vivo para o servidor que monta o relatório semestral apresentado na sala 3.', oQueRecebeDeVolta: 'Recebe de volta a aprovação do contrato renovado, que garante a manutenção da rota por mais 24 meses.'},
+      V6: {oQueFaz: 'Transmite a consulta de Heinrich e a posição GPS dele para o servidor que monta o mapa colorido.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas, gerada pelo turista que evitou a zona vermelha, alimentando o ciclo de coloração das células.'},
+      V7: {oQueFaz: 'Transmite o sinal GPS do VLT-04 atrasado para o algoritmo de otimização semafórica.', oQueRecebeDeVolta: 'Recebe de volta as coordenadas estáticas dos ônibus parados na via transversal, dado que retorna ao painel como evidência de congestionamento.'},
+      V8: {oQueFaz: 'Transmite a leitura de saturação do solo do sensor geológico para o servidor de notificações por aplicativo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de "protocolo cumprido", que comprova ao gestor que o alerta foi disparado, ainda que não tenha sido recebido.'},
+      V9: {oQueFaz: 'Transmite a leitura térmica de 38,5°C do sensor IoT do totem para o dashboard de resiliência climática.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelas Árvores Digitais, lidos como métrica de inovação atendida.'}
+    },
     cadeias: [
       {id:'c1-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a operar em servidores fora do Brasil, fora do alcance prático da LGPD, porque o roteamento técnico predefine o destino dos pacotes antes de qualquer consulta jurídica.'},
       {id:'c1-2', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a aceitar uma latência mínima de 89ms em todas as suas consultas, condicionando o que pode ser considerado "tempo real" na operação da cidade.'},
@@ -3698,6 +3983,11 @@ const ACTANTES = [
     oQueEhObrigado: 'É obrigado pelo CONTRATO PPP e por contratos de aquisição de software a permanecer acessível a fornecedores privados, mesmo quando contém erros, duplicidades e registros de pessoas já absolvidas. Por trás de cada registro há policiais que tiraram a fotografia compulsória no momento da prisão, escrivães que digitaram o cadastro, gestores estaduais de segurança pública que assinaram a portaria de manutenção da base, advogados de secretarias que redigiram os convênios técnicos de cooperação com empresas privadas. O banco é coagido pelas decisões dessas pessoas a permanecer ativo, expandido, e acessível.',
     oQueRecebeDeVolta: 'Recebe de volta cada novo boletim de averiguação gerado pelas abordagens que ele próprio induziu. Quando o algoritmo aciona uma viatura a partir de um match facial, o registro produzido pela viatura retorna ao banco como entrada nova, ampliando a presença de determinados perfis raciais e etários no arquivo. O ciclo se fecha em forma de profecia autorrealizável, ou seja, a base que treinou o algoritmo é continuamente alimentada pelas consequências das decisões que esse algoritmo tomou usando a versão anterior dela mesma. Quanto mais o sistema funciona, mais a base confirma estatisticamente a categoria que produziu a abordagem.',
     atravessa: ['V2','V5','V6'],
+    porCena: {
+      V2: {oQueFaz: 'Devolve, em milissegundos, a similaridade de 92,4% entre o vetor instável extraído de Marcus e os rostos arquivados em prisões anteriores.', oQueRecebeDeVolta: 'Recebe de volta o boletim de averiguação produzido pela viatura acionada pelo match, engrossando a base na próxima consulta sobre outro corpo da mesma faixa etária e CEP.'},
+      V5: {oQueFaz: 'Fornece o conjunto de imagens contra o qual o sistema Olho-Vivo compara os rostos detectados em via pública.', oQueRecebeDeVolta: 'Recebe de volta o número agregado de abordagens, lido pelo relatório semestral como indicador de redução de criminalidade.'},
+      V6: {oQueFaz: 'Fornece as ocorrências policiais geolocalizadas que coloram as células do mapa turístico em vermelho.', oQueRecebeDeVolta: 'Recebe de volta a ausência de ocorrências nas zonas verdes (que turistas frequentam mais) e o adensamento de ocorrências nas zonas vermelhas (mais policiadas), confirmando o padrão na próxima rodada.'}
+    },
     cadeias: [
       {id:'c2-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a definir "padrão de suspeito" a partir de um arquivo cuja composição racial reflete a seletividade do sistema penal, e não a distribuição real do crime.'},
       {id:'c2-2', alvos:[6], texto:'<strong>obriga o SENSOR CALIBRADO</strong> a, diante de baixo contraste e ruído, completar a leitura com aproximações vindas desse arquivo, e não a reportar incerteza.'},
@@ -3716,6 +4006,13 @@ const ACTANTES = [
     oQueEhObrigado: 'É obrigado pelo BANCO DE DADOS POLICIAL a herdar viéses históricos. É obrigado pelo CONTRATO PPP a produzir métricas que justifiquem renovação. É obrigado pelo CABO SUBMARINO a executar suas operações em jurisdição estrangeira. Por trás dessas heranças há cientistas de dados que escolheram a função objetivo (otimizar match facial em vez de minimizar falsos positivos), engenheiros de machine learning que selecionaram o conjunto de treinamento sem auditar sua composição racial, gestores comerciais do consórcio fornecedor que decidiram o que conta como "sucesso" no contrato. O algoritmo é coagido pelas escolhas dessas pessoas tanto quanto coage os corpos que classifica.',
     oQueRecebeDeVolta: 'Recebe de volta as próprias decisões transformadas em dado de entrada da rodada seguinte. Quando classifica Edna como risco médio, a continuidade das vendas dela sob o novo limite alimenta a base transacional como confirmação da categoria. Quando marca uma zona como vermelha no mapa turístico, o desvio de fluxo dos turistas reforça a ausência de avaliações positivas naquela área, sustentando a próxima leitura. Quando aciona uma viatura, o boletim resultante volta ao banco de treinamento. O algoritmo não aprende com o mundo, aprende com os efeitos que produziu sobre o mundo, e essa circularidade é tratada estatisticamente como precisão.',
     atravessa: ['V2','V3','V5','V6','V7'],
+    porCena: {
+      V2: {oQueFaz: 'Recebe o vetor instável de Marcus e devolve uma similaridade de 92,4%, classificando-o como match para acionamento de campo.', oQueRecebeDeVolta: 'Recebe de volta o boletim da abordagem como exemplo positivo, reforçando o padrão que produziu o match na próxima imagem de baixo contraste.'},
+      V3: {oQueFaz: 'Lê o histórico transacional de Edna e calcula o score que reduz seu limite de R$3.000 para R$1.200.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das transações sob o limite menor, lida como confirmação de que a categoria de risco estava bem calibrada.'},
+      V5: {oQueFaz: 'Conta as abordagens policiais geradas pelo próprio sistema Olho-Vivo e converte esse número em "redução de criminalidade".', oQueRecebeDeVolta: 'Recebe de volta a renovação do contrato por R$665 milhões, viabilizando mais 24 meses de operação e mais matéria-prima para sua função objetivo.'},
+      V6: {oQueFaz: 'Cruza CEPs, avaliações de turistas e ocorrências policiais para colorir cada célula do mapa em verde ou vermelho.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas do turista que evitou a zona vermelha, sustentando a coloração na consulta seguinte.'},
+      V7: {oQueFaz: 'Calcula a otimização semafórica que ativa o verde no eixo do VLT para recuperar o atraso de 6 minutos.', oQueRecebeDeVolta: 'Recebe de volta os sinais GPS dos ônibus parados na transversal, lidos no painel como evidência da eficiência relativa do modal priorizado.'}
+    },
     cadeias: [
       {id:'c3-1', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a converter saídas estatísticas em indicadores visuais de gestão, ocultando do gestor as condições técnicas de produção daquele número.'},
       {id:'c3-2', alvos:[6], texto:'<strong>obriga o SENSOR CALIBRADO</strong> a operar como sua antena de captura, definindo retroativamente quais propriedades físicas do mundo passam a ser relevantes (contraste, geometria facial, padrão térmico).'},
@@ -3732,8 +4029,14 @@ const ACTANTES = [
     oQuePrecisa: 'Precisa de aprovação inicial por um único gestor, de um quórum legislativo no momento da assinatura, e da inexistência de cláusulas de rescisão acessíveis. Precisa de previsibilidade orçamentária garantida em lei, e da delegação da operação técnica para o consórcio.',
     oQueObriga: 'Obriga cinco gestões municipais sucessivas a manter o sistema independentemente de sua plataforma política. Obriga o DASHBOARD DO CCO a exibir as métricas previstas em contrato, e somente essas. Obriga a renovação automática quando os indicadores contratuais (não os sociais) são cumpridos.',
     oQueEhObrigado: 'É obrigado pelo ALGORITMO DE INFERÊNCIA a incluir blindagens de segredo industrial. É obrigado pelo cronograma de implantação a fixar tecnologias específicas, que ficam desatualizadas durante a própria vigência. Por trás de cada cláusula há um prefeito que assinou em 2020, vereadores que aprovaram o quórum, advogados do consórcio fornecedor que redigiram a Cláusula 18-B e o Art. 12, procuradores municipais que pareceram favoravelmente, e técnicos da Secretaria de Urbanismo que homologaram os indicadores contratuais. O contrato é coagido pelas decisões dessas pessoas tanto quanto coage as cinco gestões municipais sucessivas que terão de operá-lo.',
-    oQueRecebeDeVolta: 'Recebe de volta, semestre após semestre, os relatórios de cumprimento de indicadores-chave de desenvolvimento gerados pelo próprio sistema que o contrato instalou. Esses relatórios, produzidos pelo dashboard e pela consultoria que vendeu o software, alimentam as cláusulas de renovação automática. O contrato se autorrenova lendo, como evidência de bom funcionamento, os dados produzidos pelos dispositivos que ele mesmo financiou. A adaptação do cidadão à infraestrutura aparece nesses relatórios como volume de uso, índice de cobertura, taxa de processamento, tudo lido como sucesso operacional. O instrumento jurídico se sustenta nas métricas geradas pelos efeitos que ele produziu sobre os corpos.',
+    oQueRecebeDeVolta: 'Recebe de volta, semestre após semestre, os relatórios de cumprimento de Indicadores-Chaves de Desempenho gerados pelo próprio sistema que o contrato instalou. Esses relatórios, produzidos pelo dashboard e pela consultoria que vendeu o software, alimentam as cláusulas de renovação automática. O contrato se autorrenova lendo, como evidência de bom funcionamento, os dados produzidos pelos dispositivos que ele mesmo financiou. A adaptação do cidadão à infraestrutura aparece nesses relatórios como volume de uso, índice de cobertura, taxa de processamento, tudo lido como sucesso operacional. O instrumento jurídico se sustenta nas métricas geradas pelos efeitos que ele produziu sobre os corpos.',
     atravessa: ['Prólogo','V1','V5','V7','V9'],
+    porCena: {
+      V1: {oQueFaz: 'Garante, na Cláusula de Monitoramento Operacional, que o sistema de presença permaneça ativo por 25 anos, atravessando seis gestões municipais.', oQueRecebeDeVolta: 'Recebe de volta os logs ininterruptos de entrada e saída de Lúcia e dos demais terceirizados, dados que comprovam ao consórcio o cumprimento do indicador de "cobertura operacional".'},
+      V5: {oQueFaz: 'Define, em seu Anexo Técnico, quais indicadores justificam a renovação automática (entre eles, a métrica de "redução de abordagens").', oQueRecebeDeVolta: 'Recebe de volta o relatório semestral com -23% e renova-se por mais 24 meses, sem que ninguém precise reavaliar se a métrica faz sentido.'},
+      V7: {oQueFaz: 'Especifica, em cláusula contratual, que a pontualidade do VLT é o KPI premiado, e que as vias sem sensor não compõem o cálculo.', oQueRecebeDeVolta: 'Recebe de volta o índice de pontualidade alcançado pela onda verde, validando juridicamente a operação que reteve os ônibus da transversal.'},
+      V9: {oQueFaz: 'Vincula a aprovação de soluções de resiliência climática à compatibilidade com a malha de fibra óptica e com as câmeras do Olho-Vivo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de inovação sustentável com as Árvores Digitais instaladas, contabilizando pontos em rankings internacionais de Cidades Inteligentes.'}
+    },
     cadeias: [
       {id:'c4-1', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a exibir como sucesso somente as métricas contratualmente acordadas, mesmo quando outras métricas mais relevantes para a cidade são piores.'},
       {id:'c4-2', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a produzir indicadores que justifiquem renovação, ainda que essa produção seja circular (o sistema mede a si mesmo).'},
@@ -3750,13 +4053,20 @@ const ACTANTES = [
     oQueFaz: 'Define o que é visível para o gestor. Recorta o real em métricas e omite tudo que não cabe em métrica. Estabelece, na prática, o que conta como problema e o que conta como solução, porque o que não aparece no painel não pode ser gerido.',
     oQuePrecisa: 'Precisa do fluxo contínuo do CABO SUBMARINO, das saídas do ALGORITMO DE INFERÊNCIA, das atualizações do BANCO DE DADOS POLICIAL e das leituras do SENSOR CALIBRADO. Precisa de uma sala física, de operadores treinados, e de telas de alto custo. Precisa principalmente de legitimidade política, ou seja, da confiança do gestor em sua representação do real.',
     oQueObriga: 'Obriga o operador a agir sobre o que aparece no painel, ignorando o que não aparece. Obriga a V7 (semáforos) a otimizar o VLT porque o VLT é o que tem indicador. Obriga a V8 (alerta climático) a parecer cumprido quando o protocolo digital foi executado, mesmo que a sirene física tenha sido desativada.',
-    oQueEhObrigado: 'É obrigado pelo CONTRATO PPP a exibir métricas pré-acordadas. É obrigado pelo ALGORITMO DE INFERÊNCIA a aceitar suas saídas como dados. É obrigado pelo design da interface a hierarquizar visualmente o que o consórcio considerou importante. Por trás da interface há designers contratados pelo consórcio que decidiram quais widgets entram na tela inicial e quais ficam em submenus, gestores municipais que especificaram quais KPIs querem ver, operadores treinados que aprenderam a confiar no semáforo verde do painel sem questionar como foi calculado. O dashboard é coagido pelas escolhas dessas pessoas tanto quanto coage o operador que age sobre o que ele exibe.',
+    oQueEhObrigado: 'É obrigado pelo CONTRATO PPP a exibir métricas pré-acordadas. É obrigado pelo ALGORITMO DE INFERÊNCIA a aceitar suas saídas como dados. É obrigado pelo design da interface a hierarquizar visualmente o que o consórcio considerou importante. Por trás da interface há designers contratados pelo consórcio que decidiram quais widgets entram na tela inicial e quais ficam em submenus, gestores municipais que especificaram quais Indicadores-Chaves de Desempenho querem ver, operadores treinados que aprenderam a confiar no semáforo verde do painel sem questionar como foi calculado. O dashboard é coagido pelas escolhas dessas pessoas tanto quanto coage o operador que age sobre o que ele exibe.',
     oQueRecebeDeVolta: 'Recebe de volta os efeitos das próprias decisões que ele induziu o operador a tomar. Quando exibe um match facial e o operador clica em ratificar, a abordagem subsequente produz coordenadas de viatura, tempo de resposta e boletim de averiguação, todos lidos pelo painel como métricas operacionais a serem apresentadas ao gestor. Quando exibe um congestionamento em via transversal causado pela onda verde do VLT, os sinais de GPS dos passageiros parados retornam como série temporal que comprova a eficiência relativa do modal priorizado. O dashboard se valida visualmente lendo, em tempo real, as consequências do que ele recomendou.',
     atravessa: ['V1','V5','V7','V8','V9'],
+    porCena: {
+      V1: {oQueFaz: 'Exibe o log de entrada da Lúcia como ponto no painel de presença, sem campo para tempo de deslocamento ou atraso de ônibus.', oQueRecebeDeVolta: 'Recebe de volta o índice de regularidade do turno, número que vira evidência de que o sistema de monitoramento funciona como contratado.'},
+      V5: {oQueFaz: 'Apresenta o gráfico -23% no slide 12 da reunião trimestral, com asterisco em fonte 6pt explicando que se mede abordagens, não crimes.', oQueRecebeDeVolta: 'Recebe de volta os aplausos do secretário e a assinatura da renovação, validando socialmente o recorte métrico adotado.'},
+      V7: {oQueFaz: 'Mostra ao operador a barra "ATRASO VLT-04: 6min" e oferece o botão de ativar a Onda Verde como ação recomendada.', oQueRecebeDeVolta: 'Recebe de volta o GPS dos ônibus parados como pontos vermelhos na via transversal, lidos como dado de congestionamento (não como consequência da própria recomendação).'},
+      V8: {oQueFaz: 'Pisca em vermelho com o alerta de saturação do solo e exibe "PROTOCOLO CUMPRIDO" assim que os SMS são despachados.', oQueRecebeDeVolta: 'Recebe de volta a taxa de despacho dos alertas (não a taxa de entrega), confirmando ao gestor que o protocolo digital operou normalmente.'},
+      V9: {oQueFaz: 'Exibe o alerta térmico de 38,5°C e oferece, no menu de mitigação, as três opções de intervenção compatíveis com a malha óptica.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelos totems instalados, transformando consumo de internet de pedestres em métrica de resiliência climática.'}
+    },
     cadeias: [
       {id:'c5-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a entregar suas saídas em formato visual operacional (gráfico, semáforo, número grande), o que apaga a complexidade técnica e estatística da produção daquele dado.'},
       {id:'c5-2', alvos:[6], texto:'<strong>obriga o SENSOR CALIBRADO</strong> a converter eventos físicos em séries temporais agregáveis, descartando informações qualitativas que não cabem em série temporal.'},
-      {id:'c5-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar previamente os KPIs, fixando juridicamente um recorte do real que era contingente.'}
+      {id:'c5-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar previamente os Indicadores-Chaves de Desempenho, fixando juridicamente um recorte do real que era contingente.'}
     ]
   },
   {
@@ -3771,6 +4081,13 @@ const ACTANTES = [
     oQueEhObrigado: 'É obrigado pela herança Shirley a partir de uma calibração ótica historicamente racializada. É obrigado pelo BANCO DE DADOS POLICIAL a complementar suas leituras incertas com aproximações. É obrigado pelo CONTRATO PPP a permanecer mesmo quando obsoleto. Por trás da curva de reflectância há técnicos de calibração da Kodak que ajustaram a química do filme em 1950 para a pele de Shirley Page, engenheiros das fábricas asiáticas de sensores CMOS que herdaram essa curva sem questionar, instaladores que parafusaram o equipamento no poste sem auditar seu firmware. O sensor é coagido pelas decisões técnicas dessas pessoas, muitas tomadas há décadas, tanto quanto coage os corpos que tenta ler hoje.',
     oQueRecebeDeVolta: 'Recebe de volta os corpos que ele próprio formatou como detectáveis. As populações que aprendem a se mover sob o ângulo da câmera, a usar bonés ou capuzes em resposta à vigilância, a evitar áreas de cobertura densa, geram novos padrões de movimento que voltam ao sensor como dados de calibração contextual. O sensor passa a "ver" essa adaptação como comportamento suspeito ou comportamento normal conforme a categoria pré-definida, e o que ele lê na próxima passagem já é o resultado das estratégias corporais que sua própria existência produziu. O dispositivo se calibra continuamente sobre os corpos que aprenderam a viver diante dele.',
     atravessa: ['V1','V2','V6','V8','V9'],
+    porCena: {
+      V1: {oQueFaz: 'O leitor de crachá registra a passagem de Lúcia às 3h47 sem campo para o atraso do ônibus que a antecedeu.', oQueRecebeDeVolta: 'Recebe de volta a estabilidade semanal do padrão de entrada, lida como ausência de anomalia comportamental no arquivo de turno.'},
+      V2: {oQueFaz: 'A câmera 0834-B converte o rosto de Marcus em vetor de 512 dimensões usando a curva de reflectância herdada da cartela Shirley.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, contextos de captura semelhantes (mesmo CEP, mesmo horário, mesma faixa etária) que ajustam sua sensibilidade à próxima passagem.'},
+      V6: {oQueFaz: 'Os GPSs dos celulares dos turistas captam quais células do mapa foram visitadas e quais foram evitadas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de pontos GPS na zona vermelha, confirmando estatisticamente que aquela área "não interessa" ao circuito turístico.'},
+      V8: {oQueFaz: 'O sensor geológico mede a saturação do solo da encosta e detecta o limiar crítico de 120mm em duas horas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de retorno da notificação no aplicativo (pacote de dados inativo, smartphone incompatível), lida como leitura técnica do "tempo de resposta da comunidade".'},
+      V9: {oQueFaz: 'O sensor IoT do totem mede a temperatura de 38,5°C na avenida concretada e gera o alerta de ilha de calor.', oQueRecebeDeVolta: 'Recebe de volta os dados Wi-Fi dos pedestres que pararam diante do totem buscando sombra, transformando exposição ao calor em métrica de engajamento digital.'}
+    },
     cadeias: [
       {id:'c6-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a operar sobre uma matéria-prima já filtrada e racializada, o que se confunde retroativamente com a "objetividade" da câmera.'},
       {id:'c6-2', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a aceitar como real apenas o que está dentro da faixa de calibração, tornando invisíveis populações, fenômenos e contextos fora dessa faixa.'},
@@ -3786,10 +4103,29 @@ const stateP2 = {
   completedActantes: new Set(),
   cadeiasMapeadas: new Set(),
   currentActante: null,
-  protocolo: []
+  protocolo: [],
+  // Movimento 1: dispositivos cuja ficha geral já foi mostrada nesta sessão
+  fichaJaMostrada: {}, // ex: { 1: 'V1' } significa que o dispositivo 1 foi inspecionado pela primeira vez em V1
+  // Movimento 2: estado do gesto origem-destino dentro de cada vinheta aberta
+  traceState: {} // ex: { V1: { origem: 3, destino: null } }
 };
 
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
+
+// ─── Mapa de pares válidos (origem → destino → cadeia) ───
+// Construído a partir das cadeias documentadas. Usado pelo gesto origem-destino.
+const PARES_VALIDOS = (() => {
+  const map = {};
+  ACTANTES.forEach(act => {
+    act.cadeias.forEach(c => {
+      c.alvos.forEach(alvo => {
+        const chave = `${act.id}-${alvo}`;
+        map[chave] = { cadeiaId: c.id, origemId: act.id, destinoId: alvo, texto: c.texto };
+      });
+    });
+  });
+  return map;
+})();
 
 // ────────────────────────────────────────────
 // NAVEGAÇÃO ENTRE PRANCHAS
@@ -4057,7 +4393,7 @@ function addProtocolo(act, cadeia) {
   const card = document.createElement('div');
   card.className = 'protocolo-card';
   card.innerHTML = `
-    <div class="protocolo-num">COAÇÃO ${stateP2.protocolo.length} · ${act.sigla}</div>
+    <div class="protocolo-num">CONEXÃO ${stateP2.protocolo.length} · ${act.sigla}</div>
     <div class="protocolo-text">${act.sigla} ${cadeia.texto}</div>
   `;
   content.appendChild(card);
