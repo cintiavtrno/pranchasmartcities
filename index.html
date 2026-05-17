@@ -1145,19 +1145,21 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   from {opacity:0;transform:translate(-50%,20px);}
   to {opacity:1;transform:translate(-50%,0);}
 }
-  .teia-mini-no.selecionado circle {
-  fill:var(--brick);
+.teia-mini-no.selecionado circle {
+  fill: var(--brick);
 }
 .teia-mini-aviso {
-  .teia-mini-no.humano:hover circle {
-  fill:var(--ink);
+  font-size: 9px;
+}
+.teia-mini-no.humano:hover circle {
+  fill: var(--ink);
 }
 .teia-mini-no.humano.selecionado circle {
-  fill:var(--ink);
+  fill: var(--ink);
 }
-  .protocolo-card.envolve-humano {
-  border-left:4px solid var(--mustard);
-  background:rgba(200,147,57,.05);
+.protocolo-card.envolve-humano {
+  border-left: 4px solid var(--mustard);
+  background: rgba(200,147,57,.05);
 }
 </style>
 </head>
@@ -3712,7 +3714,6 @@ function renderTeiaMini(vinhetaId) {
 
     nosLayer.appendChild(g);
   });
-
   atualizarStatusTeia(vinhetaId);
 }
 function clicarNoTeiaMini(vinhetaId, actanteId) {
