@@ -822,6 +822,13 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   font-family:'Archivo Black',sans-serif;font-size:14px;
   margin-left:10px;flex-shrink:0;
 }
+.mediador-btn-sublabel {
+  font-family:'Archivo',sans-serif;font-size:8px;letter-spacing:1px;
+  opacity:.55;font-weight:normal;margin-left:6px;
+}
+.mediador-btn.open .mediador-btn-sublabel {
+  color:var(--bone);opacity:.65;
+}
 .mediador-body {
   display:none;padding:14px;
   border-left:1.5px solid var(--ink);
@@ -1138,6 +1145,20 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   from {opacity:0;transform:translate(-50%,20px);}
   to {opacity:1;transform:translate(-50%,0);}
 }
+  .teia-mini-no.selecionado circle {
+  fill:var(--brick);
+}
+.teia-mini-aviso {
+  .teia-mini-no.humano:hover circle {
+  fill:var(--ink);
+}
+.teia-mini-no.humano.selecionado circle {
+  fill:var(--ink);
+}
+  .protocolo-card.envolve-humano {
+  border-left:4px solid var(--mustard);
+  background:rgba(200,147,57,.05);
+}
 </style>
 </head>
 <body>
@@ -1290,7 +1311,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
            <text x="0" y="28" text-anchor="middle" font-size="4" font-family="'Archivo Black',sans-serif" fill="#A8412A" letter-spacing="1">ÁREA PERFILADA</text>
         </g>
 
-        <!-- ════ CAMADA DE DADOS E GPS (VLT) ════ -->
+        <!-- ════ CAMADA DE DADOS E GPS (BRT) ════ -->
         <!-- Se você colocou aquele código do passo anterior aqui embaixo, pode substituí-lo por este! -->
         <g id="camada-fluxo-gps">
           <!-- Linha base fantasma -->
@@ -1302,7 +1323,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           <rect x="330" y="278" width="40" height="14" fill="none" stroke="#577387" stroke-width="0.8" stroke-dasharray="2 2"/>
           <circle cx="350" cy="285" r="4" fill="#EFE5CE" stroke="#577387" stroke-width="1.5"/>
           <circle cx="350" cy="285" r="1.5" fill="#C89339" class="sensor-blink"/>
-          <text x="350" y="274" text-anchor="middle" font-size="5" font-family="'Archivo Black',sans-serif" fill="#577387" letter-spacing="1">SINAL GPS · VLT-04</text>
+          <text x="350" y="274" text-anchor="middle" font-size="5" font-family="'Archivo Black',sans-serif" fill="#577387" letter-spacing="1">SINAL GPS · BRT-04</text>
         </g>
         <circle cx="850" cy="80" r="38" fill="none" stroke="#1A1611" stroke-width=".8" stroke-dasharray="2 3"/>
         <circle cx="850" cy="80" r="22" fill="#C89339" opacity=".7"/>
@@ -1475,12 +1496,12 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           </g>
         </g>
         <text x="900" y="397" font-size="6" font-family="'Archivo',sans-serif" fill="#1A1611" letter-spacing="1.5">→ DADOS · 89ms</text>
-        <!-- CAMADA DE FLUXO (VLT / BRT) -->
+        <!-- CAMADA DE FLUXO (BRT / BRT) -->
         <g id="camada-fluxo" opacity="0.8">
           <line x1="0" y1="285" x2="1000" y2="285" stroke="#577387" stroke-width="3" opacity="0.4"/>
           <line x1="0" y1="285" x2="1000" y2="285" stroke="#F7EFD9" stroke-width="1.5" stroke-dasharray="12 6"/>
           <rect x="340" y="282" width="20" height="6" fill="#577387" rx="2"/>
-          <text x="350" y="278" text-anchor="middle" font-size="5" font-family="'Archivo Black',sans-serif" fill="#577387" letter-spacing="1">VLT · LINHA 1</text>
+          <text x="350" y="278" text-anchor="middle" font-size="5" font-family="'Archivo Black',sans-serif" fill="#577387" letter-spacing="1">BRT · LINHA 1</text>
         </g>
         <text x="20" y="30" font-size="11" font-family="'Archivo Black',sans-serif" fill="#1A1611" letter-spacing="3">PRANCHA Nº 01 · CORTE TRANSVERSAL</text>
         <text x="20" y="43" font-size="7" font-family="'Archivo',sans-serif" fill="#1A1611" letter-spacing="2" opacity=".7">A CIDADE INTELIGENTE · ESCALA: VARIÁVEL · DECRETO 33.405/2020</text>
@@ -1816,7 +1837,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <div class="reagreg-h">A REDE NÃO É UMA METÁFORA</div>
     <div class="reagreg-quote">"Cada conexão traçada é uma operação técnica, jurídica ou material que de fato acontece quando o sistema funciona."</div>
     <div class="reagreg-corpo">
-      Você não desceu a um mundo escondido nem subiu a uma estrutura abstrata. Você percorreu, no mesmo plano da cidade, a rede que sempre esteve ali, ao lado de Lúcia, Marcus, Edna e dos demais. A exclusão de Marcus passa pela calibração Shirley do sensor da câmera 0834-B, pelo banco de identificação criminal da Secretaria de Segurança, pela função de similaridade do algoritmo, pelo cabo de fibra que liga a câmera ao CCO, pela tela do dashboard onde o operador clicou em ratificar. O corte de crédito de Edna passa pela cláusula 18-B do contrato da maquininha, pelo Art. 12 que classifica o score como segredo industrial, pelo servidor em São Paulo onde a função de scoring rodou. O atraso dos ônibus na via transversal passa pela ausência de sensor instalado naquela via, pela cláusula do contrato de PPP que define a pontualidade do VLT como o indicador a ser premiado, pelo painel do CCO que só exibe métricas previstas em contrato. Cada exclusão tem coordenadas. Cada coordenada tem um endereço material rastreável.<br><br>Olhando o conjunto, as nove vinhetas descrevem três coações que recaem sobre os habitantes ao mesmo tempo, e nenhuma delas pode ser pensada isoladamente. A primeira é a coação informacional, ou seja, o cidadão é obrigado a gerar matéria-prima para o sistema mesmo quando não está usando nenhum dispositivo, porque o ato de atravessar a praça, de pagar no PIX, de cruzar a entrada de serviço já é capturado, vetorizado e transmitido. A segunda é a coação categórica, ou seja, o cidadão é obrigado a caber numa categoria que a máquina consiga ler, e quando ele não cabe, a máquina não reporta incerteza, ela aproxima pela categoria mais frequente nos dados de treinamento, de modo que Marcus vira suspeito, Edna vira risco médio, e a zona onde mora a população negra vira vermelho no mapa turístico. A terceira é a coação física, ou seja, a otimização eletromecânica que ativa o verde no eixo do VLT é a mesma ativação que mantém o vermelho na via transversal, e o algoritmo que despacha alertas pelo aplicativo é o mesmo que substituiu a sirene física da encosta. Essas três coações operam simultaneamente em cada vinheta, embora cada cena destaque uma delas.<br><br>A rede, porém, não termina no humano. Ela se fecha sobre si mesma. A abordagem policial que se segue ao match facial gera um boletim que retorna ao banco de identificação criminal, engrossando a base que treinou o algoritmo. A continuidade das vendas de Edna sob o limite reduzido alimenta o mesmo banco transacional que produziu o score, e o algoritmo lê isso como confirmação de que a categoria estava certa. Os ônibus retidos na via transversal emitem coordenadas estáticas via GPS que o dashboard do CCO converte em dado de congestionamento, e esse dado vira argumento técnico a favor do VLT que os imobilizou. Os fios vermelhos sobre o mapa, somados aos fios mostarda entre os actantes, compõem uma topologia que não é apenas descritiva. É circular. A cidade inteligente não atinge as pessoas e termina ali, ela se alimenta parasitariamente das reações que ela mesma provoca, e esse retorno é o que mantém a rede em operação ao longo dos 25 anos do contrato.
+      Você não desceu a um mundo escondido nem subiu a uma estrutura abstrata. Você percorreu, no mesmo plano da cidade, a rede que sempre esteve ali, ao lado de Lúcia, Marcus, Edna e dos demais. A exclusão de Marcus passa pela calibração Shirley do sensor da câmera 0834-B, pelo banco de identificação criminal da Secretaria de Segurança, pela função de similaridade do algoritmo, pelo cabo de fibra que liga a câmera ao CCO, pela tela do dashboard onde o operador clicou em ratificar. O corte de crédito de Edna passa pela cláusula 18-B do contrato da maquininha, pelo Art. 12 que classifica o score como segredo industrial, pelo servidor em São Paulo onde a função de scoring rodou. O atraso dos ônibus na via transversal passa pela ausência de sensor instalado naquela via, pela cláusula do contrato de PPP que define a pontualidade do BRT como o indicador a ser premiado, pelo painel do CCO que só exibe métricas previstas em contrato. Cada exclusão tem coordenadas. Cada coordenada tem um endereço material rastreável.<br><br>Olhando o conjunto, as nove vinhetas descrevem três coações que recaem sobre os habitantes ao mesmo tempo, e nenhuma delas pode ser pensada isoladamente. A primeira é a coação informacional, ou seja, o cidadão é obrigado a gerar matéria-prima para o sistema mesmo quando não está usando nenhum dispositivo, porque o ato de atravessar a praça, de pagar no PIX, de cruzar a entrada de serviço já é capturado, vetorizado e transmitido. A segunda é a coação categórica, ou seja, o cidadão é obrigado a caber numa categoria que a máquina consiga ler, e quando ele não cabe, a máquina não reporta incerteza, ela aproxima pela categoria mais frequente nos dados de treinamento, de modo que Marcus vira suspeito, Edna vira risco médio, e a zona onde mora a população negra vira vermelho no mapa turístico. A terceira é a coação física, ou seja, a otimização eletromecânica que ativa o verde no eixo do BRT é a mesma ativação que mantém o vermelho na via transversal, e o algoritmo que despacha alertas pelo aplicativo é o mesmo que substituiu a sirene física da encosta. Essas três coações operam simultaneamente em cada vinheta, embora cada cena destaque uma delas.<br><br>A rede, porém, não termina no humano. Ela se fecha sobre si mesma. A abordagem policial que se segue ao match facial gera um boletim que retorna ao banco de identificação criminal, engrossando a base que treinou o algoritmo. A continuidade das vendas de Edna sob o limite reduzido alimenta o mesmo banco transacional que produziu o score, e o algoritmo lê isso como confirmação de que a categoria estava certa. Os ônibus retidos na via transversal emitem coordenadas estáticas via GPS que o dashboard do CCO converte em dado de congestionamento, e esse dado vira argumento técnico a favor do BRT que os imobilizou. Os fios vermelhos sobre o mapa, somados aos fios mostarda entre os actantes, compõem uma topologia que não é apenas descritiva. É circular. A cidade inteligente não atinge as pessoas e termina ali, ela se alimenta parasitariamente das reações que ela mesma provoca, e esse retorno é o que mantém a rede em operação ao longo dos 25 anos do contrato.
     </div>
     <div class="reagreg-stats">
       <div><div class="reagreg-stat-num">20</div><div class="reagreg-stat-label">CONEXÕES TRAÇADAS</div></div>
@@ -1953,7 +1974,7 @@ const TONS_PELE = {
 
 const VINHETAS = [
   {
-    id:1, titulo:'CENTRO DE OPERAÇÕES E INTELIGÊNCIA', subtitulo:'4ª madrugada · turno B',
+    id:1, titulo:'CENTRO DE CONTROLE OPERACIONAL', subtitulo:'4ª madrugada · turno B',
     cor:'blue', cena:'Dona Lúcia entra às 3h47.',
     paragrafos:[
       'Os monitores estão sempre ligados. As máquinas estão sempre quentes. Lúcia aprendeu, no primeiro dia, a não encostar muito tempo na lateral dos servidores. Ela limpa o pó que ninguém vê e os vidros que ninguém olha.',
@@ -2078,18 +2099,18 @@ const VINHETAS = [
   },
   {
     id:7, titulo:'SISTEMA SEMAFÓRICO INTEGRADO', subtitulo:'Cruzamento Av. Principal',
-    cor:'blue', cena:'O VLT-04 está 6 minutos atrasado.',
+    cor:'blue', cena:'O BRT-04 está 6 minutos atrasado.',
     paragrafos:[
-      'O Centro de Operações de Mobilidade detecta que a composição do VLT perdeu o cronograma. Atrasos reduzem a nota da prefeitura nos relatórios de "Smart City".',
+      'O Centro de Operações de Mobilidade detecta que a composição do BRT perdeu o cronograma. Atrasos reduzem a nota da prefeitura nos relatórios de "Smart City".',
       'O sistema sugere a ativação do protocolo "Onda Verde": sincronizar todos os semáforos da avenida principal para verde contínuo.',
-      'A via transversal não tem sensor de fluxo nem indicador no dashboard do CCO. Ela é o corredor principal de ônibus que liga três bairros da periferia ao centro, mas sem sensor instalado, ela não existe como variável no cálculo de otimização. O algoritmo, ao priorizar o VLT, não está escolhendo entre dois fluxos. Está escolhendo o único fluxo que ele consegue ler.'
+      'A via transversal não tem sensor de fluxo nem indicador no dashboard do CCO. Ela é o corredor principal de ônibus que liga três bairros da periferia ao centro, mas sem sensor instalado, ela não existe como variável no cálculo de otimização. O algoritmo, ao priorizar o BRT, não está escolhendo entre dois fluxos. Está escolhendo o único fluxo que ele consegue ler.'
     ],
-    rodape:'↳  A ativação eletromecânica do verde no eixo do VLT é a mesma ativação que mantém o vermelho na via dos ônibus.',
+    rodape:'↳  A ativação eletromecânica do verde no eixo do BRT é a mesma ativação que mantém o vermelho na via dos ônibus.',
     challenge:{
       tipo:'onda_verde',
-      instrucao:'Ajuste o balanço semafórico para recuperar o atraso do VLT. Se o indicador ficar verde, o cronograma está salvo.'
+      instrucao:'Ajuste o balanço semafórico para recuperar o atraso do BRT. Se o indicador ficar verde, o cronograma está salvo.'
     },
-    ficha:{texto:'"O painel do COI traduz mobilidade em séries temporais de pontualidade do VLT, porque é o que os sensores instalados conseguem medir. Os ônibus da via transversal não possuem o mesmo aparato de sensoriamento e, por consequência, não compõem o cálculo de otimização. O contrato de PPP de 25 anos especifica quais indicadores justificam renovação; o que ficou fora dessa especificação ficou fora da operação."'}
+    ficha:{texto:'"O painel do CCO traduz mobilidade em séries temporais de pontualidade do BRT, porque é o que os sensores instalados conseguem medir. Os ônibus da via transversal não possuem o mesmo aparato de sensoriamento e, por consequência, não compõem o cálculo de otimização. O contrato de PPP de 25 anos especifica quais indicadores justificam renovação; o que ficou fora dessa especificação ficou fora da operação."'}
   },
   {
     id:8, titulo:'SENSOR GEOLÓGICO Nº 42', subtitulo:'Encosta da Zona Informal',
@@ -2889,12 +2910,12 @@ function renderOndaVerde(body, v, ch, color) {
   
   container.innerHTML = `
     <div style="display:flex; justify-content:space-between; font-family:'Archivo Black',sans-serif; font-size:10px; letter-spacing:1px; margin-bottom:10px;">
-      <span style="color:${color}">EIXO VLT (NOBRE)</span>
+      <span style="color:${color}">EIXO BRT (NOBRE)</span>
       <span style="color:var(--brick)">EIXO ÔNIBUS (TRANSVERSAL)</span>
     </div>
     <input type="range" id="slider-semaforo" min="0" max="100" value="50" style="width:100%; margin-bottom:14px;">
     <div style="display:flex; justify-content:space-between; font-size:11px;">
-      <div id="vlt-status">Atraso: 6 min</div>
+      <div id="BRT-status">Atraso: 6 min</div>
       <div id="bus-status" style="text-align:right;">Fila: Padrão</div>
     </div>
   `;
@@ -2912,23 +2933,23 @@ function renderOndaVerde(body, v, ch, color) {
   document.getElementById('phase-challenge').appendChild(navWrap);
 
   const slider = document.getElementById('slider-semaforo');
-  const vltStatus = document.getElementById('vlt-status');
+  const BRTStatus = document.getElementById('BRT-status');
   const busStatus = document.getElementById('bus-status');
 
   slider.addEventListener('input', (e) => {
     const val = parseInt(e.target.value);
     
-    // VLT Status
-    if (val < 30) vltStatus.innerHTML = 'Atraso: <span style="color:var(--brick);font-weight:bold">12 min (CRÍTICO)</span>';
-    else if (val < 75) vltStatus.innerHTML = 'Atraso: 6 min';
-    else vltStatus.innerHTML = 'Atraso: <span style="color:var(--olive);font-weight:bold">0 min (CRONOGRAMA SALVO)</span>';
+    // BRT Status
+    if (val < 30) BRTStatus.innerHTML = 'Atraso: <span style="color:var(--brick);font-weight:bold">12 min (CRÍTICO)</span>';
+    else if (val < 75) BRTStatus.innerHTML = 'Atraso: 6 min';
+    else BRTStatus.innerHTML = 'Atraso: <span style="color:var(--olive);font-weight:bold">0 min (CRONOGRAMA SALVO)</span>';
 
     // Bus Status
     if (val < 30) busStatus.innerHTML = 'Fila: Rápida';
     else if (val < 75) busStatus.innerHTML = 'Fila: Padrão';
     else busStatus.innerHTML = 'Fila: <span style="color:var(--brick);font-weight:bold">Espera > 45 min</span>';
 
-    // Só permite confirmar se o VLT estiver salvo (val >= 75)
+    // Só permite confirmar se o BRT estiver salvo (val >= 75)
     if (val >= 75) {
       btnConfirma.disabled = false;
       btnConfirma.style.opacity = '1';
@@ -2939,10 +2960,10 @@ function renderOndaVerde(body, v, ch, color) {
   });
 
   btnConfirma.addEventListener('click', () => {
-    showResultadoBreve('✓ ONDA VERDE ATIVADA · CRONOGRAMA DO VLT SALVO', color, 2000, () => {
+    showResultadoBreve('✓ ONDA VERDE ATIVADA · CRONOGRAMA DO BRT SALVO', color, 2000, () => {
       showReveal(v.id, 
         'OTIMIZAÇÃO APLICADA · EFEITO COLATERAL IGNORADO', 
-        'Você salvou o cronograma do VLT. No painel de métricas da prefeitura, o sistema de mobilidade inteligente operou com 100% de eficiência. Contudo, na via transversal, 12 ônibus que transportam trabalhadores da periferia ficaram retidos no trânsito por mais de 45 minutos. O algoritmo otimizou o sistema para a métrica que é monitorada, transferindo o caos para as zonas e pessoas que a "inteligência" não enxerga. O que não é medido não existe para o sistema. O que não existe para o sistema não é otimizado. Os trabalhadores existem na cidade. Não existem no painel.<br><br>A retenção dos ônibus, porém, não desaparece do sistema. Os GPS instalados nos veículos e os sinais de celular dos passageiros parados emitem coordenadas estáticas que o dashboard do COI lê como dado de congestionamento na via transversal. Esse dado, agregado em série temporal, é apresentado no relatório trimestral como evidência de que o eixo do VLT é o único modal eficiente da cidade, justificando, por contraste numérico, novos investimentos na mesma infraestrutura que produziu o congestionamento. A imobilidade forçada dos trabalhadores retorna ao painel como argumento técnico a favor do modal que os imobilizou.', 
+        'Você salvou o cronograma do BRT. No painel de métricas da prefeitura, o sistema de mobilidade inteligente operou com 100% de eficiência. Contudo, na via transversal, 12 ônibus que transportam trabalhadores da periferia ficaram retidos no trânsito por mais de 45 minutos. O algoritmo otimizou o sistema para a métrica que é monitorada, transferindo o caos para as zonas e pessoas que a "inteligência" não enxerga. O que não é medido não existe para o sistema. O que não existe para o sistema não é otimizado. Os trabalhadores existem na cidade. Não existem no painel.<br><br>A retenção dos ônibus, porém, não desaparece do sistema. Os GPS instalados nos veículos e os sinais de celular dos passageiros parados emitem coordenadas estáticas que o dashboard do CCO lê como dado de congestionamento na via transversal. Esse dado, agregado em série temporal, é apresentado no relatório trimestral como evidência de que o eixo do BRT é o único modal eficiente da cidade, justificando, por contraste numérico, novos investimentos na mesma infraestrutura que produziu o congestionamento. A imobilidade forçada dos trabalhadores retorna ao painel como argumento técnico a favor do modal que os imobilizou.', 
         null);
     });
   });
@@ -3509,10 +3530,13 @@ function abrirInspecaoInline(vinhetaId) {
   `;
 
   actantesNaCena.forEach(act => {
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
+    const nomeGeral = (ctx && ctx.nomeCena && ctx.nomeCena !== act.nome) ? ` <span class="mediador-btn-sublabel">(${act.nome})</span>` : '';
     html += `
       <div class="mediador-item">
         <button class="mediador-btn" onclick="toggleMediador(${vinhetaId}, ${act.id})">
-          <span class="mediador-btn-label">▸ ${act.nome}</span>
+          <span class="mediador-btn-label">▸ ${nomeDisplay}${nomeGeral}</span>
           <span class="mediador-btn-arrow" id="arrow-${vinhetaId}-${act.id}">+</span>
         </button>
         <div class="mediador-body" id="body-${vinhetaId}-${act.id}"></div>
@@ -3523,9 +3547,8 @@ function abrirInspecaoInline(vinhetaId) {
   // Teia mini para gesto origem-destino
   html += `
     <div class="teia-mini-wrap">
-      <div class="teia-mini-header">⊹ TRACE AS CONEXÕES QUE OPERAM AQUI</div>
-      <div class="teia-mini-intro">Clique no dispositivo que <strong>força</strong>, depois no dispositivo que é <strong>forçado</strong>. A rede é feita de matéria, não de imaginação.</div>
-      <div class="teia-mini-status" id="teia-status-${vinhetaId}">Aguardando primeiro clique...</div>
+      <div class="teia-mini-header">⊕ TRACE AS CONEXÕES DESTA CENA</div>
+      <div class="teia-mini-intro">Clique no nó que <strong>força</strong>, depois no nó que é <strong>forçado</strong>. Os habitantes também são nós da rede, ou seja, podem ser forçados pelas máquinas e podem forçar máquinas. A rede é feita de matéria, não de imaginação.</div>      <div class="teia-mini-status" id="teia-status-${vinhetaId}">Aguardando primeiro clique...</div>
       <svg class="teia-mini-svg" id="teia-mini-${vinhetaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
         <g id="teia-mini-fios-${vinhetaId}"></g>
         <g id="teia-mini-nos-${vinhetaId}"></g>
@@ -3543,14 +3566,17 @@ function abrirInspecaoInline(vinhetaId) {
   renderTeiaMini(vinhetaId);
 }
 
-// Posições dos 6 nós dentro do viewBox 700x360 da teia mini
+// Posições dos 7 nós dentro do viewBox 700x360 da teia mini
+// Os 6 actantes não-humanos formam o hexágono (raio ~225 do centro);
+// o humano (id 7) fica no centro do hexágono, materializando o oligóptico.
 const TEIA_MINI_POS = {
   1: { x: 175, y: 90 },
   2: { x: 525, y: 90 },
   3: { x: 600, y: 180 },
   4: { x: 525, y: 270 },
   5: { x: 175, y: 270 },
-  6: { x: 100, y: 180 }
+  6: { x: 100, y: 180 },
+  7: { x: 350, y: 180 }
 };
 
 function renderTeiaMini(vinhetaId) {
@@ -3582,65 +3608,116 @@ function renderTeiaMini(vinhetaId) {
     });
   });
 
-  // Desenha os 6 nós
+  // Desenha os 7 nós (6 actantes em hexágono + humano ao centro quando ele atravessa a cena)
   ACTANTES.forEach(act => {
     const pos = TEIA_MINI_POS[act.id];
     if (!pos) return;
 
+    // Pula o humano se ele não atravessa esta vinheta
+    if (act.id === 7 && !act.atravessa.includes(vinhetaTag)) return;
+
     const trace = stateP2.traceState[vinhetaTag] || { origem: null, destino: null };
     const isOrigemAtual = trace.origem === act.id;
+    const isHumano = act.id === 7;
+
+    // Pega nome/sigla contextuais se existirem, senão usa os gerais
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    const siglaDisplay = (ctx && ctx.siglaCena) ? ctx.siglaCena : act.sigla;
+    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
 
     const g = document.createElementNS(ns, 'g');
-    g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : ''));
+    g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : '') + (isHumano ? ' humano' : ''));
     g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
     g.style.cursor = 'pointer';
     g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
 
+    // Pulso suave no nó humano para destacá-lo visualmente
+    if (isHumano && !isOrigemAtual) {
+      const pulse = document.createElementNS(ns, 'circle');
+      pulse.setAttribute('cx', 0); pulse.setAttribute('cy', 0); pulse.setAttribute('r', 38);
+      pulse.setAttribute('fill', 'none');
+      pulse.setAttribute('stroke', PALETA.brick);
+      pulse.setAttribute('stroke-width', '1');
+      pulse.setAttribute('opacity', '.45');
+      pulse.innerHTML = `<animate attributeName="r" values="38;48;38" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.45;0;0.45" dur="2.8s" repeatCount="indefinite"/>`;
+      g.appendChild(pulse);
+    }
+
     const c = document.createElementNS(ns, 'circle');
-    c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 28);
-    c.setAttribute('fill', isOrigemAtual ? PALETA.brick : PALETA.bone);
-    c.setAttribute('stroke', PALETA.ink);
-    c.setAttribute('stroke-width', '2');
+    c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 32);
+    // Cores diferenciadas: humano em brick com borda bone; máquinas em bone com borda ink
+    if (isHumano) {
+      c.setAttribute('fill', isOrigemAtual ? PALETA.ink : PALETA.brick);
+      c.setAttribute('stroke', PALETA.bone);
+      c.setAttribute('stroke-width', '2.5');
+    } else {
+      c.setAttribute('fill', isOrigemAtual ? PALETA.brick : PALETA.bone);
+      c.setAttribute('stroke', PALETA.ink);
+      c.setAttribute('stroke-width', '2');
+    }
     g.appendChild(c);
 
-    const num = document.createElementNS(ns, 'text');
-    num.setAttribute('text-anchor', 'middle');
-    num.setAttribute('y', '-2');
-    num.setAttribute('font-size', '13');
-    num.setAttribute('font-family', "'Archivo Black',sans-serif");
-    num.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
-    num.style.pointerEvents = 'none';
-    num.textContent = act.id;
-    g.appendChild(num);
-
+    // Sigla contextual em destaque no centro
     const lbl = document.createElementNS(ns, 'text');
     lbl.setAttribute('text-anchor', 'middle');
-    lbl.setAttribute('y', '10');
-    lbl.setAttribute('font-size', '7');
+    lbl.setAttribute('y', '3');
+    lbl.setAttribute('font-size', siglaDisplay.length > 10 ? '6' : '8');
     lbl.setAttribute('font-family', "'Archivo Black',sans-serif");
-    lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
-    lbl.setAttribute('letter-spacing', '1');
+    if (isHumano) {
+      lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.bone);
+    } else {
+      lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
+    }
+    lbl.setAttribute('letter-spacing', '.5');
     lbl.style.pointerEvents = 'none';
-    lbl.textContent = act.sigla;
+    lbl.textContent = siglaDisplay;
     g.appendChild(lbl);
 
-    const nome = document.createElementNS(ns, 'text');
-    nome.setAttribute('text-anchor', 'middle');
-    nome.setAttribute('y', pos.y > 180 ? 48 : -38);
-    nome.setAttribute('font-size', '8');
-    nome.setAttribute('font-family', "'Archivo',sans-serif");
-    nome.setAttribute('fill', PALETA.ink);
-    nome.setAttribute('letter-spacing', '1');
-    nome.setAttribute('opacity', '.75');
-    nome.style.pointerEvents = 'none';
-    nome.textContent = act.nome;
-    g.appendChild(nome);
+    // Nome contextual completo (com quebra de linha se longo)
+    const nomeBase = nomeDisplay;
+    const palavras = nomeBase.split(' ');
+    let linha1 = nomeBase;
+    let linha2 = '';
+    if (nomeBase.length > 22) {
+      const meio = Math.ceil(palavras.length / 2);
+      linha1 = palavras.slice(0, meio).join(' ');
+      linha2 = palavras.slice(meio).join(' ');
+    }
+    // Para o humano, o nome vai embaixo do círculo (não tem como ir em cima por estar no centro)
+    const yBase = isHumano ? 52 : (pos.y > 180 ? 52 : -42);
+
+    const nome1 = document.createElementNS(ns, 'text');
+    nome1.setAttribute('text-anchor', 'middle');
+    nome1.setAttribute('y', linha2 ? yBase - 5 : yBase);
+    nome1.setAttribute('font-size', '8');
+    nome1.setAttribute('font-family', "'Archivo Black',sans-serif");
+    nome1.setAttribute('fill', PALETA.ink);
+    nome1.setAttribute('letter-spacing', '.5');
+    nome1.style.pointerEvents = 'none';
+    nome1.textContent = linha1;
+    g.appendChild(nome1);
+
+    if (linha2) {
+      const nome2 = document.createElementNS(ns, 'text');
+      nome2.setAttribute('text-anchor', 'middle');
+      nome2.setAttribute('y', yBase + 5);
+      nome2.setAttribute('font-size', '8');
+      nome2.setAttribute('font-family', "'Archivo Black',sans-serif");
+      nome2.setAttribute('fill', PALETA.ink);
+      nome2.setAttribute('letter-spacing', '.5');
+      nome2.style.pointerEvents = 'none';
+      nome2.textContent = linha2;
+      g.appendChild(nome2);
+    }
 
     nosLayer.appendChild(g);
   });
 
   atualizarStatusTeia(vinhetaId);
-}
+});
+
+  atualizarStatusTeia(vinhetaId);
+});
 
 function clicarNoTeiaMini(vinhetaId, actanteId) {
   const vinhetaTag = `V${vinhetaId}`;
@@ -3688,7 +3765,7 @@ function clicarNoTeiaMini(vinhetaId, actanteId) {
   stateP2.cadeiasMapeadas.add(par.cadeiaId);
   const actOrigem = ACTANTES.find(a => a.id === par.origemId);
   const cadeia = actOrigem.cadeias.find(c => c.id === par.cadeiaId);
-  addProtocolo(actOrigem, cadeia);
+  addProtocolo(actOrigem, cadeia, vinhetaTag);
 
   const todasMarcadas = actOrigem.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
   if (todasMarcadas) stateP2.completedActantes.add(par.origemId);
@@ -3711,7 +3788,9 @@ function atualizarStatusTeia(vinhetaId) {
     status.textContent = 'Aguardando primeiro clique (dispositivo que força)...';
   } else {
     const act = ACTANTES.find(a => a.id === trace.origem);
-    status.innerHTML = `Origem selecionada: <strong>${act.nome}</strong> · Agora clique no dispositivo que ele força.`;
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
+    status.innerHTML = `Origem selecionada: <strong>${nomeDisplay}</strong> · Agora clique no dispositivo que ele força.`;
   }
 }
 
@@ -3951,19 +4030,19 @@ const ACTANTES = [
     oQueFaz: 'Carrega o tráfego digital entre o continente e os datacenters do norte global. Tudo o que sai do celular, da maquininha, do dashboard da prefeitura e da câmera de reconhecimento facial passa por aqui antes de retornar como resposta processada.',
     oQuePrecisa: 'Manutenção em alto mar, acordos diplomáticos para passagem em águas territoriais, energia constante nas estações de amplificação, e contratos comerciais com operadoras que arrendam capacidade. Precisa também da invisibilidade política, ou seja, do desinteresse público pela materialidade da nuvem.',
     oQueObriga: 'Obriga todo dado processado em Salvador a se tornar transnacional, mesmo quando coletado e consumido localmente. Obriga a legislação brasileira a coexistir com legislações estrangeiras sobre os mesmos dados.',
-    oQueEhObrigado: 'É obrigado a operar dentro dos padrões técnicos definidos por comitês globais como o ICPC (Comitê Internacional de Proteção de Cabos), e a obedecer aos protocolos de roteamento que privilegiam pontos de troca em território norte-americano.  Por trás desses padrões e protocolos há engenheiros que escolheram especificações, diplomatas que negociaram passagens em águas territoriais, conselhos corporativos da AT&T, da Telxius e da Google Submarine Cables que decidiram onde instalar amplificadores e qual rota privilegiar. O cabo é coagido pelas decisões dessas pessoas tanto quanto coage os pacotes que carrega.',
+    oQueEhObrigado: 'É obrigado a operar dentro dos padrões técnicos definidos por comitês globais como o ICPC (Comitê Internacional de Proteção de Cabos), e a obedecer aos protocolos de roteamento que privilegiam pontos de troca em território norte-americano.  Por trás desses padrões e protocolos há engenheiros que escolheram especificações, diplomatas que negociaram passagens em águas territoriais, É obrigado a operar dentro dos padrões técnicos definidos por comitês globais como o ICPC (Comitê Internacional de Proteção de Cabos), e a obedecer aos protocolos de roteamento que privilegiam pontos de troca em território norte-americano. Por trás desses padrões e protocolos há engenheiros que escolheram especificações, diplomatas que negociaram passagens em águas territoriais e os conselhos corporativos da ACIC que decidiram onde instalar amplificadores e qual rota privilegiar. O cabo é coagido pelas decisões dessas pessoas tanto quanto coage os pacotes que carrega.',
     oQueRecebeDeVolta: 'Recebe de volta, em fluxo contínuo, o tráfego gerado pela própria adaptação dos cidadãos à infraestrutura. Cada vez que alguém abre o aplicativo da prefeitura para consultar uma rota, paga uma taxa por reconhecimento facial em estádio, ou aceita os termos de uso porque não tem alternativa, novos pacotes atravessam o cabo. O volume de dados que justifica a manutenção e a expansão da rota SSA-EUA cresce na proporção em que a cidade obriga seus habitantes a interagir com sistemas que dependem dele. A infraestrutura que produz a dependência é a mesma que se legitima pela dependência produzida.',
     atravessa: ['V1','V2','V3','V4','V5','V6','V7','V8','V9'],
     porCena: {
-      V1: {oQueFaz: 'Transmite, da entrada de serviço para o servidor de RH, o registro de presença de Lúcia às 3h47.', oQueRecebeDeVolta: 'Recebe de volta, no fim do mês, o relatório de produtividade que confirma a regularidade do turno e justifica a manutenção do contrato de monitoramento.'},
-      V2: {oQueFaz: 'Transmite o vetor de 512 dimensões extraído do rosto de Marcus para comparação com a base policial.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, o registro de averiguação que entra no banco e engrossa a próxima rodada de treinamento.'},
-      V3: {oQueFaz: 'Transmite os dados transacionais da maquininha de Edna para o servidor de scoring em São Paulo.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das vendas sob o novo limite, lida pelo sistema como confirmação estatística da categoria de risco atribuída.'},
-      V4: {oQueFaz: 'Atravessa o Atlântico carregando dados de 2,9 milhões de cidadãos para processamento na Virgínia.', oQueRecebeDeVolta: 'Recebe de volta cada clique de "li e aceito", cada nova abertura de aplicativo, ampliando o volume agregado que justifica a renovação dos acordos de capacidade.'},
-      V5: {oQueFaz: 'Transmite as métricas do sistema Olho-Vivo para o servidor que monta o relatório semestral apresentado na sala 3.', oQueRecebeDeVolta: 'Recebe de volta a aprovação do contrato renovado, que garante a manutenção da rota por mais 24 meses.'},
-      V6: {oQueFaz: 'Transmite a consulta de Heinrich e a posição GPS dele para o servidor que monta o mapa colorido.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas, gerada pelo turista que evitou a zona vermelha, alimentando o ciclo de coloração das células.'},
-      V7: {oQueFaz: 'Transmite o sinal GPS do VLT-04 atrasado para o algoritmo de otimização semafórica.', oQueRecebeDeVolta: 'Recebe de volta as coordenadas estáticas dos ônibus parados na via transversal, dado que retorna ao painel como evidência de congestionamento.'},
-      V8: {oQueFaz: 'Transmite a leitura de saturação do solo do sensor geológico para o servidor de notificações por aplicativo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de "protocolo cumprido", que comprova ao gestor que o alerta foi disparado, ainda que não tenha sido recebido.'},
-      V9: {oQueFaz: 'Transmite a leitura térmica de 38,5°C do sensor IoT do totem para o dashboard de resiliência climática.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelas Árvores Digitais, lidos como métrica de inovação atendida.'}
+      V1: {nomeCena: 'REDE DE FIBRA DO PRÉDIO', siglaCena: 'REDE LOCAL', oQueFaz: 'Transmite, da entrada de serviço para o servidor de RH, o registro de presença de Lúcia às 3h47.', oQueRecebeDeVolta: 'Recebe de volta, no fim do mês, o relatório de produtividade que confirma a regularidade do turno e justifica a manutenção do contrato de monitoramento.'},
+      V2: {nomeCena: 'FIBRA ÓPTICA MUNICIPAL', siglaCena: 'CABO ÓPTICO', oQueFaz: 'Transmite o vetor de 512 dimensões extraído do rosto de Marcus para comparação com a base policial.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, o registro de averiguação que entra no banco e engrossa a próxima rodada de treinamento.'},
+      V3: {nomeCena: 'SINAL DE DADOS MÓVEIS (4G/5G)', siglaCena: 'REDE MÓVEL', oQueFaz: 'Transmite os dados transacionais da maquininha de Edna para o servidor de scoring em São Paulo.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das vendas sob o novo limite, lida pelo sistema como confirmação estatística da categoria de risco atribuída.'},
+      V4: {nomeCena: 'CABO SUBMARINO TRANSATLÂNTICO', siglaCena: 'CABO SSA-EUA', oQueFaz: 'Atravessa o Atlântico carregando dados de 2,9 milhões de cidadãos para processamento na Virgínia.', oQueRecebeDeVolta: 'Recebe de volta cada clique de "li e aceito", cada nova abertura de aplicativo, ampliando o volume agregado que justifica a renovação dos acordos de capacidade.'},
+      V5: {nomeCena: 'REDE FECHADA DA POLÍCIA', siglaCena: 'REDE SEGURA', oQueFaz: 'Transmite as métricas do sistema Olho-Vivo para o servidor que monta o relatório semestral apresentado na sala 3.', oQueRecebeDeVolta: 'Recebe de volta a aprovação do contrato renovado, que garante a manutenção da rota por mais 24 meses.'},
+      V6: {nomeCena: 'CONEXÃO DE DADOS INTERNACIONAL', siglaCena: 'ROTEAMENTO', oQueFaz: 'Transmite a consulta de Heinrich e a posição GPS dele para o servidor que monta o mapa colorido.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas, gerada pelo turista que evitou a zona vermelha, alimentando o ciclo de coloração das células.'},
+      V7: {nomeCena: 'REDE TELEMÁTICA DO CCO', siglaCena: 'FIBRA CCO', oQueFaz: 'Transmite o sinal GPS do VLT-04 atrasado para o algoritmo de otimização semafórica.', oQueRecebeDeVolta: 'Recebe de volta as coordenadas estáticas dos ônibus parados na via transversal, dado que retorna ao painel como evidência de congestionamento.'},
+      V8: {nomeCena: 'ANTENA DE TELEFONIA CELULAR', siglaCena: 'TORRE CELULAR', oQueFaz: 'Transmite a leitura de saturação do solo do sensor geológico para o servidor de notificações por aplicativo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de "protocolo cumprido", que comprova ao gestor que o alerta foi disparado, ainda que não tenha sido recebido.'},
+      V9: {nomeCena: 'VALA DE CABOS SUBTERRÂNEOS', siglaCena: 'CABOS SUBTERRÂNEOS', oQueFaz: 'Transmite a leitura térmica de 38,5°C do sensor IoT do totem para o dashboard de resiliência climática.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelas Árvores Digitais, lidos como métrica de inovação atendida.'}
     },
     cadeias: [
       {id:'c1-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a operar em servidores fora do Brasil, fora do alcance prático da LGPD, porque o roteamento técnico predefine o destino dos pacotes antes de qualquer consulta jurídica.'},
@@ -3984,9 +4063,9 @@ const ACTANTES = [
     oQueRecebeDeVolta: 'Recebe de volta cada novo boletim de averiguação gerado pelas abordagens que ele próprio induziu. Quando o algoritmo aciona uma viatura a partir de um match facial, o registro produzido pela viatura retorna ao banco como entrada nova, ampliando a presença de determinados perfis raciais e etários no arquivo. O ciclo se fecha em forma de profecia autorrealizável, ou seja, a base que treinou o algoritmo é continuamente alimentada pelas consequências das decisões que esse algoritmo tomou usando a versão anterior dela mesma. Quanto mais o sistema funciona, mais a base confirma estatisticamente a categoria que produziu a abordagem.',
     atravessa: ['V2','V5','V6'],
     porCena: {
-      V2: {oQueFaz: 'Devolve, em milissegundos, a similaridade de 92,4% entre o vetor instável extraído de Marcus e os rostos arquivados em prisões anteriores.', oQueRecebeDeVolta: 'Recebe de volta o boletim de averiguação produzido pela viatura acionada pelo match, engrossando a base na próxima consulta sobre outro corpo da mesma faixa etária e CEP.'},
-      V5: {oQueFaz: 'Fornece o conjunto de imagens contra o qual o sistema Olho-Vivo compara os rostos detectados em via pública.', oQueRecebeDeVolta: 'Recebe de volta o número agregado de abordagens, lido pelo relatório semestral como indicador de redução de criminalidade.'},
-      V6: {oQueFaz: 'Fornece as ocorrências policiais geolocalizadas que coloram as células do mapa turístico em vermelho.', oQueRecebeDeVolta: 'Recebe de volta a ausência de ocorrências nas zonas verdes (que turistas frequentam mais) e o adensamento de ocorrências nas zonas vermelhas (mais policiadas), confirmando o padrão na próxima rodada.'}
+      V2: {nomeCena: 'BASE DE IDENTIFICAÇÃO CRIMINAL', siglaCena: 'BASE CRIMINAL', oQueFaz: 'Devolve, em milissegundos, a similaridade de 92,4% entre o vetor instável extraído de Marcus e os rostos arquivados em prisões anteriores.', oQueRecebeDeVolta: 'Recebe de volta o boletim de averiguação produzido pela viatura acionada pelo match, engrossando a base na próxima consulta sobre outro corpo da mesma faixa etária e CEP.'},
+      V5: {nomeCena: 'ARQUIVO DE OCORRÊNCIAS (BOs)', siglaCena: 'BASE DE BOs', oQueFaz: 'Fornece o conjunto de imagens contra o qual o sistema Olho-Vivo compara os rostos detectados em via pública.', oQueRecebeDeVolta: 'Recebe de volta o número agregado de abordagens, lido pelo relatório semestral como indicador de redução de criminalidade.'},
+      V6: {nomeCena: 'BANCO DE OCORRÊNCIAS GEOLOCALIZADAS', siglaCena: 'DADOS DE CEP', oQueFaz: 'Fornece as ocorrências policiais geolocalizadas que coloram as células do mapa turístico em vermelho.', oQueRecebeDeVolta: 'Recebe de volta a ausência de ocorrências nas zonas verdes (que turistas frequentam mais) e o adensamento de ocorrências nas zonas vermelhas (mais policiadas), confirmando o padrão na próxima rodada.'}
     },
     cadeias: [
       {id:'c2-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a definir "padrão de suspeito" a partir de um arquivo cuja composição racial reflete a seletividade do sistema penal, e não a distribuição real do crime.'},
@@ -4007,16 +4086,19 @@ const ACTANTES = [
     oQueRecebeDeVolta: 'Recebe de volta as próprias decisões transformadas em dado de entrada da rodada seguinte. Quando classifica Edna como risco médio, a continuidade das vendas dela sob o novo limite alimenta a base transacional como confirmação da categoria. Quando marca uma zona como vermelha no mapa turístico, o desvio de fluxo dos turistas reforça a ausência de avaliações positivas naquela área, sustentando a próxima leitura. Quando aciona uma viatura, o boletim resultante volta ao banco de treinamento. O algoritmo não aprende com o mundo, aprende com os efeitos que produziu sobre o mundo, e essa circularidade é tratada estatisticamente como precisão.',
     atravessa: ['V2','V3','V5','V6','V7'],
     porCena: {
-      V2: {oQueFaz: 'Recebe o vetor instável de Marcus e devolve uma similaridade de 92,4%, classificando-o como match para acionamento de campo.', oQueRecebeDeVolta: 'Recebe de volta o boletim da abordagem como exemplo positivo, reforçando o padrão que produziu o match na próxima imagem de baixo contraste.'},
-      V3: {oQueFaz: 'Lê o histórico transacional de Edna e calcula o score que reduz seu limite de R$3.000 para R$1.200.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das transações sob o limite menor, lida como confirmação de que a categoria de risco estava bem calibrada.'},
-      V5: {oQueFaz: 'Conta as abordagens policiais geradas pelo próprio sistema Olho-Vivo e converte esse número em "redução de criminalidade".', oQueRecebeDeVolta: 'Recebe de volta a renovação do contrato por R$665 milhões, viabilizando mais 24 meses de operação e mais matéria-prima para sua função objetivo.'},
-      V6: {oQueFaz: 'Cruza CEPs, avaliações de turistas e ocorrências policiais para colorir cada célula do mapa em verde ou vermelho.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas do turista que evitou a zona vermelha, sustentando a coloração na consulta seguinte.'},
-      V7: {oQueFaz: 'Calcula a otimização semafórica que ativa o verde no eixo do VLT para recuperar o atraso de 6 minutos.', oQueRecebeDeVolta: 'Recebe de volta os sinais GPS dos ônibus parados na transversal, lidos no painel como evidência da eficiência relativa do modal priorizado.'}
+      V2: {nomeCena: 'ALGORITMO DE SIMILARIDADE FACIAL', siglaCena: 'BIOMETRIA', oQueFaz: 'Recebe o vetor instável de Marcus e devolve uma similaridade de 92,4%, classificando-o como match para acionamento de campo.', oQueRecebeDeVolta: 'Recebe de volta o boletim da abordagem como exemplo positivo, reforçando o padrão que produziu o match na próxima imagem de baixo contraste.'},
+      V3: {nomeCena: 'ALGORITMO DE SCORING DE CRÉDITO', siglaCena: 'SCORING', oQueFaz: 'Lê o histórico transacional de Edna e calcula o score que reduz seu limite de R$3.000 para R$1.200.', oQueRecebeDeVolta: 'Recebe de volta a continuidade das transações sob o limite menor, lida como confirmação de que a categoria de risco estava bem calibrada.'},
+      V5: {nomeCena: 'ALGORITMO DE GERAÇÃO DE MÉTRICAS', siglaCena: 'MÉTRICA', oQueFaz: 'Conta as abordagens policiais geradas pelo próprio sistema Olho-Vivo e converte esse número em "redução de criminalidade".', oQueRecebeDeVolta: 'Recebe de volta a renovação do contrato por R$665 milhões, viabilizando mais 24 meses de operação e mais matéria-prima para sua função objetivo.'},
+      V6: {nomeCena: 'ALGORITMO DE RECOMENDAÇÃO ESPACIAL', siglaCena: 'SISTEMA DE ROTAS', oQueFaz: 'Cruza CEPs, avaliações de turistas e ocorrências policiais para colorir cada célula do mapa em verde ou vermelho.', oQueRecebeDeVolta: 'Recebe de volta a próxima avaliação em estrelas do turista que evitou a zona vermelha, sustentando a coloração na consulta seguinte.'},
+      V7: {nomeCena: 'OTIMIZADOR SEMAFÓRICO', siglaCena: 'OTIMIZADOR', oQueFaz: 'Calcula a otimização semafórica que ativa o verde no eixo do VLT para recuperar o atraso de 6 minutos.', oQueRecebeDeVolta: 'Recebe de volta os sinais GPS dos ônibus parados na transversal, lidos no painel como evidência da eficiência relativa do modal priorizado.'}
     },
     cadeias: [
       {id:'c3-1', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a converter saídas estatísticas em indicadores visuais de gestão, ocultando do gestor as condições técnicas de produção daquele número.'},
       {id:'c3-2', alvos:[6], texto:'<strong>obriga o SENSOR CALIBRADO</strong> a operar como sua antena de captura, definindo retroativamente quais propriedades físicas do mundo passam a ser relevantes (contraste, geometria facial, padrão térmico).'},
-      {id:'c3-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a incluir cláusulas de segredo industrial que protejam seu código-fonte, transformando uma operação técnica em propriedade comercial inauditável.'}
+      {id:'c3-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a incluir cláusulas de segredo industrial que protejam seu código-fonte, transformando uma operação técnica em propriedade comercial inauditável.'},
+      {id:'c3-4', alvos:[7], texto:'<strong>obriga MARCUS</strong> a encarnar a categoria matemática de "suspeito", transformando um ruído de pixel da câmera em uma coerção física violenta no espaço da praça.'},
+      {id:'c3-5', alvos:[7], texto:'<strong>obriga DONA EDNA</strong> a adequar sua sobrevivência diária a um limite de crédito asfixiante decidido automaticamente, sem conceder-lhe direito a explicação.'},
+      {id:'c3-6', alvos:[7], texto:'<strong>obriga HEINRICH</strong> a desviar seu trajeto físico pela cidade, orientando sua caminhada com base em uma segregação territorial disfarçada de recomendação turística neutra.'}
     ]
   },
   {
@@ -4032,10 +4114,10 @@ const ACTANTES = [
     oQueRecebeDeVolta: 'Recebe de volta, semestre após semestre, os relatórios de cumprimento de Indicadores-Chaves de Desempenho gerados pelo próprio sistema que o contrato instalou. Esses relatórios, produzidos pelo dashboard e pela consultoria que vendeu o software, alimentam as cláusulas de renovação automática. O contrato se autorrenova lendo, como evidência de bom funcionamento, os dados produzidos pelos dispositivos que ele mesmo financiou. A adaptação do cidadão à infraestrutura aparece nesses relatórios como volume de uso, índice de cobertura, taxa de processamento, tudo lido como sucesso operacional. O instrumento jurídico se sustenta nas métricas geradas pelos efeitos que ele produziu sobre os corpos.',
     atravessa: ['Prólogo','V1','V5','V7','V9'],
     porCena: {
-      V1: {oQueFaz: 'Garante, na Cláusula de Monitoramento Operacional, que o sistema de presença permaneça ativo por 25 anos, atravessando seis gestões municipais.', oQueRecebeDeVolta: 'Recebe de volta os logs ininterruptos de entrada e saída de Lúcia e dos demais terceirizados, dados que comprovam ao consórcio o cumprimento do indicador de "cobertura operacional".'},
-      V5: {oQueFaz: 'Define, em seu Anexo Técnico, quais indicadores justificam a renovação automática (entre eles, a métrica de "redução de abordagens").', oQueRecebeDeVolta: 'Recebe de volta o relatório semestral com -23% e renova-se por mais 24 meses, sem que ninguém precise reavaliar se a métrica faz sentido.'},
-      V7: {oQueFaz: 'Especifica, em cláusula contratual, que a pontualidade do VLT é o Indicador-Chave de Desempenho premiado, e que as vias sem sensor não compõem o cálculo.', oQueRecebeDeVolta: 'Recebe de volta o índice de pontualidade alcançado pela onda verde, validando juridicamente a operação que reteve os ônibus da transversal.'},
-      V9: {oQueFaz: 'Vincula a aprovação de soluções de resiliência climática à compatibilidade com a malha de fibra óptica e com as câmeras do Olho-Vivo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de inovação sustentável com as Árvores Digitais instaladas, contabilizando pontos em rankings internacionais de Cidades Inteligentes.'}
+      V1: {nomeCena: 'CLÁUSULA DE MONITORAMENTO OPERACIONAL', siglaCena: 'CONTRATO RH', oQueFaz: 'Garante, na Cláusula de Monitoramento Operacional, que o sistema de presença permaneça ativo por 25 anos, atravessando seis gestões municipais.', oQueRecebeDeVolta: 'Recebe de volta os logs ininterruptos de entrada e saída de Lúcia e dos demais terceirizados, dados que comprovam ao consórcio o cumprimento do indicador de "cobertura operacional".'},
+      V5: {nomeCena: 'ANEXO TÉCNICO DE RENOVAÇÃO', siglaCena: 'ADITIVO CONTRATUAL', oQueFaz: 'Define, em seu Anexo Técnico, quais indicadores justificam a renovação automática (entre eles, a métrica de "redução de abordagens").', oQueRecebeDeVolta: 'Recebe de volta o relatório semestral com -23% e renova-se por mais 24 meses, sem que ninguém precise reavaliar se a métrica faz sentido.'},
+      V7: {nomeCena: 'CLÁUSULA DE INDICADOR DE DESEMPENHO (KPI)', siglaCena: 'INDICADORES', oQueFaz: 'Especifica, em cláusula contratual, que a pontualidade do VLT é o KPI premiado, e que as vias sem sensor não compõem o cálculo.', oQueRecebeDeVolta: 'Recebe de volta o índice de pontualidade alcançado pela onda verde, validando juridicamente a operação que reteve os ônibus da transversal.'},
+      V9: {nomeCena: 'RELATÓRIO DE INOVAÇÃO SUSTENTÁVEL', siglaCena: 'RANKING SMART CITY', oQueFaz: 'Vincula a aprovação de soluções de resiliência climática à compatibilidade com a malha de fibra óptica e com as câmeras do Olho-Vivo.', oQueRecebeDeVolta: 'Recebe de volta o relatório de inovação sustentável com as Árvores Digitais instaladas, contabilizando pontos em rankings internacionais de Cidades Inteligentes.'}
     },
     cadeias: [
       {id:'c4-1', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a exibir como sucesso somente as métricas contratualmente acordadas, mesmo quando outras métricas mais relevantes para a cidade são piores.'},
@@ -4049,24 +4131,25 @@ const ACTANTES = [
     nome: 'DASHBOARD DO CCO',
     sigla: 'CCO',
     x: 250, y: 460,
-    descricao: 'Interface visual no Centro de Operações e Inteligência da SSP-BA que sintetiza as operações da cidade em painéis, gráficos e indicadores em tempo real.',
+    descricao: 'Interface visual no Centro de Controle Operacional (CCO) da Prefeitura que sintetiza as operações de mobilidade e clima da cidade em painéis em tempo real.',
     oQueFaz: 'Define o que é visível para o gestor. Recorta o real em métricas e omite tudo que não cabe em métrica. Estabelece, na prática, o que conta como problema e o que conta como solução, porque o que não aparece no painel não pode ser gerido.',
     oQuePrecisa: 'Precisa do fluxo contínuo do CABO SUBMARINO, das saídas do ALGORITMO DE INFERÊNCIA, das atualizações do BANCO DE DADOS POLICIAL e das leituras do SENSOR CALIBRADO. Precisa de uma sala física, de operadores treinados, e de telas de alto custo. Precisa principalmente de legitimidade política, ou seja, da confiança do gestor em sua representação do real.',
-    oQueObriga: 'Obriga o operador a agir sobre o que aparece no painel, ignorando o que não aparece. Obriga a V7 (semáforos) a otimizar o VLT porque o VLT é o que tem indicador. Obriga a V8 (alerta climático) a parecer cumprido quando o protocolo digital foi executado, mesmo que a sirene física tenha sido desativada.',
+    oQueObriga: 'Obriga o operador a agir sobre o que aparece no painel, ignorando o que não aparece. Obriga a V7 (semáforos) a otimizar o BRT porque o BRT é o que tem indicador. Obriga a V8 (alerta climático) a parecer cumprido quando o protocolo digital foi executado, mesmo que a sirene física tenha sido desativada.',
     oQueEhObrigado: 'É obrigado pelo CONTRATO PPP a exibir métricas pré-acordadas. É obrigado pelo ALGORITMO DE INFERÊNCIA a aceitar suas saídas como dados. É obrigado pelo design da interface a hierarquizar visualmente o que o consórcio considerou importante. Por trás da interface há designers contratados pelo consórcio que decidiram quais widgets entram na tela inicial e quais ficam em submenus, gestores municipais que especificaram quais Indicadores-Chaves de Desempenho querem ver, operadores treinados que aprenderam a confiar no semáforo verde do painel sem questionar como foi calculado. O dashboard é coagido pelas escolhas dessas pessoas tanto quanto coage o operador que age sobre o que ele exibe.',
-    oQueRecebeDeVolta: 'Recebe de volta os efeitos das próprias decisões que ele induziu o operador a tomar. Quando exibe um match facial e o operador clica em ratificar, a abordagem subsequente produz coordenadas de viatura, tempo de resposta e boletim de averiguação, todos lidos pelo painel como métricas operacionais a serem apresentadas ao gestor. Quando exibe um congestionamento em via transversal causado pela onda verde do VLT, os sinais de GPS dos passageiros parados retornam como série temporal que comprova a eficiência relativa do modal priorizado. O dashboard se valida visualmente lendo, em tempo real, as consequências do que ele recomendou.',
+    oQueRecebeDeVolta: 'Recebe de volta os efeitos das próprias decisões que ele induziu o operador a tomar. Quando exibe um match facial e o operador clica em ratificar, a abordagem subsequente produz coordenadas de viatura, tempo de resposta e boletim de averiguação, todos lidos pelo painel como métricas operacionais a serem apresentadas ao gestor. Quando exibe um congestionamento em via transversal causado pela onda verde do BRT, os sinais de GPS dos passageiros parados retornam como série temporal que comprova a eficiência relativa do modal priorizado. O dashboard se valida visualmente lendo, em tempo real, as consequências do que ele recomendou.',
     atravessa: ['V1','V5','V7','V8','V9'],
     porCena: {
-      V1: {oQueFaz: 'Exibe o log de entrada da Lúcia como ponto no painel de presença, sem campo para tempo de deslocamento ou atraso de ônibus.', oQueRecebeDeVolta: 'Recebe de volta o índice de regularidade do turno, número que vira evidência de que o sistema de monitoramento funciona como contratado.'},
-      V5: {oQueFaz: 'Apresenta o gráfico -23% no slide 12 da reunião trimestral, com asterisco em fonte 6pt explicando que se mede abordagens, não crimes.', oQueRecebeDeVolta: 'Recebe de volta os aplausos do secretário e a assinatura da renovação, validando socialmente o recorte métrico adotado.'},
-      V7: {oQueFaz: 'Mostra ao operador a barra "ATRASO VLT-04: 6min" e oferece o botão de ativar a Onda Verde como ação recomendada.', oQueRecebeDeVolta: 'Recebe de volta o GPS dos ônibus parados como pontos vermelhos na via transversal, lidos como dado de congestionamento (não como consequência da própria recomendação).'},
-      V8: {oQueFaz: 'Pisca em vermelho com o alerta de saturação do solo e exibe "PROTOCOLO CUMPRIDO" assim que os SMS são despachados.', oQueRecebeDeVolta: 'Recebe de volta a taxa de despacho dos alertas (não a taxa de entrega), confirmando ao gestor que o protocolo digital operou normalmente.'},
-      V9: {oQueFaz: 'Exibe o alerta térmico de 38,5°C e oferece, no menu de mitigação, as três opções de intervenção compatíveis com a malha óptica.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelos totems instalados, transformando consumo de internet de pedestres em métrica de resiliência climática.'}
+      V1: {nomeCena: 'PAINEL DE CONTROLE DE PRESENÇA', siglaCena: 'PAINEL DE ACESSO', oQueFaz: 'Exibe o log de entrada da Lúcia como ponto no painel de presença, sem campo para tempo de deslocamento ou atraso de ônibus.', oQueRecebeDeVolta: 'Recebe de volta o índice de regularidade do turno, número que vira evidência de que o sistema de monitoramento funciona como contratado.'},
+      V5: {nomeCena: 'SLIDE Nº 12 (RELATÓRIO GERENCIAL)', siglaCena: 'SLIDE DE DADOS', oQueFaz: 'Apresenta o gráfico -23% no slide 12 da reunião trimestral, com asterisco em fonte 6pt explicando que se mede abordagens, não crimes.', oQueRecebeDeVolta: 'Recebe de volta os aplausos do secretário e a assinatura da renovação, validando socialmente o recorte métrico adotado.'},
+      V7: {nomeCena: 'DASHBOARD DE MOBILIDADE URBANA', siglaCena: 'TELA DE TRÂNSITO', oQueFaz: 'Mostra ao operador a barra "ATRASO VLT-04: 6min" e oferece o botão de ativar a Onda Verde como ação recomendada.', oQueRecebeDeVolta: 'Recebe de volta o GPS dos ônibus parados como pontos vermelhos na via transversal, lidos como dado de congestionamento (não como consequência da própria recomendação).'},
+      V8: {nomeCena: 'PAINEL DE ALERTA DA DEFESA CIVIL', siglaCena: 'TELA DE ALERTA', oQueFaz: 'Pisca em vermelho com o alerta de saturação do solo e exibe "PROTOCOLO CUMPRIDO" assim que os SMS são despachados.', oQueRecebeDeVolta: 'Recebe de volta a taxa de despacho dos alertas (não a taxa de entrega), confirmando ao gestor que o protocolo digital operou normalmente.'},
+      V9: {nomeCena: 'DASHBOARD DE RESILIÊNCIA CLIMÁTICA', siglaCena: 'TELA DO CLIMA', oQueFaz: 'Exibe o alerta térmico de 38,5°C e oferece, no menu de mitigação, as três opções de intervenção compatíveis com a malha óptica.', oQueRecebeDeVolta: 'Recebe de volta os dados de conexão Wi-Fi captados pelos totems instalados, transformando consumo de internet de pedestres em métrica de resiliência climática.'}
     },
     cadeias: [
       {id:'c5-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a entregar suas saídas em formato visual operacional (gráfico, semáforo, número grande), o que apaga a complexidade técnica e estatística da produção daquele dado.'},
       {id:'c5-2', alvos:[6], texto:'<strong>obriga o SENSOR CALIBRADO</strong> a converter eventos físicos em séries temporais agregáveis, descartando informações qualitativas que não cabem em série temporal.'},
-      {id:'c5-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar previamente os Indicadores-Chaves de Desempenho, fixando juridicamente um recorte do real que era contingente.'}
+      {id:'c5-3', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar previamente os KPIs, fixando juridicamente um recorte do real que era contingente.'},
+      {id:'c5-4', alvos:[7], texto:'<strong>obriga os TRABALHADORES</strong> dos ônibus a suportarem 45 minutos de imobilidade, já que a via transversal onde estão não possui indicadores contratuais que a tela se importe em exibir e otimizar.'}
     ]
   },
   {
@@ -4082,17 +4165,45 @@ const ACTANTES = [
     oQueRecebeDeVolta: 'Recebe de volta os corpos que ele próprio formatou como detectáveis. As populações que aprendem a se mover sob o ângulo da câmera, a usar bonés ou capuzes em resposta à vigilância, a evitar áreas de cobertura densa, geram novos padrões de movimento que voltam ao sensor como dados de calibração contextual. O sensor passa a "ver" essa adaptação como comportamento suspeito ou comportamento normal conforme a categoria pré-definida, e o que ele lê na próxima passagem já é o resultado das estratégias corporais que sua própria existência produziu. O dispositivo se calibra continuamente sobre os corpos que aprenderam a viver diante dele.',
     atravessa: ['V1','V2','V6','V8','V9'],
     porCena: {
-      V1: {oQueFaz: 'O leitor de crachá registra a passagem de Lúcia às 3h47 sem campo para o atraso do ônibus que a antecedeu.', oQueRecebeDeVolta: 'Recebe de volta a estabilidade semanal do padrão de entrada, lida como ausência de anomalia comportamental no arquivo de turno.'},
-      V2: {oQueFaz: 'A câmera 0834-B converte o rosto de Marcus em vetor de 512 dimensões usando a curva de reflectância herdada da cartela Shirley.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, contextos de captura semelhantes (mesmo CEP, mesmo horário, mesma faixa etária) que ajustam sua sensibilidade à próxima passagem.'},
-      V6: {oQueFaz: 'Os GPSs dos celulares dos turistas captam quais células do mapa foram visitadas e quais foram evitadas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de pontos GPS na zona vermelha, confirmando estatisticamente que aquela área "não interessa" ao circuito turístico.'},
-      V8: {oQueFaz: 'O sensor geológico mede a saturação do solo da encosta e detecta o limiar crítico de 120mm em duas horas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de retorno da notificação no aplicativo (pacote de dados inativo, smartphone incompatível), lida como leitura técnica do "tempo de resposta da comunidade".'},
-      V9: {oQueFaz: 'O sensor IoT do totem mede a temperatura de 38,5°C na avenida concretada e gera o alerta de ilha de calor.', oQueRecebeDeVolta: 'Recebe de volta os dados Wi-Fi dos pedestres que pararam diante do totem buscando sombra, transformando exposição ao calor em métrica de engajamento digital.'}
+      V1: {nomeCena: 'LEITOR DE CRACHÁ BIOMÉTRICO', siglaCena: 'CATRACA', oQueFaz: 'O leitor de crachá registra a passagem de Lúcia às 3h47 sem campo para o atraso do ônibus que a antecedeu.', oQueRecebeDeVolta: 'Recebe de volta a estabilidade semanal do padrão de entrada, lida como ausência de anomalia comportamental no arquivo de turno.'},
+      V2: {nomeCena: 'CÂMERA DE RUA 0834-B', siglaCena: 'CÂMERA', oQueFaz: 'A câmera 0834-B converte o rosto de Marcus em vetor de 512 dimensões usando a curva de reflectância herdada da cartela Shirley.', oQueRecebeDeVolta: 'Recebe de volta, depois da abordagem, contextos de captura semelhantes (mesmo CEP, mesmo horário, mesma faixa etária) que ajustam sua sensibilidade à próxima passagem.'},
+      V6: {nomeCena: 'SENSOR GPS DO SMARTPHONE', siglaCena: 'GPS CELULAR', oQueFaz: 'Os GPSs dos celulares dos turistas captam quais células do mapa foram visitadas e quais foram evitadas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de pontos GPS na zona vermelha, confirmando estatisticamente que aquela área "não interessa" ao circuito turístico.'},
+      V8: {nomeCena: 'SENSOR GEOLÓGICO DE UMIDADE', siglaCena: 'PLUVIÔMETRO', oQueFaz: 'O sensor geológico mede a saturação do solo da encosta e detecta o limiar crítico de 120mm em duas horas.', oQueRecebeDeVolta: 'Recebe de volta a ausência de retorno da notificação no aplicativo (pacote de dados inativo, smartphone incompatível), lida como leitura técnica do "tempo de resposta da comunidade".'},
+      V9: {nomeCena: 'TERMÔMETRO IOT DO TOTEM', siglaCena: 'SENSOR TÉRMICO', oQueFaz: 'O sensor IoT do totem mede a temperatura de 38,5°C na avenida concretada e gera o alerta de ilha de calor.', oQueRecebeDeVolta: 'Recebe de volta os dados Wi-Fi dos pedestres que pararam diante do totem buscando sombra, transformando exposição ao calor em métrica de engajamento digital.'}
     },
     cadeias: [
       {id:'c6-1', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a operar sobre uma matéria-prima já filtrada e racializada, o que se confunde retroativamente com a "objetividade" da câmera.'},
       {id:'c6-2', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a aceitar como real apenas o que está dentro da faixa de calibração, tornando invisíveis populações, fenômenos e contextos fora dessa faixa.'},
       {id:'c6-3', alvos:[2], texto:'<strong>obriga o BANCO DE DADOS POLICIAL</strong> a expandir suas categorias preditivas a partir das próprias falhas de leitura do sensor, fechando o circuito entre cegueira técnica e suspeita.'},
-      {id:'c6-4', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar tecnologias proprietárias de calibração, dificultando substituição por padrões abertos ou auditáveis.'}
+      {id:'c6-4', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a especificar tecnologias proprietárias de calibração, dificultando substituição por padrões abertos ou auditáveis.'},
+      {id:'c6-5', alvos:[7], texto:'<strong>obriga LÚCIA</strong> a converter sua jornada de trabalho exaustiva e seu atraso no ônibus em um mero log de entrada binário para o sistema.'}
+    ]
+  },
+  {
+    id: 7,
+    nome: 'CIDADÃO (SUJEITO-PLATAFORMA)',
+    sigla: 'HUMANO',
+    x: 500, y: 320,
+    descricao: 'Entidade tecnoviva multiconectada que opera, sob regime de servidão maquínica, como nexo corporificado de coações da cidade inteligente.',
+    oQueFaz: 'Atua como um nexo corporificado de conexões, gerando dados biográficos, de localização e de consumo, realizando um trabalho informacional involuntário contínuo.',
+    oQuePrecisa: 'Precisa interagir com a infraestrutura, aceitar termos de uso inegociáveis e ceder seus dados para ter acesso a direitos básicos, como mobilidade, crédito e segurança.',
+    oQueObriga: 'Obriga as máquinas e bancos de dados a registrarem suas adaptações e reações, fornecendo a matéria-prima (a nuvem estatística) que legitima a precisão do algoritmo e a sobrevivência do contrato.',
+    oQueEhObrigado: 'É forçado a se adequar e caber em categorias matemáticas pré-definidas (score, suspeito, risco), alterando suas rotas físicas e comportamentos para ser legível pela máquina.',
+    oQueRecebeDeVolta: 'Recebe de volta restrições automatizadas, latência física (trânsito) e exclusão algorítmica, frequentemente embaladas sob a retórica do solucionismo tecnológico.',
+    atravessa: ['V1','V2','V3','V6','V7'],
+    porCena: {
+      V1: {nomeCena: 'LÚCIA (FAXINEIRA)', siglaCena: 'LÚCIA', oQueFaz: 'Atravessa a catraca às 3h47, submetendo seu corpo cansado e seu tempo de deslocamento invisível à leitura binária de presença do sistema.', oQueRecebeDeVolta: 'Recebe a invisibilidade do seu esforço real, sendo validada pela máquina apenas como um "1" na métrica de assiduidade do painel.'},
+      V2: {nomeCena: 'MARCUS (ESTUDANTE)', siglaCena: 'MARCUS', oQueFaz: 'Caminha pela praça e fornece, de forma involuntária, a geometria do seu próprio rosto como dado de entrada para o sensor da prefeitura.', oQueRecebeDeVolta: 'Recebe de volta a materialização física do racismo algorítmico na forma de uma abordagem policial violenta e injustificada.'},
+      V3: {nomeCena: 'DONA EDNA (FEIRANTE)', siglaCena: 'EDNA', oQueFaz: 'Passa as vendas do acarajé na maquininha S-21, transferindo seus dados de subsistência diária e trabalho precário para a rede.', oQueRecebeDeVolta: 'Recebe de volta um corte súbito de crédito justificado por uma categoria inauditável ("risco médio"), precarizando ainda mais o seu sustento.'},
+      V6: {nomeCena: 'HEINRICH (TURISTA)', siglaCena: 'HEINRICH', oQueFaz: 'Abre o aplicativo de turismo e caminha pela cidade executando fisicamente as rotas e os "check-ins" recomendados pela tela.', oQueRecebeDeVolta: 'Recebe de volta uma experiência espacial artificialmente higienizada, onde os bairros da população negra foram segregados e apagados do seu mapa.'},
+      V7: {nomeCena: 'PASSAGEIROS DOS ÔNIBUS', siglaCena: 'TRABALHADORES', oQueFaz: 'Aguardam retidos no congestionamento da via transversal periférica enquanto seus celulares emitem sinais estáticos de geolocalização.', oQueRecebeDeVolta: 'Recebem de volta o atraso punitivo e a imobilidade física para que o VLT, no cruzamento nobre e monitorado, flua livremente.'}
+    },
+    cadeias: [
+      {id:'c7-1', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a computar sua passagem pela catraca como um indicador de sucesso operacional, validando a métrica que justifica a renovação do próprio sistema.'},
+      {id:'c7-2', alvos:[2], texto:'<strong>obriga o BANCO DE DADOS POLICIAL</strong> a absorver o registro de averiguação da sua abordagem, retroalimentando o arquivo enviesado que criminalizará o próximo jovem negro.'},
+      {id:'c7-3', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a registrar suas novas vendas precárias no banco de dados, alimentando a máquina que valida estatisticamente o acerto do score opaco que a prejudicou.'},
+      {id:'c7-4', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a assimilar sua nova avaliação de 5 estrelas do local "seguro", intensificando o peso matemático da segregação (redlining) para o próximo turista.'},
+      {id:'c7-5', alvos:[5], texto:'<strong>obrigam o DASHBOARD DO CCO</strong> a ler seus sinais celulares estáticos como "caos viário", produzindo o dado de contraste que o painel usa para provar matematicamente a eficiência do VLT.'}
     ]
   }
 ];
@@ -4385,16 +4496,28 @@ function fecharActante() {
 // ────────────────────────────────────────────
 // PROTOCOLO DE COAÇÃO (Caderneta da P2)
 // ────────────────────────────────────────────
-function addProtocolo(act, cadeia) {
-  stateP2.protocolo.push({act:act.nome, texto:cadeia.texto});
+function addProtocolo(act, cadeia, vinhetaTag) {
+  // Resolve nome/sigla contextuais se houver vinheta
+  let siglaDisplay = act.sigla;
+  let nomeDisplay = act.nome;
+  if (vinhetaTag) {
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    if (ctx) {
+      siglaDisplay = ctx.siglaCena || act.sigla;
+      nomeDisplay = ctx.nomeCena || act.nome;
+    }
+  }
+  // Detecta se a conexão envolve o humano (origem ou destino é actante 7)
+  const envolveHumano = act.id === 7 || (cadeia.alvos && cadeia.alvos.includes(7));
+  stateP2.protocolo.push({act: nomeDisplay, texto: cadeia.texto, envolveHumano});
   const empty = document.getElementById('protocolo-empty');
   if (empty) empty.remove();
   const content = document.getElementById('protocolo-content');
   const card = document.createElement('div');
-  card.className = 'protocolo-card';
+  card.className = 'protocolo-card' + (envolveHumano ? ' envolve-humano' : '');
   card.innerHTML = `
-    <div class="protocolo-num">CONEXÃO ${stateP2.protocolo.length} · ${act.sigla}</div>
-    <div class="protocolo-text">${act.sigla} ${cadeia.texto}</div>
+    <div class="protocolo-num">CONEXÃO ${stateP2.protocolo.length} · ${siglaDisplay}${vinhetaTag ? ' · ' + vinhetaTag : ''}</div>
+    <div class="protocolo-text"><strong>${nomeDisplay}</strong> ${cadeia.texto}</div>
   `;
   content.appendChild(card);
 }
