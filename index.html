@@ -3630,17 +3630,19 @@ function renderTeiaMini(vinhetaId) {
     const g = document.createElementNS(ns, 'g');
     g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : '') + (isHumano ? ' humano' : ''));
     g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
-    // VERIFICA SE O ACTANTE ESTÁ NESTA CENA
-const isNaCena = act.atravessa.includes(vinhetaTag);
 
-if (!isNaCena) {
-  g.style.opacity = '0.2';
-  g.style.pointerEvents = 'none'; // Impede o clique nos fantasmas
-} else {
-  g.style.cursor = 'pointer';
-  g.onclick 
+    // ANDAIME: actantes fora da cena ficam fantasmas e não são clicáveis
+    const isNaCena = act.atravessa.includes(vinhetaTag);
+    if (!isNaCena) {
+      g.style.opacity = '0.2';
+      g.style.pointerEvents = 'none';
+    } else {
+      g.style.cursor = 'pointer';
+      g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
+    }
 
-    // Pulso suave no nó humano para destacá-lo visualmente
+    // Pulso no humano
+    const isHumano = act.id === 7;
     if (isHumano && !isOrigemAtual) {
       const pulse = document.createElementNS(ns, 'circle');
       pulse.setAttribute('cx', 0); pulse.setAttribute('cy', 0); pulse.setAttribute('r', 38);
@@ -3654,7 +3656,6 @@ if (!isNaCena) {
 
     const c = document.createElementNS(ns, 'circle');
     c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 32);
-    // Cores diferenciadas: humano em brick com borda bone; máquinas em bone com borda ink
     if (isHumano) {
       c.setAttribute('fill', isOrigemAtual ? PALETA.ink : PALETA.brick);
       c.setAttribute('stroke', PALETA.bone);
@@ -3666,23 +3667,17 @@ if (!isNaCena) {
     }
     g.appendChild(c);
 
-    // Sigla contextual em destaque no centro
     const lbl = document.createElementNS(ns, 'text');
     lbl.setAttribute('text-anchor', 'middle');
     lbl.setAttribute('y', '3');
     lbl.setAttribute('font-size', siglaDisplay.length > 10 ? '6' : '8');
     lbl.setAttribute('font-family', "'Archivo Black',sans-serif");
-    if (isHumano) {
-      lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.bone);
-    } else {
-      lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : PALETA.ink);
-    }
+    lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : (isHumano ? PALETA.bone : PALETA.ink));
     lbl.setAttribute('letter-spacing', '.5');
     lbl.style.pointerEvents = 'none';
     lbl.textContent = siglaDisplay;
     g.appendChild(lbl);
 
-    // Nome contextual completo (com quebra de linha se longo)
     const nomeBase = nomeDisplay;
     const palavras = nomeBase.split(' ');
     let linha1 = nomeBase;
@@ -3692,7 +3687,6 @@ if (!isNaCena) {
       linha1 = palavras.slice(0, meio).join(' ');
       linha2 = palavras.slice(meio).join(' ');
     }
-    // Para o humano, o nome vai embaixo do círculo (não tem como ir em cima por estar no centro)
     const yBase = isHumano ? 52 : (pos.y > 180 ? 52 : -42);
 
     const nome1 = document.createElementNS(ns, 'text');
@@ -3720,6 +3714,10 @@ if (!isNaCena) {
     }
 
     nosLayer.appendChild(g);
+  });
+
+  atualizarStatusTeia(vinhetaId);
+}
   });
   atualizarStatusTeia(vinhetaId);
 }
