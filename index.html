@@ -4447,6 +4447,7 @@ const stateP2 = {
   fichaJaMostrada: {}, // ex: { 1: 'V1' } significa que o dispositivo 1 foi inspecionado pela primeira vez em V1
   // Tooltip flutuante ativo na teia mini (vinheta atual + par sob inspeção)
   tooltipState: {} // ex: { V3: { parKey: '3-7', x: 350, y: 180 } }
+  traceState: {}
 };
 
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
