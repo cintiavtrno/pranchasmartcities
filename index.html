@@ -1161,6 +1161,124 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   border-left: 4px solid var(--mustard);
   background: rgba(200,147,57,.05);
 }
+
+/* ─── TOOLTIP FLUTUANTE DA TEIA MINI ─── */
+.conduto-tooltip {
+  position: absolute;
+  background: var(--ink);
+  color: var(--bone);
+  border: 2px solid var(--mustard);
+  box-shadow: 4px 4px 0 rgba(168,65,42,.4);
+  padding: 12px 14px;
+  min-width: 260px;
+  max-width: 320px;
+  z-index: 50;
+  animation: tooltipFadeIn .2s ease;
+  pointer-events: auto;
+}
+.conduto-tooltip-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--mustard);
+  margin-bottom: 8px;
+}
+.conduto-tooltip-pergunta {
+  font-size: 11px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: var(--bone);
+}
+.conduto-tooltip-pergunta strong {
+  color: var(--mustard);
+}
+.conduto-direcao-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  border: 1.5px solid var(--bone);
+  background: transparent;
+  color: var(--bone);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: left;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.conduto-direcao-btn:hover {
+  background: var(--mustard);
+  color: var(--ink);
+  border-color: var(--mustard);
+}
+.conduto-direcao-btn.rastreada {
+  opacity: .45;
+  cursor: default;
+  border-style: dashed;
+}
+.conduto-direcao-btn.rastreada:hover {
+  background: transparent;
+  color: var(--bone);
+  border-color: var(--bone);
+}
+.conduto-tooltip-aviso {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(168,65,42,.18);
+  border-left: 2px solid var(--brick);
+  font-size: 10px;
+  color: var(--bone);
+  font-style: italic;
+  line-height: 1.4;
+}
+.conduto-tooltip-sucesso {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(91,107,63,.25);
+  border-left: 2px solid var(--olive);
+  font-size: 10px;
+  color: var(--bone);
+  line-height: 1.45;
+}
+.conduto-tooltip-close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: var(--bone);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: .6;
+}
+.conduto-tooltip-close:hover {
+  opacity: 1;
+}
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── FEIXES ANIMADOS NOS FIOS ─── */
+@keyframes feixe-flow-ida {
+  to { stroke-dashoffset: -20; }
+}
+@keyframes feixe-flow-volta {
+  to { stroke-dashoffset: 20; }
+}
+.feixe-ida {
+  animation: feixe-flow-ida 1.4s linear infinite;
+}
+.feixe-volta {
+  animation: feixe-flow-volta 1.8s linear infinite;
+}
+
+/* ─── WRAP RELATIVO DA TEIA MINI (pra ancorar tooltip) ─── */
+.teia-mini-wrap {
+  position: relative;
+}
 </style>
 </head>
 <body>
@@ -3550,12 +3668,11 @@ function abrirInspecaoInline(vinhetaId) {
   html += `
     <div class="teia-mini-wrap">
       <div class="teia-mini-header">⊕ TRACE AS CONEXÕES DESTA CENA</div>
-      <div class="teia-mini-intro">Clique no nó que <strong>força</strong>, depois no nó que é <strong>forçado</strong>. Os habitantes também são nós da rede, ou seja, podem ser forçados pelas máquinas e podem forçar máquinas. A rede é feita de matéria, não de imaginação.</div>      <div class="teia-mini-status" id="teia-status-${vinhetaId}">Aguardando primeiro clique...</div>
+      <div class="teia-mini-intro">Os fios cinzas são os <strong>condutos materiais</strong> que já existem na cena (cabos, contratos, rotas de dado). Clique em um fio para inspecionar a ação que percorre ele. Você terá que decidir <strong>em que direção</strong> a força flui. Alguns condutos hospedam tráfego nos dois sentidos.</div>
       <svg class="teia-mini-svg" id="teia-mini-${vinhetaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
         <g id="teia-mini-fios-${vinhetaId}"></g>
         <g id="teia-mini-nos-${vinhetaId}"></g>
       </svg>
-      <div class="teia-mini-aviso" id="teia-aviso-${vinhetaId}"></div>
     </div>
   `;
 
@@ -3591,23 +3708,65 @@ function renderTeiaMini(vinhetaId) {
   fiosLayer.innerHTML = '';
   const ns = 'http://www.w3.org/2000/svg';
 
-  // Desenha fios já traçados (cadeias já mapeadas)
-  ACTANTES.forEach(act => {
-    act.cadeias.forEach(c => {
-      if (stateP2.cadeiasMapeadas.has(c.id)) {
-        c.alvos.forEach(alvo => {
-          const o = TEIA_MINI_POS[act.id], d = TEIA_MINI_POS[alvo];
-          if (!o || !d) return;
-          const line = document.createElementNS(ns, 'line');
-          line.setAttribute('x1', o.x); line.setAttribute('y1', o.y);
-          line.setAttribute('x2', d.x); line.setAttribute('y2', d.y);
-          line.setAttribute('stroke', PALETA.olive);
-          line.setAttribute('stroke-width', '2');
-          line.setAttribute('opacity', '.7');
-          fiosLayer.appendChild(line);
-        });
-      }
-    });
+  // ─── INFRAESTRUTURA POTENCIAL: fios cinzas inertes ───
+  // Para cada conduto presente nesta cena, desenha um fio cinza.
+  // Por cima dele, sobrepõe feixes mostarda animados conforme cadeias já mapeadas.
+  const condutos = getCondutosDaCena(vinhetaTag);
+
+  condutos.forEach(cond => {
+    const o = TEIA_MINI_POS[cond.a], d = TEIA_MINI_POS[cond.b];
+    if (!o || !d) return;
+
+    // Fio cinza inerte (conduto material pré-existente)
+    const condutoLine = document.createElementNS(ns, 'line');
+    condutoLine.setAttribute('x1', o.x); condutoLine.setAttribute('y1', o.y);
+    condutoLine.setAttribute('x2', d.x); condutoLine.setAttribute('y2', d.y);
+    condutoLine.setAttribute('stroke', PALETA.ink);
+    condutoLine.setAttribute('stroke-width', '1.5');
+    condutoLine.setAttribute('opacity', '.18');
+    condutoLine.setAttribute('data-conduto', `${cond.a}-${cond.b}`);
+    condutoLine.setAttribute('data-vinheta', vinhetaTag);
+    condutoLine.style.cursor = 'pointer';
+    // Área de clique mais generosa: um segundo elemento invisível mais grosso por cima
+    const condutoHit = document.createElementNS(ns, 'line');
+    condutoHit.setAttribute('x1', o.x); condutoHit.setAttribute('y1', o.y);
+    condutoHit.setAttribute('x2', d.x); condutoHit.setAttribute('y2', d.y);
+    condutoHit.setAttribute('stroke', 'transparent');
+    condutoHit.setAttribute('stroke-width', '14');
+    condutoHit.setAttribute('data-conduto', `${cond.a}-${cond.b}`);
+    condutoHit.setAttribute('data-vinheta', vinhetaTag);
+    condutoHit.style.cursor = 'pointer';
+    condutoHit.onclick = () => abrirTooltipConduto(vinhetaId, cond);
+    fiosLayer.appendChild(condutoLine);
+    fiosLayer.appendChild(condutoHit);
+
+    // Feixe de IDA (do menor id para o maior) — sólido contínuo, se já rastreado
+    const idaRastreada = cond.cadeiasIda.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+    if (idaRastreada) {
+      const feixeIda = document.createElementNS(ns, 'line');
+      feixeIda.setAttribute('x1', o.x); feixeIda.setAttribute('y1', o.y);
+      feixeIda.setAttribute('x2', d.x); feixeIda.setAttribute('y2', d.y);
+      feixeIda.setAttribute('stroke', PALETA.mustard);
+      feixeIda.setAttribute('stroke-width', '2.2');
+      feixeIda.setAttribute('opacity', '.9');
+      feixeIda.setAttribute('stroke-dasharray', '6 4');
+      feixeIda.setAttribute('class', 'feixe-ida');
+      fiosLayer.appendChild(feixeIda);
+    }
+
+    // Feixe de VOLTA (do maior id para o menor) — tracejado espaçado, se já rastreado
+    const voltaRastreada = cond.cadeiasVolta.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+    if (voltaRastreada) {
+      const feixeVolta = document.createElementNS(ns, 'line');
+      feixeVolta.setAttribute('x1', d.x); feixeVolta.setAttribute('y1', d.y);
+      feixeVolta.setAttribute('x2', o.x); feixeVolta.setAttribute('y2', o.y);
+      feixeVolta.setAttribute('stroke', PALETA.mustard);
+      feixeVolta.setAttribute('stroke-width', '1.8');
+      feixeVolta.setAttribute('opacity', '.75');
+      feixeVolta.setAttribute('stroke-dasharray', '2 6');
+      feixeVolta.setAttribute('class', 'feixe-volta');
+      fiosLayer.appendChild(feixeVolta);
+    }
   });
 
   // Desenha os 7 nós (6 actantes em hexágono + humano ao centro quando ele atravessa a cena)
@@ -3631,15 +3790,15 @@ function renderTeiaMini(vinhetaId) {
     g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : '') + (isHumano ? ' humano' : ''));
     g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
 
-    // ANDAIME: actantes fora da cena ficam fantasmas e não são clicáveis
+   // ANDAIME: actantes fora da cena ficam fantasmas
     const isNaCena = act.atravessa.includes(vinhetaTag);
     if (!isNaCena) {
       g.style.opacity = '0.2';
-      g.style.pointerEvents = 'none';
     } else {
-      g.style.cursor = 'pointer';
-      g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
+      g.style.opacity = '1';
     }
+    // Nós não são mais clicáveis. O gesto agora é clicar no fio cinza.
+    g.style.pointerEvents = 'none';
     if (isHumano && !isOrigemAtual) {
       const pulse = document.createElementNS(ns, 'circle');
       pulse.setAttribute('cx', 0); pulse.setAttribute('cy', 0); pulse.setAttribute('r', 38);
@@ -3712,52 +3871,114 @@ function renderTeiaMini(vinhetaId) {
 
     nosLayer.appendChild(g);
   });
-
-  atualizarStatusTeia(vinhetaId);
 }
-function clicarNoTeiaMini(vinhetaId, actanteId) {
+function abrirTooltipConduto(vinhetaId, cond) {
   const vinhetaTag = `V${vinhetaId}`;
-  const trace = stateP2.traceState[vinhetaTag];
-  const aviso = document.getElementById(`teia-aviso-${vinhetaId}`);
-  if (aviso) aviso.textContent = '';
+  // Fecha tooltip anterior se houver
+  fecharTooltipConduto(vinhetaId);
 
-  if (trace.origem === null) {
-    trace.origem = actanteId;
-    renderTeiaMini(vinhetaId);
-    return;
-  }
+  const wrap = document.querySelector(`#mediadores-container-${vinhetaId} .teia-mini-wrap`);
+  const svg = document.getElementById(`teia-mini-${vinhetaId}`);
+  if (!wrap || !svg) return;
 
-  if (trace.origem === actanteId) {
-    // Cancelou clicando no mesmo
-    trace.origem = null;
-    renderTeiaMini(vinhetaId);
-    return;
-  }
+  // Calcula posição do ponto médio do fio em coordenadas de tela
+  const posA = TEIA_MINI_POS[cond.a], posB = TEIA_MINI_POS[cond.b];
+  const midX = (posA.x + posB.x) / 2;
+  const midY = (posA.y + posB.y) / 2;
 
-  // Tem origem, agora chegou destino
-  trace.destino = actanteId;
-  const chave = `${trace.origem}-${trace.destino}`;
+  // Converte coordenadas do viewBox (700x360) para pixels reais do SVG renderizado
+  const svgRect = svg.getBoundingClientRect();
+  const wrapRect = wrap.getBoundingClientRect();
+  const scaleX = svgRect.width / 700;
+  const scaleY = svgRect.height / 360;
+  const pxX = (svgRect.left - wrapRect.left) + midX * scaleX;
+  const pxY = (svgRect.top - wrapRect.top) + midY * scaleY;
+
+  // Nomes contextuais dos dois actantes nesta cena
+  const actA = ACTANTES.find(a => a.id === cond.a);
+  const actB = ACTANTES.find(a => a.id === cond.b);
+  const ctxA = (actA.porCena && actA.porCena[vinhetaTag]) || null;
+  const ctxB = (actB.porCena && actB.porCena[vinhetaTag]) || null;
+  const nomeA = (ctxA && ctxA.nomeCena) ? ctxA.nomeCena : actA.nome;
+  const nomeB = (ctxB && ctxB.nomeCena) ? ctxB.nomeCena : actB.nome;
+
+  // Verifica se cada direção é válida E se já está rastreada
+  const idaValida = cond.cadeiasIda.length > 0;
+  const voltaValida = cond.cadeiasVolta.length > 0;
+  const idaRastreada = cond.cadeiasIda.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+  const voltaRastreada = cond.cadeiasVolta.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+
+  const tooltip = document.createElement('div');
+  tooltip.className = 'conduto-tooltip';
+  tooltip.id = `tooltip-${vinhetaId}`;
+
+  let html = `
+    <button class="conduto-tooltip-close" onclick="fecharTooltipConduto(${vinhetaId})">×</button>
+    <div class="conduto-tooltip-stamp">INSPECIONANDO CONEXÃO</div>
+    <div class="conduto-tooltip-pergunta">Qual ação material ocorre aqui?</div>
+    <button class="conduto-direcao-btn ${idaRastreada ? 'rastreada' : ''}"
+            onclick="testarDirecao(${vinhetaId}, ${cond.a}, ${cond.b})"
+            ${idaRastreada ? 'disabled' : ''}>
+      ${idaRastreada ? '✓ ' : '→ '}<strong>${nomeA}</strong> força <strong>${nomeB}</strong>
+    </button>
+    <button class="conduto-direcao-btn ${voltaRastreada ? 'rastreada' : ''}"
+            onclick="testarDirecao(${vinhetaId}, ${cond.b}, ${cond.a})"
+            ${voltaRastreada ? 'disabled' : ''}>
+      ${voltaRastreada ? '✓ ' : '→ '}<strong>${nomeB}</strong> força <strong>${nomeA}</strong>
+    </button>
+    <div id="tooltip-feedback-${vinhetaId}"></div>
+  `;
+
+  tooltip.innerHTML = html;
+
+  // Posiciona tooltip: centralizado horizontalmente no ponto médio, deslocado pra cima
+  tooltip.style.left = '0px';
+  tooltip.style.top = '0px';
+  wrap.appendChild(tooltip);
+
+  // Após inserir no DOM, ajusta posição considerando dimensões reais
+  const tipRect = tooltip.getBoundingClientRect();
+  let finalX = pxX - tipRect.width / 2;
+  let finalY = pxY - tipRect.height - 12;
+
+  // Fallback: se sair pra cima, joga pra baixo
+  if (finalY < 8) finalY = pxY + 16;
+  // Fallback horizontal: mantém dentro do wrap
+  if (finalX < 4) finalX = 4;
+  if (finalX + tipRect.width > wrap.clientWidth - 4) finalX = wrap.clientWidth - tipRect.width - 4;
+
+  tooltip.style.left = finalX + 'px';
+  tooltip.style.top = finalY + 'px';
+
+  stateP2.tooltipState[vinhetaTag] = { parKey: `${cond.a}-${cond.b}` };
+}
+
+function fecharTooltipConduto(vinhetaId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const existing = document.getElementById(`tooltip-${vinhetaId}`);
+  if (existing) existing.remove();
+  delete stateP2.tooltipState[vinhetaTag];
+}
+
+function testarDirecao(vinhetaId, origemId, destinoId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const chave = `${origemId}-${destinoId}`;
   const par = PARES_VALIDOS[chave];
+  const feedbackEl = document.getElementById(`tooltip-feedback-${vinhetaId}`);
+  if (!feedbackEl) return;
 
   if (!par) {
-    if (aviso) {
-      aviso.innerHTML = '⚠ Nenhuma operação material liga esses dois aqui. A rede se faz com fios concretos, não com analogias possíveis. Tente outro par.';
-    }
-    trace.origem = null;
-    trace.destino = null;
-    renderTeiaMini(vinhetaId);
+    feedbackEl.innerHTML = '<div class="conduto-tooltip-aviso">Observe a cena novamente. A ação flui no sentido oposto.</div>';
+    setTimeout(() => { if (feedbackEl) feedbackEl.innerHTML = ''; }, 3000);
     return;
   }
 
   if (stateP2.cadeiasMapeadas.has(par.cadeiaId)) {
-    if (aviso) aviso.textContent = '↺ Essa conexão já estava traçada. Tente outro par.';
-    trace.origem = null;
-    trace.destino = null;
-    renderTeiaMini(vinhetaId);
+    feedbackEl.innerHTML = '<div class="conduto-tooltip-aviso">Essa ação já foi rastreada.</div>';
     return;
   }
 
-  // Par válido e novo: marca a cadeia
+  // Direção válida e nova: marca cadeia, adiciona ao protocolo
   stateP2.cadeiasMapeadas.add(par.cadeiaId);
   const actOrigem = ACTANTES.find(a => a.id === par.origemId);
   const cadeia = actOrigem.cadeias.find(c => c.id === par.cadeiaId);
@@ -3766,28 +3987,39 @@ function clicarNoTeiaMini(vinhetaId, actanteId) {
   const todasMarcadas = actOrigem.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
   if (todasMarcadas) stateP2.completedActantes.add(par.origemId);
 
-  showToast(`CONEXÃO TRAÇADA · ${stateP2.cadeiasMapeadas.size}/${TOTAL_CADEIAS}`);
+  // Mostra texto da operação no próprio tooltip
+  const textoLimpo = cadeia.texto.replace(/<[^>]+>/g, '');
+  feedbackEl.innerHTML = `<div class="conduto-tooltip-sucesso"><strong style="color:var(--mustard);font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:1.5px;display:block;margin-bottom:4px;">AÇÃO RASTREADA</strong>${textoLimpo}</div>`;
 
-  trace.origem = null;
-  trace.destino = null;
+  showToast(`CONEXÃO TRAÇADA · ${stateP2.cadeiasMapeadas.size}/${TOTAL_CADEIAS}`);
   renderTeiaMini(vinhetaId);
   updateLegibilidade();
   checkFimP2();
+
+  // Reabre tooltip atualizado após o redesenho da teia (pra mostrar a outra direção se houver)
+  setTimeout(() => {
+    const cond = getCondutosDaCena(vinhetaTag).find(c =>
+      (c.a === par.origemId && c.b === par.destinoId) ||
+      (c.a === par.destinoId && c.b === par.origemId)
+    );
+    if (cond) {
+      const idaRastreada = cond.cadeiasIda.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+      const voltaRastreada = cond.cadeiasVolta.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
+      // Se ainda há direção pendente neste conduto, reabre tooltip
+      const hasPendente = (cond.cadeiasIda.length > 0 && !idaRastreada) || (cond.cadeiasVolta.length > 0 && !voltaRastreada);
+      if (hasPendente) abrirTooltipConduto(vinhetaId, cond);
+    }
+  }, 1200);
+}
+
+// Gesto antigo neutralizado. O rastreamento agora é por clique nos fios cinzas
+// com tooltip flutuante de direção. Stub mantido para evitar erros de referência.
+function clicarNoTeiaMini(vinhetaId, actanteId) {
+  return;
 }
 
 function atualizarStatusTeia(vinhetaId) {
-  const vinhetaTag = `V${vinhetaId}`;
-  const trace = stateP2.traceState[vinhetaTag] || { origem: null };
-  const status = document.getElementById(`teia-status-${vinhetaId}`);
-  if (!status) return;
-  if (trace.origem === null) {
-    status.textContent = 'Aguardando primeiro clique (dispositivo que força)...';
-  } else {
-    const act = ACTANTES.find(a => a.id === trace.origem);
-    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
-    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
-    status.innerHTML = `Origem selecionada: <strong>${nomeDisplay}</strong> · Agora clique no dispositivo que ele força.`;
-  }
+  return;
 }
 
 function toggleMediador(vinhetaId, actanteId) {
@@ -4208,16 +4440,48 @@ const ACTANTES = [
 const stateP2 = {
   visitedActantes: new Set(),
   completedActantes: new Set(),
-  cadeiasMapeadas: new Set(),
+  cadeiasMapeadas: new Set(), // Set de IDs de cadeia (c1-1, c3-2, etc) — cada direção é uma cadeia única
   currentActante: null,
   protocolo: [],
-  // Movimento 1: dispositivos cuja ficha geral já foi mostrada nesta sessão
+  // Dispositivos cuja ficha geral já foi mostrada nesta sessão
   fichaJaMostrada: {}, // ex: { 1: 'V1' } significa que o dispositivo 1 foi inspecionado pela primeira vez em V1
-  // Movimento 2: estado do gesto origem-destino dentro de cada vinheta aberta
-  traceState: {} // ex: { V1: { origem: 3, destino: null } }
+  // Tooltip flutuante ativo na teia mini (vinheta atual + par sob inspeção)
+  tooltipState: {} // ex: { V3: { parKey: '3-7', x: 350, y: 180 } }
 };
 
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
+
+// ─── Mapa de pares válidos (origem → destino → cadeia) ───
+// Construído a partir das cadeias documentadas. Usado pelo gesto origem-destino.
+const PARES_VALIDOS = (() => {
+  const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
+
+// ─── Calcula os condutos (pares de actantes ligados) presentes em cada cena ───
+// Cada conduto é um par de actantes que coabitam a cena E têm pelo menos uma
+// cadeia documentada entre eles (em qualquer direção). É a infraestrutura cinza
+// que aparece inerte na teia mini antes do usuário clicar.
+function getCondutosDaCena(vinhetaTag) {
+  const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag)).map(a => a.id);
+  const condutos = new Map(); // chave: "menorId-maiorId", valor: { a, b, cadeiasIda, cadeiasVolta }
+  ACTANTES.forEach(act => {
+    if (!actantesNaCena.includes(act.id)) return;
+    act.cadeias.forEach(c => {
+      c.alvos.forEach(alvo => {
+        if (!actantesNaCena.includes(alvo)) return;
+        const [menor, maior] = act.id < alvo ? [act.id, alvo] : [alvo, act.id];
+        const chave = `${menor}-${maior}`;
+        if (!condutos.has(chave)) {
+          condutos.set(chave, { a: menor, b: maior, cadeiasIda: [], cadeiasVolta: [] });
+        }
+        const cond = condutos.get(chave);
+        // Ida = do menor para o maior. Volta = do maior para o menor.
+        if (act.id === menor) cond.cadeiasIda.push({ origem: act.id, destino: alvo, cadeiaId: c.id, texto: c.texto });
+        else cond.cadeiasVolta.push({ origem: act.id, destino: alvo, cadeiaId: c.id, texto: c.texto });
+      });
+    });
+  });
+  return Array.from(condutos.values());
+}
 
 // ─── Mapa de pares válidos (origem → destino → cadeia) ───
 // Construído a partir das cadeias documentadas. Usado pelo gesto origem-destino.
