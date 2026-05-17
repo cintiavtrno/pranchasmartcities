@@ -3640,9 +3640,6 @@ function renderTeiaMini(vinhetaId) {
       g.style.cursor = 'pointer';
       g.onclick = () => clicarNoTeiaMini(vinhetaId, act.id);
     }
-
-    // Pulso no humano
-    const isHumano = act.id === 7;
     if (isHumano && !isOrigemAtual) {
       const pulse = document.createElementNS(ns, 'circle');
       pulse.setAttribute('cx', 0); pulse.setAttribute('cy', 0); pulse.setAttribute('r', 38);
