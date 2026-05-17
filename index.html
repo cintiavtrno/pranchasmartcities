@@ -4451,11 +4451,6 @@ const stateP2 = {
 
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
 
-// ─── Mapa de pares válidos (origem → destino → cadeia) ───
-// Construído a partir das cadeias documentadas. Usado pelo gesto origem-destino.
-const PARES_VALIDOS = (() => {
-  const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
-
 // ─── Calcula os condutos (pares de actantes ligados) presentes em cada cena ───
 // Cada conduto é um par de actantes que coabitam a cena E têm pelo menos uma
 // cadeia documentada entre eles (em qualquer direção). É a infraestrutura cinza
@@ -4484,7 +4479,7 @@ function getCondutosDaCena(vinhetaTag) {
 }
 
 // ─── Mapa de pares válidos (origem → destino → cadeia) ───
-// Construído a partir das cadeias documentadas. Usado pelo gesto origem-destino.
+// Construído a partir das cadeias documentadas. Usado pelo tooltip de direção.
 const PARES_VALIDOS = (() => {
   const map = {};
   ACTANTES.forEach(act => {
@@ -4497,7 +4492,6 @@ const PARES_VALIDOS = (() => {
   });
   return map;
 })();
-
 // ────────────────────────────────────────────
 // NAVEGAÇÃO ENTRE PRANCHAS
 // ────────────────────────────────────────────
