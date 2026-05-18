@@ -2041,7 +2041,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   <div class="finalizacao-box">
     <div class="finalizacao-stamp">ENCERRAMENTO · ARTEFATO COMPLETO</div>
     <div class="finalizacao-h">A PRANCHA FOI INTEIRAMENTE RASTREADA</div>
-    <div class="finalizacao-quote">"A ação não é um atributo dos humanos, mas de uma associação de actantes. Compreender essa distribuição é o primeiro gesto de uma crítica que não responsabiliza apenas indivíduos, mas dispositivos, contratos e cadeias inteiras."</div>
+    <div class="finalizacao-quote">"A ação no mundo real emana de uma rede complexa de elementos humanos e técnicos. Compreender essa distribuição é o primeiro passo para uma crítica sistêmica, que passa a responsabilizar simultaneamente as pessoas, os dispositivos, os contratos e as infraestruturas</div>
     <div class="finalizacao-intro">Antes de sair, vale lembrar que três recursos permanecem disponíveis na interface, e cada um deles guarda uma camada distinta do que foi rastreado.</div>
 
     <div class="finalizacao-recursos">
@@ -2051,7 +2051,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
         <div class="recurso-info">
           <div class="recurso-nome">LINHA DO TEMPO</div>
           <div class="recurso-local">Botão no canto superior direito da tela, ao lado da Caderneta.</div>
-          <div class="recurso-desc">Painel cronológico que situa o decreto fictício de Salvador dentro da trajetória real do conceito de cidade inteligente no Brasil, dos anos 90 até a vigência prevista do contrato em 2045. Mostra como cada vinheta deste artefato dialoga com eventos historicamente datados, como a criação do COR no Rio em 2010, a aprovação da LGPD em 2018, e o avanço do reconhecimento facial em estádios brasileiros entre 2022 e 2024.</div>
+          <div class="recurso-desc">Painel cronológico que situa o decreto de Salvador dentro da trajetória real do conceito de cidade inteligente no Brasil, dos anos 90 até a vigência prevista do contrato em 2045. Mostra como cada vinheta deste artefato dialoga com eventos historicamente datados, como a criação do COR no Rio em 2010, a aprovação da LGPD em 2018, e o avanço do reconhecimento facial em estádios brasileiros entre 2022 e 2024.</div>
         </div>
       </div>
 
@@ -2081,11 +2081,9 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   </div>
 </div>
 <div id="toast"></div>
-
-<script>
+<script defer>
 // ════════════════════════════════════════
 // DATA
-// ════════════════════════════════════════
 const PALETA = {paper:'#EFE5CE',paperDark:'#DDD0B0',ink:'#1A1611',brick:'#A8412A',mustard:'#C89339',blue:'#577387',olive:'#5B6B3F',bone:'#F7EFD9'};
 
 const LEG_STAGES = [
@@ -4967,7 +4965,7 @@ function addProtocolo(act, cadeia, vinhetaTag) {
 
   // Helper: retorna a sigla a exibir para um actante numa dada cena.
   // Para o actante 7 (CIDADÃO), sempre "CIDADÃO" com o personagem entre parênteses.
-  ffunction siglaContextual(actante, tag) {
+  function siglaContextual(actante, tag) {
     const ctx = (actante.porCena && actante.porCena[tag]) || null;
     if (actante.id === 7) {
       const personagem = ctx && ctx.siglaCena ? ctx.siglaCena : '';
