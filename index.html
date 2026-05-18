@@ -3596,26 +3596,7 @@ function showResultadoBreve(msg, color, delay, callback) {
 // ════════════════════════════════════════
 // REVEAL
 // ════════════════════════════════════════
-function showReveal(id, titulo, texto, toast) {
-  if (state.timerInterval) clearInterval(state.timerInterval);
-  const v = VINHETAS.find(x => x.id === id);
-  const color = PALETA[v.cor];
-  const body = document.getElementById('reveal-body');
-  body.innerHTML = `
-    <div class="reveal-stamp">CONSEQUÊNCIA REGISTRADA</div>
-    <div class="reveal-titulo" style="color:${color}">${titulo}</div>
-    <div class="reveal-texto">${texto}</div>
-    <div class="reveal-ficha">
-      <div class="reveal-ficha-label">FICHA ${state.fichas.length + 1} · SERÁ ADICIONADA À CADERNETA</div>
-      <div class="reveal-ficha-quote">${v.ficha.texto}</div>
-      <div class="reveal-ficha-fonte">${v.ficha.fonte || ''}</div>
-    </div>
-    <button class="btn-inspecionar" id="btn-inspecionar-${id}" onclick="abrirInspecaoInline(${id})">⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA</button>
-    <div id="mediadores-container-${id}"></div>
-  `;
-  setModalPhase('reveal');
-  if (toast) setTimeout(() => showToast(toast), 800);
-}
+V
 
 function abrirInspecaoInline(vinhetaId) {
   const btn = document.getElementById(`btn-inspecionar-${vinhetaId}`);
@@ -3638,25 +3619,39 @@ function abrirInspecaoInline(vinhetaId) {
     return;
   }
 
-  // Inicializa estado do gesto para esta vinheta
-  if (!stateP2.traceState[vinhetaTag]) {
-    stateP2.traceState[vinhetaTag] = { origem: null, destino: null };
-  }
+  // Registra automaticamente todas as conexões desta cena no protocolo
+  actantesNaCena.forEach(act => {
+    act.cadeias.forEach(c => {
+      const cadeiaJaRegistrada = stateP2.cadeiasMapeadas.has(c.id);
+      if (!cadeiaJaRegistrada) {
+        stateP2.cadeiasMapeadas.add(c.id);
+        addProtocolo(act, c, vinhetaTag);
+      }
+    });
+  });
+  updateLegibilidade();
 
   let html = `
     <div class="mediadores-section">
-      <div class="mediadores-header">⊕ DISPOSITIVOS E CONTRATOS QUE OPERAM AQUI</div>
-      <div class="mediadores-intro">Não há nada por trás da cidade. Há, aqui mesmo, cabos, contratos, sensores e algoritmos agindo ao lado das pessoas. Abra cada um para ver o que ele faz, o que precisa, o que força os outros a fazerem, e o que recebe de volta.</div>
+      <div class="mediadores-header">⊕ A REDE QUE OPERA NESTA CENA</div>
+      <div class="mediadores-intro">Cada seta é uma coação material. A cor identifica de onde a força parte. Abaixo da teia, os detalhes de cada dispositivo.</div>
+      <div class="teia-mini-wrap">
+        <svg class="teia-mini-svg" id="teia-mini-${vinhetaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg"
+          style="width:100%;background:var(--paperDark);border:1.5px solid var(--ink);margin-bottom:16px;">
+          <g id="teia-mini-fios-${vinhetaId}"></g>
+          <g id="teia-mini-nos-${vinhetaId}"></g>
+        </svg>
+      </div>
+      <div class="teia-legenda" id="teia-legenda-${vinhetaId}" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"></div>
   `;
 
   actantesNaCena.forEach(act => {
     const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
     const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
-    const nomeGeral = (ctx && ctx.nomeCena && ctx.nomeCena !== act.nome) ? ` <span class="mediador-btn-sublabel">(${act.nome})</span>` : '';
     html += `
       <div class="mediador-item">
         <button class="mediador-btn" onclick="toggleMediador(${vinhetaId}, ${act.id})">
-          <span class="mediador-btn-label">▸ ${nomeDisplay}${nomeGeral}</span>
+          <span class="mediador-btn-label">▸ ${nomeDisplay}</span>
           <span class="mediador-btn-arrow" id="arrow-${vinhetaId}-${act.id}">+</span>
         </button>
         <div class="mediador-body" id="body-${vinhetaId}-${act.id}"></div>
@@ -3664,25 +3659,154 @@ function abrirInspecaoInline(vinhetaId) {
     `;
   });
 
-  // Teia mini para gesto origem-destino
-  html += `
-    <div class="teia-mini-wrap">
-      <div class="teia-mini-header">⊕ TRACE AS CONEXÕES DESTA CENA</div>
-      <div class="teia-mini-intro">Os fios cinzas são os <strong>condutos materiais</strong> que já existem na cena (cabos, contratos, rotas de dado). Clique em um fio para inspecionar a ação que percorre ele. Você terá que decidir <strong>em que direção</strong> a força flui. Alguns condutos hospedam tráfego nos dois sentidos.</div>
-      <svg class="teia-mini-svg" id="teia-mini-${vinhetaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
-        <g id="teia-mini-fios-${vinhetaId}"></g>
-        <g id="teia-mini-nos-${vinhetaId}"></g>
-      </svg>
-    </div>
-  `;
-
   html += '</div>';
   container.innerHTML = html;
   container.dataset.aberto = 'true';
   btn.classList.add('aberto');
   btn.textContent = '▲ FECHAR INSPEÇÃO';
 
+  // Renderiza a teia e a legenda
   renderTeiaMini(vinhetaId);
+  renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag);
+}
+
+function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverride) {
+  const leg = document.getElementById(legendaIdOverride || `teia-legenda-${vinhetaId}`);
+  if (!leg) return;
+  leg.innerHTML = '';
+  actantesNaCena.forEach(act => {
+    const cor = COR_ACTANTE[act.id];
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
+    const item = document.createElement('div');
+    item.style.cssText = `display:flex;align-items:center;gap:5px;font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:1px;color:var(--ink);`;
+    item.innerHTML = `<div style="width:18px;height:3px;background:${cor};flex-shrink:0;"></div>${nomeDisplay}`;
+    leg.appendChild(item);
+  });
+}
+  function renderTeiaMiniCustom(vinhetaId, fiosLayerId, nosLayerId, legendaId) {
+  const vinhetaTag = `V${vinhetaId}`;
+  const nosLayer = document.getElementById(nosLayerId);
+  const fiosLayer = document.getElementById(fiosLayerId);
+  if (!nosLayer || !fiosLayer) return;
+  nosLayer.innerHTML = '';
+  fiosLayer.innerHTML = '';
+  const ns = 'http://www.w3.org/2000/svg';
+
+  const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
+
+  // Setas direcionais coloridas por actante de origem
+  actantesNaCena.forEach(act => {
+    const corOrigem = COR_ACTANTE[act.id];
+    act.cadeias.forEach(c => {
+      c.alvos.forEach(alvoId => {
+        const posO = TEIA_MINI_POS[act.id];
+        const posD = TEIA_MINI_POS[alvoId];
+        if (!posO || !posD) return;
+
+        const dx = posD.x - posO.x;
+        const dy = posD.y - posO.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        const ux = dx/dist, uy = dy/dist;
+        const raio = 34;
+        const ox = -uy * 4, oy = ux * 4;
+
+        const x1 = posO.x + ux*raio + ox;
+        const y1 = posO.y + uy*raio + oy;
+        const x2 = posD.x - ux*raio + ox;
+        const y2 = posD.y - uy*raio + oy;
+
+        const line = document.createElementNS(ns, 'line');
+        line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+        line.setAttribute('stroke', corOrigem);
+        line.setAttribute('stroke-width', '2');
+        line.setAttribute('opacity', '0.85');
+        fiosLayer.appendChild(line);
+
+        const arrowSize = 9;
+        const ax = x2 - ux*arrowSize + uy*arrowSize*0.4;
+        const ay = y2 - uy*arrowSize - ux*arrowSize*0.4;
+        const bx = x2 - ux*arrowSize - uy*arrowSize*0.4;
+        const by = y2 - uy*arrowSize + ux*arrowSize*0.4;
+
+        const arrow = document.createElementNS(ns, 'polygon');
+        arrow.setAttribute('points', `${x2},${y2} ${ax},${ay} ${bx},${by}`);
+        arrow.setAttribute('fill', corOrigem);
+        arrow.setAttribute('opacity', '0.85');
+        fiosLayer.appendChild(arrow);
+      });
+    });
+  });
+
+  // Nós
+  actantesNaCena.forEach(act => {
+    const pos = TEIA_MINI_POS[act.id];
+    if (!pos) return;
+    const cor = COR_ACTANTE[act.id];
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    const siglaDisplay = (ctx && ctx.siglaCena) ? ctx.siglaCena : act.sigla;
+    const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
+
+    const g = document.createElementNS(ns, 'g');
+    g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
+
+    const c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 32);
+    c.setAttribute('fill', cor);
+    c.setAttribute('stroke', PALETA.ink);
+    c.setAttribute('stroke-width', '2');
+    g.appendChild(c);
+
+    const lbl = document.createElementNS(ns, 'text');
+    lbl.setAttribute('text-anchor', 'middle');
+    lbl.setAttribute('y', '4');
+    lbl.setAttribute('font-size', siglaDisplay.length > 8 ? '6' : '8');
+    lbl.setAttribute('font-family', "'Archivo Black',sans-serif");
+    lbl.setAttribute('fill', PALETA.bone);
+    lbl.setAttribute('letter-spacing', '.5');
+    lbl.style.pointerEvents = 'none';
+    lbl.textContent = siglaDisplay;
+    g.appendChild(lbl);
+
+    const yNome = pos.y > 180 ? 50 : -42;
+    const palavras = nomeDisplay.split(' ');
+    let l1 = nomeDisplay, l2 = '';
+    if (nomeDisplay.length > 20) {
+      const m = Math.ceil(palavras.length / 2);
+      l1 = palavras.slice(0, m).join(' ');
+      l2 = palavras.slice(m).join(' ');
+    }
+
+    const n1 = document.createElementNS(ns, 'text');
+    n1.setAttribute('text-anchor', 'middle');
+    n1.setAttribute('y', l2 ? yNome - 5 : yNome);
+    n1.setAttribute('font-size', '8');
+    n1.setAttribute('font-family', "'Archivo Black',sans-serif");
+    n1.setAttribute('fill', PALETA.ink);
+    n1.style.pointerEvents = 'none';
+    n1.textContent = l1;
+    g.appendChild(n1);
+
+    if (l2) {
+      const n2 = document.createElementNS(ns, 'text');
+      n2.setAttribute('text-anchor', 'middle');
+      n2.setAttribute('y', yNome + 5);
+      n2.setAttribute('font-size', '8');
+      n2.setAttribute('font-family', "'Archivo Black',sans-serif");
+      n2.setAttribute('fill', PALETA.ink);
+      n2.style.pointerEvents = 'none';
+      n2.textContent = l2;
+      g.appendChild(n2);
+    }
+
+    nosLayer.appendChild(g);
+  });
+
+  // Legenda
+  if (legendaId) {
+    renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaId);
+  }
 }
 
 // Posições dos 7 nós dentro do viewBox 700x360 da teia mini
@@ -3698,175 +3822,133 @@ const TEIA_MINI_POS = {
   7: { x: 350, y: 180 }
 };
 
+const COR_ACTANTE = {
+  1: '#577387',
+  2: '#A8412A',
+  3: '#C89339',
+  4: '#5B6B3F',
+  5: '#7B5EA7',
+  6: '#3D8B7A',
+  7: '#CC3333'
+};
 function renderTeiaMini(vinhetaId) {
   const vinhetaTag = `V${vinhetaId}`;
   const nosLayer = document.getElementById(`teia-mini-nos-${vinhetaId}`);
   const fiosLayer = document.getElementById(`teia-mini-fios-${vinhetaId}`);
   if (!nosLayer || !fiosLayer) return;
-
   nosLayer.innerHTML = '';
   fiosLayer.innerHTML = '';
   const ns = 'http://www.w3.org/2000/svg';
 
-  // ─── INFRAESTRUTURA POTENCIAL: fios cinzas inertes ───
-  // Para cada conduto presente nesta cena, desenha um fio cinza.
-  // Por cima dele, sobrepõe feixes mostarda animados conforme cadeias já mapeadas.
-  const condutos = getCondutosDaCena(vinhetaTag);
+  const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
 
-  condutos.forEach(cond => {
-    const o = TEIA_MINI_POS[cond.a], d = TEIA_MINI_POS[cond.b];
-    if (!o || !d) return;
+  // ── Desenha setas direcionais coloridas por actante de origem ──
+  actantesNaCena.forEach(act => {
+    const corOrigem = COR_ACTANTE[act.id];
+    act.cadeias.forEach(c => {
+      c.alvos.forEach(alvoId => {
+        const posO = TEIA_MINI_POS[act.id];
+        const posD = TEIA_MINI_POS[alvoId];
+        if (!posO || !posD) return;
 
-    // Fio cinza inerte (conduto material pré-existente)
-    const condutoLine = document.createElementNS(ns, 'line');
-    condutoLine.setAttribute('x1', o.x); condutoLine.setAttribute('y1', o.y);
-    condutoLine.setAttribute('x2', d.x); condutoLine.setAttribute('y2', d.y);
-    condutoLine.setAttribute('stroke', PALETA.ink);
-    condutoLine.setAttribute('stroke-width', '1.5');
-    condutoLine.setAttribute('opacity', '.18');
-    condutoLine.setAttribute('data-conduto', `${cond.a}-${cond.b}`);
-    condutoLine.setAttribute('data-vinheta', vinhetaTag);
-    condutoLine.style.cursor = 'pointer';
-    // Área de clique mais generosa: um segundo elemento invisível mais grosso por cima
-    const condutoHit = document.createElementNS(ns, 'line');
-    condutoHit.setAttribute('x1', o.x); condutoHit.setAttribute('y1', o.y);
-    condutoHit.setAttribute('x2', d.x); condutoHit.setAttribute('y2', d.y);
-    condutoHit.setAttribute('stroke', 'transparent');
-    condutoHit.setAttribute('stroke-width', '14');
-    condutoHit.setAttribute('data-conduto', `${cond.a}-${cond.b}`);
-    condutoHit.setAttribute('data-vinheta', vinhetaTag);
-    condutoHit.style.cursor = 'pointer';
-    condutoHit.onclick = () => abrirTooltipConduto(vinhetaId, cond);
-    fiosLayer.appendChild(condutoLine);
-    fiosLayer.appendChild(condutoHit);
+        const dx = posD.x - posO.x;
+        const dy = posD.y - posO.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        const ux = dx/dist, uy = dy/dist;
+        const raio = 34;
 
-    // Feixe de IDA (do menor id para o maior) — sólido contínuo, se já rastreado
-    const idaRastreada = cond.cadeiasIda.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
-    if (idaRastreada) {
-      const feixeIda = document.createElementNS(ns, 'line');
-      feixeIda.setAttribute('x1', o.x); feixeIda.setAttribute('y1', o.y);
-      feixeIda.setAttribute('x2', d.x); feixeIda.setAttribute('y2', d.y);
-      feixeIda.setAttribute('stroke', PALETA.mustard);
-      feixeIda.setAttribute('stroke-width', '2.2');
-      feixeIda.setAttribute('opacity', '.9');
-      feixeIda.setAttribute('stroke-dasharray', '6 4');
-      feixeIda.setAttribute('class', 'feixe-ida');
-      fiosLayer.appendChild(feixeIda);
-    }
+        // Offset lateral para separar setas do mesmo par (ida vs volta)
+        const ox = -uy * 4, oy = ux * 4;
 
-    // Feixe de VOLTA (do maior id para o menor) — tracejado espaçado, se já rastreado
-    const voltaRastreada = cond.cadeiasVolta.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
-    if (voltaRastreada) {
-      const feixeVolta = document.createElementNS(ns, 'line');
-      feixeVolta.setAttribute('x1', d.x); feixeVolta.setAttribute('y1', d.y);
-      feixeVolta.setAttribute('x2', o.x); feixeVolta.setAttribute('y2', o.y);
-      feixeVolta.setAttribute('stroke', PALETA.mustard);
-      feixeVolta.setAttribute('stroke-width', '1.8');
-      feixeVolta.setAttribute('opacity', '.75');
-      feixeVolta.setAttribute('stroke-dasharray', '2 6');
-      feixeVolta.setAttribute('class', 'feixe-volta');
-      fiosLayer.appendChild(feixeVolta);
-    }
+        const x1 = posO.x + ux*raio + ox;
+        const y1 = posO.y + uy*raio + oy;
+        const x2 = posD.x - ux*raio + ox;
+        const y2 = posD.y - uy*raio + oy;
+
+        // Linha
+        const line = document.createElementNS(ns, 'line');
+        line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+        line.setAttribute('stroke', corOrigem);
+        line.setAttribute('stroke-width', '2');
+        line.setAttribute('opacity', '0.85');
+        fiosLayer.appendChild(line);
+
+        // Ponta da seta (marcador manual)
+        const arrowSize = 9;
+        const ax = x2 - ux*arrowSize + uy*arrowSize*0.4;
+        const ay = y2 - uy*arrowSize - ux*arrowSize*0.4;
+        const bx = x2 - ux*arrowSize - uy*arrowSize*0.4;
+        const by = y2 - uy*arrowSize + ux*arrowSize*0.4;
+
+        const arrow = document.createElementNS(ns, 'polygon');
+        arrow.setAttribute('points', `${x2},${y2} ${ax},${ay} ${bx},${by}`);
+        arrow.setAttribute('fill', corOrigem);
+        arrow.setAttribute('opacity', '0.85');
+        fiosLayer.appendChild(arrow);
+      });
+    });
   });
 
-  // Desenha os 7 nós (6 actantes em hexágono + humano ao centro quando ele atravessa a cena)
-  ACTANTES.forEach(act => {
+  // ── Desenha os nós ──
+  actantesNaCena.forEach(act => {
     const pos = TEIA_MINI_POS[act.id];
     if (!pos) return;
-
-    // Pula o humano se ele não atravessa esta vinheta
-    if (act.id === 7 && !act.atravessa.includes(vinhetaTag)) return;
-
-    const trace = stateP2.traceState[vinhetaTag] || { origem: null, destino: null };
-    const isOrigemAtual = trace.origem === act.id;
-    const isHumano = act.id === 7;
-
-    // Pega nome/sigla contextuais se existirem, senão usa os gerais
+    const cor = COR_ACTANTE[act.id];
     const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
     const siglaDisplay = (ctx && ctx.siglaCena) ? ctx.siglaCena : act.sigla;
     const nomeDisplay = (ctx && ctx.nomeCena) ? ctx.nomeCena : act.nome;
 
     const g = document.createElementNS(ns, 'g');
-    g.setAttribute('class', 'teia-mini-no' + (isOrigemAtual ? ' selecionado' : '') + (isHumano ? ' humano' : ''));
     g.setAttribute('transform', `translate(${pos.x},${pos.y})`);
-
-   // ANDAIME: actantes fora da cena ficam fantasmas
-    const isNaCena = act.atravessa.includes(vinhetaTag);
-    if (!isNaCena) {
-      g.style.opacity = '0.2';
-    } else {
-      g.style.opacity = '1';
-    }
-    // Nós não são mais clicáveis. O gesto agora é clicar no fio cinza.
-    g.style.pointerEvents = 'none';
-    if (isHumano && !isOrigemAtual) {
-      const pulse = document.createElementNS(ns, 'circle');
-      pulse.setAttribute('cx', 0); pulse.setAttribute('cy', 0); pulse.setAttribute('r', 38);
-      pulse.setAttribute('fill', 'none');
-      pulse.setAttribute('stroke', PALETA.brick);
-      pulse.setAttribute('stroke-width', '1');
-      pulse.setAttribute('opacity', '.45');
-      pulse.innerHTML = `<animate attributeName="r" values="38;48;38" dur="2.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.45;0;0.45" dur="2.8s" repeatCount="indefinite"/>`;
-      g.appendChild(pulse);
-    }
 
     const c = document.createElementNS(ns, 'circle');
     c.setAttribute('cx', 0); c.setAttribute('cy', 0); c.setAttribute('r', 32);
-    if (isHumano) {
-      c.setAttribute('fill', isOrigemAtual ? PALETA.ink : PALETA.brick);
-      c.setAttribute('stroke', PALETA.bone);
-      c.setAttribute('stroke-width', '2.5');
-    } else {
-      c.setAttribute('fill', isOrigemAtual ? PALETA.brick : PALETA.bone);
-      c.setAttribute('stroke', PALETA.ink);
-      c.setAttribute('stroke-width', '2');
-    }
+    c.setAttribute('fill', cor);
+    c.setAttribute('stroke', PALETA.ink);
+    c.setAttribute('stroke-width', '2');
     g.appendChild(c);
 
     const lbl = document.createElementNS(ns, 'text');
     lbl.setAttribute('text-anchor', 'middle');
-    lbl.setAttribute('y', '3');
-    lbl.setAttribute('font-size', siglaDisplay.length > 10 ? '6' : '8');
+    lbl.setAttribute('y', '4');
+    lbl.setAttribute('font-size', siglaDisplay.length > 8 ? '6' : '8');
     lbl.setAttribute('font-family', "'Archivo Black',sans-serif");
-    lbl.setAttribute('fill', isOrigemAtual ? PALETA.bone : (isHumano ? PALETA.bone : PALETA.ink));
+    lbl.setAttribute('fill', PALETA.bone);
     lbl.setAttribute('letter-spacing', '.5');
     lbl.style.pointerEvents = 'none';
     lbl.textContent = siglaDisplay;
     g.appendChild(lbl);
 
-    const nomeBase = nomeDisplay;
-    const palavras = nomeBase.split(' ');
-    let linha1 = nomeBase;
-    let linha2 = '';
-    if (nomeBase.length > 22) {
-      const meio = Math.ceil(palavras.length / 2);
-      linha1 = palavras.slice(0, meio).join(' ');
-      linha2 = palavras.slice(meio).join(' ');
+    // Nome abaixo ou acima do nó
+    const yNome = pos.y > 180 ? 50 : -42;
+    const palavras = nomeDisplay.split(' ');
+    let l1 = nomeDisplay, l2 = '';
+    if (nomeDisplay.length > 20) {
+      const m = Math.ceil(palavras.length / 2);
+      l1 = palavras.slice(0, m).join(' ');
+      l2 = palavras.slice(m).join(' ');
     }
-    const yBase = isHumano ? 52 : (pos.y > 180 ? 52 : -42);
+    const n1 = document.createElementNS(ns, 'text');
+    n1.setAttribute('text-anchor', 'middle');
+    n1.setAttribute('y', l2 ? yNome - 5 : yNome);
+    n1.setAttribute('font-size', '8');
+    n1.setAttribute('font-family', "'Archivo Black',sans-serif");
+    n1.setAttribute('fill', PALETA.ink);
+    n1.style.pointerEvents = 'none';
+    n1.textContent = l1;
+    g.appendChild(n1);
 
-    const nome1 = document.createElementNS(ns, 'text');
-    nome1.setAttribute('text-anchor', 'middle');
-    nome1.setAttribute('y', linha2 ? yBase - 5 : yBase);
-    nome1.setAttribute('font-size', '8');
-    nome1.setAttribute('font-family', "'Archivo Black',sans-serif");
-    nome1.setAttribute('fill', PALETA.ink);
-    nome1.setAttribute('letter-spacing', '.5');
-    nome1.style.pointerEvents = 'none';
-    nome1.textContent = linha1;
-    g.appendChild(nome1);
-
-    if (linha2) {
-      const nome2 = document.createElementNS(ns, 'text');
-      nome2.setAttribute('text-anchor', 'middle');
-      nome2.setAttribute('y', yBase + 5);
-      nome2.setAttribute('font-size', '8');
-      nome2.setAttribute('font-family', "'Archivo Black',sans-serif");
-      nome2.setAttribute('fill', PALETA.ink);
-      nome2.setAttribute('letter-spacing', '.5');
-      nome2.style.pointerEvents = 'none';
-      nome2.textContent = linha2;
-      g.appendChild(nome2);
+    if (l2) {
+      const n2 = document.createElementNS(ns, 'text');
+      n2.setAttribute('text-anchor', 'middle');
+      n2.setAttribute('y', yNome + 5);
+      n2.setAttribute('font-size', '8');
+      n2.setAttribute('font-family', "'Archivo Black',sans-serif");
+      n2.setAttribute('fill', PALETA.ink);
+      n2.style.pointerEvents = 'none';
+      n2.textContent = l2;
+      g.appendChild(n2);
     }
 
     nosLayer.appendChild(g);
@@ -4748,7 +4830,10 @@ function fecharActante() {
 // PROTOCOLO DE COAÇÃO (Caderneta da P2)
 // ────────────────────────────────────────────
 function addProtocolo(act, cadeia, vinhetaTag) {
-  // Resolve nome/sigla contextuais se houver vinheta
+  // Evita duplicatas exatas
+  const jaExiste = stateP2.protocolo.find(p => p.cadeiaId === cadeia.id);
+  if (jaExiste) return;
+
   let siglaDisplay = act.sigla;
   let nomeDisplay = act.nome;
   if (vinhetaTag) {
@@ -4758,19 +4843,45 @@ function addProtocolo(act, cadeia, vinhetaTag) {
       nomeDisplay = ctx.nomeCena || act.nome;
     }
   }
-  // Detecta se a conexão envolve o humano (origem ou destino é actante 7)
+
   const envolveHumano = act.id === 7 || (cadeia.alvos && cadeia.alvos.includes(7));
-  stateP2.protocolo.push({act: nomeDisplay, texto: cadeia.texto, envolveHumano});
+  const cor = COR_ACTANTE[act.id];
+
+  stateP2.protocolo.push({ act: nomeDisplay, texto: cadeia.texto, envolveHumano, cadeiaId: cadeia.id, vinhetaTag, cor });
+
   const empty = document.getElementById('protocolo-empty');
   if (empty) empty.remove();
+
   const content = document.getElementById('protocolo-content');
+
+  // Cria ou encontra o grupo desta cena
+  let grupoId = `protocolo-grupo-${vinhetaTag}`;
+  let grupo = document.getElementById(grupoId);
+  if (!grupo) {
+    grupo = document.createElement('div');
+    grupo.id = grupoId;
+    grupo.style.cssText = 'border-bottom:2px solid var(--mustard);margin-bottom:0;';
+    const grupoHeader = document.createElement('div');
+    grupoHeader.style.cssText = `
+      padding:8px 18px;
+      background:rgba(200,147,57,.12);
+      font-family:'Archivo Black',sans-serif;
+      font-size:8px;letter-spacing:2px;
+      color:var(--mustard);
+    `;
+    grupoHeader.textContent = `${vinhetaTag} · ${VINHETAS.find(v=>`V${v.id}`===vinhetaTag)?.titulo?.split('·')[0]?.trim() || vinhetaTag}`;
+    grupo.appendChild(grupoHeader);
+    content.appendChild(grupo);
+  }
+
   const card = document.createElement('div');
   card.className = 'protocolo-card' + (envolveHumano ? ' envolve-humano' : '');
+  card.style.borderLeft = `4px solid ${cor}`;
   card.innerHTML = `
-    <div class="protocolo-num">CONEXÃO ${stateP2.protocolo.length} · ${siglaDisplay}${vinhetaTag ? ' · ' + vinhetaTag : ''}</div>
-    <div class="protocolo-text"><strong>${nomeDisplay}</strong> ${cadeia.texto}</div>
+    <div class="protocolo-num" style="color:${cor};">${siglaDisplay} → ${cadeia.alvos.map(id => ACTANTES.find(a=>a.id===id)?.sigla||id).join(', ')}</div>
+    <div class="protocolo-text">${cadeia.texto}</div>
   `;
-  content.appendChild(card);
+  grupo.appendChild(card);
 }
 
 function toggleProtocolo() {
