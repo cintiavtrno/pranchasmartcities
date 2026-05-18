@@ -3605,8 +3605,10 @@ function showReveal(id, titulo, texto, toast) {
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
 
   // Registra automaticamente todas as conexões desta cena
+  // Cadeias com campo `vinheta` definido só são registradas na cena correspondente.
   actantesNaCena.forEach(act => {
     act.cadeias.forEach(c => {
+      if (c.vinheta && c.vinheta !== vinhetaTag) return;
       if (!stateP2.cadeiasMapeadas.has(c.id)) {
         stateP2.cadeiasMapeadas.add(c.id);
         addProtocolo(act, c, vinhetaTag);
@@ -3614,7 +3616,6 @@ function showReveal(id, titulo, texto, toast) {
     });
   });
   updateLegibilidade();
-
   const teiaId = `reveal-teia-${id}`;
 
   body.innerHTML = `
@@ -3675,8 +3676,10 @@ function abrirInspecaoInline(vinhetaId) {
   }
 
   // Registra automaticamente todas as conexões desta cena no protocolo
+  // Cadeias com campo `vinheta` definido só são registradas na cena correspondente.
   actantesNaCena.forEach(act => {
     act.cadeias.forEach(c => {
+      if (c.vinheta && c.vinheta !== vinhetaTag) return;
       const cadeiaJaRegistrada = stateP2.cadeiasMapeadas.has(c.id);
       if (!cadeiaJaRegistrada) {
         stateP2.cadeiasMapeadas.add(c.id);
@@ -4571,11 +4574,11 @@ const ACTANTES = [
       V7: {nomeCena: 'PASSAGEIROS DOS ÔNIBUS', siglaCena: 'TRABALHADORES', oQueFaz: 'Aguardam retidos no congestionamento da via transversal periférica enquanto seus celulares emitem sinais estáticos de geolocalização.', oQueRecebeDeVolta: 'Recebem de volta o atraso punitivo e a imobilidade física para que o VLT, no cruzamento nobre e monitorado, flua livremente.'}
     },
     cadeias: [
-      {id:'c7-1', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a computar sua passagem pela catraca como um indicador de sucesso operacional, validando a métrica que justifica a renovação do próprio sistema.'},
-      {id:'c7-2', alvos:[2], texto:'<strong>obriga o BANCO DE DADOS POLICIAL</strong> a absorver o registro de averiguação da sua abordagem, retroalimentando o arquivo enviesado que criminalizará o próximo jovem negro.'},
-      {id:'c7-3', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a registrar suas novas vendas precárias no banco de dados, alimentando a máquina que valida estatisticamente o acerto do score opaco que a prejudicou.'},
-      {id:'c7-4', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a assimilar sua nova avaliação de 5 estrelas do local "seguro", intensificando o peso matemático da segregação (redlining) para o próximo turista.'},
-      {id:'c7-5', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a ler seus sinais celulares estáticos como "caos viário", produzindo o dado de contraste que o painel usa para provar matematicamente a eficiência do VLT.'}
+      {id:'c7-1', vinheta:'V1', alvos:[4], texto:'<strong>obriga o CONTRATO PPP</strong> a computar sua passagem pela catraca como um indicador de sucesso operacional, validando a métrica que justifica a renovação do próprio sistema.'},
+      {id:'c7-2', vinheta:'V2', alvos:[2], texto:'<strong>obriga o BANCO DE DADOS POLICIAL</strong> a absorver o registro de averiguação da sua abordagem, retroalimentando o arquivo enviesado que criminalizará o próximo jovem negro.'},
+      {id:'c7-3', vinheta:'V3', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a registrar suas novas vendas precárias no banco de dados, alimentando a máquina que valida estatisticamente o acerto do score opaco que a prejudicou.'},
+      {id:'c7-4', vinheta:'V6', alvos:[3], texto:'<strong>obriga o ALGORITMO DE INFERÊNCIA</strong> a assimilar sua nova avaliação de 5 estrelas do local "seguro", intensificando o peso matemático da segregação (redlining) para o próximo turista.'},
+      {id:'c7-5', vinheta:'V7', alvos:[5], texto:'<strong>obriga o DASHBOARD DO CCO</strong> a ler seus sinais celulares estáticos como "caos viário", produzindo o dado de contraste que o painel usa para provar matematicamente a eficiência do VLT.'}
     ]
   }
 ];
@@ -4896,15 +4899,29 @@ function addProtocolo(act, cadeia, vinhetaTag) {
   const jaExiste = stateP2.protocolo.find(p => p.cadeiaId === cadeia.id);
   if (jaExiste) return;
 
-  let siglaDisplay = act.sigla;
-  let nomeDisplay = act.nome;
-  if (vinhetaTag) {
-    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
-    if (ctx) {
-      siglaDisplay = ctx.siglaCena || act.sigla;
-      nomeDisplay = ctx.nomeCena || act.nome;
+  // Helper: retorna a sigla a exibir para um actante numa dada cena.
+  // Para o actante 7 (CIDADÃO), sempre "CIDADÃO" com o personagem entre parênteses.
+  ffunction siglaContextual(actante, tag) {
+    const ctx = (actante.porCena && actante.porCena[tag]) || null;
+    if (actante.id === 7) {
+      const personagem = ctx && ctx.siglaCena ? ctx.siglaCena : '';
+      return personagem ? `CIDADÃO-PLATAFORMA (${personagem})` : 'CIDADÃO-PLATAFORMA';
     }
+    return (ctx && ctx.siglaCena) ? ctx.siglaCena : actante.sigla;
   }
+  const siglaOrigem = siglaContextual(act, vinhetaTag);
+  let nomeDisplay = act.id === 7 ? 'CIDADÃO-PLATAFORMA' : act.nome;
+  if (act.id !== 7 && vinhetaTag) {
+    const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
+    if (ctx) nomeDisplay = ctx.nomeCena || act.nome;
+  }
+
+  // Sigla contextual também para os alvos (caso o alvo seja o cidadão)
+  const alvosSiglas = cadeia.alvos.map(id => {
+    const alvoAct = ACTANTES.find(a => a.id === id);
+    if (!alvoAct) return id;
+    return siglaContextual(alvoAct, vinhetaTag);
+  }).join(', ');
 
   const envolveHumano = act.id === 7 || (cadeia.alvos && cadeia.alvos.includes(7));
   const cor = COR_ACTANTE[act.id];
@@ -4940,7 +4957,7 @@ function addProtocolo(act, cadeia, vinhetaTag) {
   card.className = 'protocolo-card' + (envolveHumano ? ' envolve-humano' : '');
   card.style.borderLeft = `4px solid ${cor}`;
   card.innerHTML = `
-    <div class="protocolo-num" style="color:${cor};">${siglaDisplay} → ${cadeia.alvos.map(id => ACTANTES.find(a=>a.id===id)?.sigla||id).join(', ')}</div>
+    <div class="protocolo-num" style="color:${cor};">${siglaOrigem} → ${alvosSiglas}</div>
     <div class="protocolo-text">${cadeia.texto}</div>
   `;
   grupo.appendChild(card);
