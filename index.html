@@ -1279,6 +1279,72 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .teia-mini-wrap {
   position: relative;
 }
+  /* ─── FICHA TÉCNICA · alinha com a identidade dos stamps ─── */
+.ficha-geral {
+  margin-bottom: 14px;
+}
+.ficha-geral-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--bone);
+  background: var(--brick);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.ficha-contextual {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1.5px dashed var(--ink);
+}
+.ficha-contextual-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--ink);
+  background: var(--mustard);
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.ficha-revisao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  margin-bottom: 6px;
+}
+.ficha-revisao-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--ink);
+  opacity: .55;
+  text-transform: uppercase;
+}
+.ficha-revisao-btn {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--bone);
+  background: var(--ink);
+  border: 1.5px solid var(--ink);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.ficha-revisao-btn:hover {
+  background: var(--brick);
+  border-color: var(--brick);
+}
 </style>
 </head>
 <body>
