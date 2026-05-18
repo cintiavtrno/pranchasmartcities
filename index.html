@@ -4443,10 +4443,8 @@ const stateP2 = {
   cadeiasMapeadas: new Set(), // Set de IDs de cadeia (c1-1, c3-2, etc) — cada direção é uma cadeia única
   currentActante: null,
   protocolo: [],
-  // Dispositivos cuja ficha geral já foi mostrada nesta sessão
-  fichaJaMostrada: {}, // ex: { 1: 'V1' } significa que o dispositivo 1 foi inspecionado pela primeira vez em V1
-  // Tooltip flutuante ativo na teia mini (vinheta atual + par sob inspeção)
-  tooltipState: {}, // ex: { V3: { parKey: '3-7', x: 350, y: 180 } }
+  fichaJaMostrada: {},
+  tooltipState: {},
   traceState: {}
 };
 
