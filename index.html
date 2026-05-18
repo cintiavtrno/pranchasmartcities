@@ -3759,6 +3759,8 @@ function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverr
         const posO = TEIA_MINI_POS[act.id];
         const posD = TEIA_MINI_POS[alvoId];
         if (!posO || !posD) return;
+        // Só desenha se o alvo também estiver na cena
+        if (!actantesNaCena.find(a => a.id === alvoId)) return;
 
         const dx = posD.x - posO.x;
         const dy = posD.y - posO.y;
@@ -3906,6 +3908,8 @@ function renderTeiaMini(vinhetaId) {
         const posO = TEIA_MINI_POS[act.id];
         const posD = TEIA_MINI_POS[alvoId];
         if (!posO || !posD) return;
+        // Só desenha se o alvo também estiver na cena
+        if (!actantesNaCena.find(a => a.id === alvoId)) return;
 
         const dx = posD.x - posO.x;
         const dy = posD.y - posO.y;
