@@ -4435,19 +4435,17 @@ const ACTANTES = [
     ]
   }
 ];
-
 // Estado da Prancha 2
 const stateP2 = {
   visitedActantes: new Set(),
   completedActantes: new Set(),
-  cadeiasMapeadas: new Set(), // Set de IDs de cadeia (c1-1, c3-2, etc) — cada direção é uma cadeia única
+  cadeiasMapeadas: new Set(), // Set de IDs de cadeia (c1-1, c3-2, etc)
   currentActante: null,
   protocolo: [],
-  fichaJaMostrada: {},
+  fichaJaMostrada: {}, 
   tooltipState: {},
   traceState: {}
 };
-
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
 
 // ─── Calcula os condutos (pares de actantes ligados) presentes em cada cena ───
