@@ -3596,6 +3596,64 @@ function showResultadoBreve(msg, color, delay, callback) {
 // ════════════════════════════════════════
 // REVEAL
 // ════════════════════════════════════════
+function showReveal(id, titulo, texto, toast) {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  const v = VINHETAS.find(x => x.id === id);
+  const color = PALETA[v.cor];
+  const body = document.getElementById('reveal-body');
+  const vinhetaTag = `V${id}`;
+  const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
+
+  // Registra automaticamente todas as conexões desta cena
+  actantesNaCena.forEach(act => {
+    act.cadeias.forEach(c => {
+      if (!stateP2.cadeiasMapeadas.has(c.id)) {
+        stateP2.cadeiasMapeadas.add(c.id);
+        addProtocolo(act, c, vinhetaTag);
+      }
+    });
+  });
+  updateLegibilidade();
+  checkFimP2();
+
+  const teiaId = `reveal-teia-${id}`;
+
+  body.innerHTML = `
+    <div class="reveal-stamp">CONSEQUÊNCIA REGISTRADA</div>
+    <div class="reveal-titulo" style="color:${color}">${titulo}</div>
+    <div class="reveal-texto">${texto}</div>
+
+    <div style="margin:20px 0 6px;">
+      <div style="font-family:'Archivo Black',sans-serif;font-size:9px;letter-spacing:2.5px;color:${color};margin-bottom:8px;">
+        ⊕ REDE QUE OPERA NESTA CENA
+      </div>
+      <div style="font-size:10px;color:var(--ink);opacity:.7;margin-bottom:10px;line-height:1.5;">
+        Cada seta parte do actante que exerce a coação. A cor identifica a origem.
+      </div>
+      <svg id="${teiaId}" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg"
+        style="width:100%;background:var(--paperDark);border:1.5px solid var(--ink);margin-bottom:8px;">
+        <g id="teia-mini-fios-reveal-${id}"></g>
+        <g id="teia-mini-nos-reveal-${id}"></g>
+      </svg>
+      <div id="teia-legenda-reveal-${id}" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"></div>
+    </div>
+
+    <div class="reveal-ficha">
+      <div class="reveal-ficha-label">FICHA ${state.fichas.length + 1} · SERÁ ADICIONADA À CADERNETA</div>
+      <div class="reveal-ficha-quote">${v.ficha.texto}</div>
+      <div class="reveal-ficha-fonte">${v.ficha.fonte || ''}</div>
+    </div>
+    <button class="btn-inspecionar" id="btn-inspecionar-${id}" onclick="abrirInspecaoInline(${id})">⊕ VER FICHAS DOS DISPOSITIVOS</button>
+    <div id="mediadores-container-${id}"></div>
+  `;
+
+  setModalPhase('reveal');
+  if (toast) setTimeout(() => showToast(toast), 800);
+
+  setTimeout(() => {
+    renderTeiaMiniCustom(id, `teia-mini-fios-reveal-${id}`, `teia-mini-nos-reveal-${id}`, `teia-legenda-reveal-${id}`);
+  }, 80);
+}
 function abrirInspecaoInline(vinhetaId) {
   const btn = document.getElementById(`btn-inspecionar-${vinhetaId}`);
   const container = document.getElementById(`mediadores-container-${vinhetaId}`);
