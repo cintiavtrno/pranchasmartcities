@@ -1345,6 +1345,343 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   background: var(--brick);
   border-color: var(--brick);
 }
+  /* ═══════════════════════════════════════
+   AULA CONTEXTUAL · PDDU + PDTCI
+═══════════════════════════════════════ */
+
+#aula-pddu {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--paper);
+  display: none;
+  align-items: center; justify-content: center;
+}
+#aula-pddu.show { display: flex; }
+#aula-pddu .aula-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(26,22,17,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,22,17,.06) 1px,transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.aula-frame {
+  position: relative;
+  width: min(820px, 94vw);
+  max-height: 92vh;
+  background: var(--bone);
+  border: 2px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+
+.aula-header {
+  background: var(--ink); color: var(--bone);
+  padding: 12px 22px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.aula-header-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--mustard);
+}
+.aula-header-progress {
+  display: flex; align-items: center; gap: 8px;
+}
+.aula-progress-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 2px; color: var(--bone);
+}
+.aula-progress-track {
+  width: 120px; height: 4px;
+  background: rgba(247,239,217,.2);
+  border: 1px solid var(--bone);
+}
+.aula-progress-fill {
+  height: 100%; background: var(--mustard);
+  width: 0%; transition: width .4s ease;
+}
+
+.aula-body {
+  padding: 24px 30px 18px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.aula-slide { display: none; }
+.aula-slide.active { display: block; animation: aulaFadeIn .35s ease; }
+@keyframes aulaFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.aula-stamp {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--bone); background: var(--brick);
+  display: inline-block;
+  padding: 4px 10px; margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.aula-stamp.mustard { background: var(--mustard); color: var(--ink); }
+.aula-stamp.olive { background: var(--olive); }
+.aula-stamp.blue { background: var(--blue); }
+
+.aula-titulo {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(18px, 2.6vw, 26px);
+  letter-spacing: 2px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.aula-texto {
+  font-size: 13px; line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.aula-texto strong {
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: .5px;
+}
+
+.aula-quote {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 15px; line-height: 1.4;
+  color: var(--ink);
+  border-left: 3px solid var(--mustard);
+  padding: 6px 14px;
+  margin: 14px 0;
+}
+.aula-quote-fonte {
+  font-size: 9px; letter-spacing: 1px;
+  color: var(--ink); opacity: .6;
+  font-style: normal; font-family: 'Archivo', sans-serif;
+  margin-top: 4px;
+}
+
+.aula-grade {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+.aula-card-mini {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-left: 4px solid var(--brick);
+  padding: 10px 12px;
+}
+.aula-card-mini.olive { border-left-color: var(--olive); }
+.aula-card-mini.blue { border-left-color: var(--blue); }
+.aula-card-mini.mustard { border-left-color: var(--mustard); }
+.aula-card-mini-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--brick); margin-bottom: 4px;
+}
+.aula-card-mini.olive .aula-card-mini-label { color: var(--olive); }
+.aula-card-mini.blue .aula-card-mini-label { color: var(--blue); }
+.aula-card-mini.mustard .aula-card-mini-label { color: var(--mustard); }
+.aula-card-mini-text {
+  font-size: 11px; line-height: 1.5;
+  color: var(--ink);
+}
+
+.aula-svg-wrap {
+  background: var(--paperDark);
+  border: 1.5px solid var(--ink);
+  margin: 14px 0;
+  padding: 10px;
+}
+.aula-svg-wrap svg { width: 100%; height: auto; display: block; }
+.aula-svg-legenda {
+  font-size: 9px; letter-spacing: 1px;
+  color: var(--ink); opacity: .65;
+  text-align: center;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.aula-timeline-mini {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  margin: 18px 0;
+  position: relative;
+  padding: 0 6px;
+}
+.aula-timeline-mini::before {
+  content: ''; position: absolute;
+  left: 12px; right: 12px; top: 9px;
+  height: 2px; background: var(--ink);
+  z-index: 0;
+}
+.aula-tl-point {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  background: var(--bone);
+  padding: 0 4px;
+}
+.aula-tl-dot {
+  width: 18px; height: 18px;
+  background: var(--bone);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+}
+.aula-tl-dot.brick { background: var(--brick); }
+.aula-tl-dot.mustard { background: var(--mustard); }
+.aula-tl-dot.olive { background: var(--olive); }
+.aula-tl-year {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 1.5px;
+  color: var(--ink);
+}
+.aula-tl-event {
+  font-size: 9px; line-height: 1.3;
+  color: var(--ink); opacity: .75;
+  text-align: center;
+  max-width: 95px;
+}
+
+.aula-destaque-box {
+  background: var(--ink); color: var(--bone);
+  padding: 14px 18px;
+  margin: 14px 0;
+  border-left: 4px solid var(--mustard);
+}
+.aula-destaque-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 9px; letter-spacing: 2.5px;
+  color: var(--mustard); margin-bottom: 6px;
+}
+.aula-destaque-text {
+  font-size: 12px; line-height: 1.55;
+  color: var(--bone);
+}
+
+.aula-fluxo {
+  display: flex; align-items: stretch;
+  gap: 0; margin: 16px 0;
+  flex-wrap: nowrap;
+}
+.aula-fluxo-step {
+  flex: 1; min-width: 0;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 10px 8px;
+  text-align: center;
+}
+.aula-fluxo-step.dest {
+  background: var(--ink); color: var(--bone);
+}
+.aula-fluxo-ano {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 1.5px;
+  color: var(--brick);
+}
+.aula-fluxo-step.dest .aula-fluxo-ano { color: var(--mustard); }
+.aula-fluxo-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 8px; letter-spacing: 1px;
+  margin-top: 4px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.aula-fluxo-step.dest .aula-fluxo-label { color: var(--bone); }
+.aula-fluxo-arrow {
+  align-self: center;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 14px; color: var(--ink);
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.aula-comparacao {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin: 14px 0;
+}
+.aula-comp-coluna {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 12px 14px;
+}
+.aula-comp-coluna.dentro { border-left: 4px solid var(--blue); }
+.aula-comp-coluna.fora { border-left: 4px solid var(--brick); }
+.aula-comp-coluna.uniao {
+  background: var(--ink); color: var(--bone);
+  border-left: 4px solid var(--mustard);
+}
+.aula-comp-titulo {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.aula-comp-coluna.dentro .aula-comp-titulo { color: var(--blue); }
+.aula-comp-coluna.fora .aula-comp-titulo { color: var(--brick); }
+.aula-comp-coluna.uniao .aula-comp-titulo { color: var(--mustard); }
+.aula-comp-texto {
+  font-size: 11px; line-height: 1.5;
+}
+.aula-comp-plus {
+  align-self: center;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 18px; color: var(--ink);
+}
+
+.aula-footer {
+  padding: 14px 22px;
+  border-top: 2px solid var(--ink);
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--paperDark);
+  flex-shrink: 0;
+  gap: 10px;
+}
+.aula-btn {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 2.5px;
+  padding: 10px 20px;
+  border: 2px solid var(--ink);
+  background: var(--ink); color: var(--bone);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.aula-btn:hover { background: var(--brick); border-color: var(--brick); }
+.aula-btn.secondary {
+  background: transparent; color: var(--ink);
+}
+.aula-btn.secondary:hover {
+  background: var(--ink); color: var(--bone);
+}
+.aula-btn:disabled {
+  opacity: .25; cursor: not-allowed;
+}
+.aula-btn:disabled:hover {
+  background: var(--ink); color: var(--bone); border-color: var(--ink);
+}
+.aula-btn-skip {
+  font-size: 8px; letter-spacing: 1.5px;
+  color: var(--ink); opacity: .55;
+  background: transparent; border: none;
+  cursor: pointer; padding: 4px 8px;
+}
+.aula-btn-skip:hover { opacity: 1; text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .aula-grade { grid-template-columns: 1fr; }
+  .aula-comparacao { grid-template-columns: 1fr; }
+  .aula-comp-plus { transform: rotate(90deg); padding: 4px 0; }
+  .aula-fluxo { flex-wrap: wrap; }
+  .aula-tl-event { font-size: 8px; max-width: 70px; }
+}
 </style>
 </head>
 <body>
@@ -1421,7 +1758,287 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 <!-- ═══════════════════════════════════════════════
      APP
 ═══════════════════════════════════════════════ -->
-<div id="app" class="hidden">
+<!-- ═══════════════════════════════════════════════
+     AULA CONTEXTUAL · PDDU + PDTCI
+═══════════════════════════════════════════════ -->
+<section id="aula-pddu">
+  <div class="aula-bg-grid"></div>
+
+  <div class="aula-frame">
+    <div class="aula-header">
+      <div class="aula-header-stamp">CONTEXTO · LEITURA OBRIGATÓRIA</div>
+      <div class="aula-header-progress">
+        <span class="aula-progress-num" id="aula-progress-num">1 / 6</span>
+        <div class="aula-progress-track"><div class="aula-progress-fill" id="aula-progress-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="aula-body">
+
+      <!-- SLIDE 1 -->
+      <div class="aula-slide active" data-slide="1">
+        <div class="aula-stamp">CONCEITO · INSTRUMENTO JURÍDICO</div>
+        <h2 class="aula-titulo">O QUE É UM PLANO DIRETOR</h2>
+        <p class="aula-texto">Um <strong>Plano Diretor</strong> é a lei municipal que organiza o crescimento de uma cidade. É ele que define onde se pode construir, com qual altura e densidade, onde fica a moradia popular, quais áreas são de proteção ambiental, e quais terrenos podem ser desapropriados quando não cumprem sua função social.</p>
+        <p class="aula-texto">Está previsto na <strong>Constituição Federal</strong> (art. 182) e foi regulamentado pelo <strong>Estatuto da Cidade</strong> (Lei nº 10.257/2001). É <strong>obrigatório</strong> para todo município com mais de 20 mil habitantes, para cidades integrantes de regiões metropolitanas, e para municípios situados em áreas de especial interesse turístico ou ambiental.</p>
+
+        <div class="aula-grade">
+          <div class="aula-card-mini">
+            <div class="aula-card-mini-label">O QUE FAZ</div>
+            <div class="aula-card-mini-text">Divide o território da cidade em zonas com regras próprias de uso e ocupação do solo.</div>
+          </div>
+          <div class="aula-card-mini olive">
+            <div class="aula-card-mini-label">PRA QUE SERVE</div>
+            <div class="aula-card-mini-text">Materializa a função social da propriedade urbana: ninguém pode usar seu terreno contra o interesse coletivo.</div>
+          </div>
+          <div class="aula-card-mini blue">
+            <div class="aula-card-mini-label">QUEM ELABORA</div>
+            <div class="aula-card-mini-text">A prefeitura, com participação obrigatória da sociedade civil em audiências públicas.</div>
+          </div>
+          <div class="aula-card-mini mustard">
+            <div class="aula-card-mini-label">VIGÊNCIA</div>
+            <div class="aula-card-mini-text">Deve ser revisado a cada 10 anos (no caso de Salvador, a cada 8). Vincula todos os agentes públicos e privados.</div>
+          </div>
+        </div>
+
+        <p class="aula-texto" style="opacity:.75;font-size:12px;">Em resumo: o Plano Diretor é o <strong>pacto territorial</strong> que a cidade firma consigo mesma. Define o que pode e o que não pode ser feito sobre o solo urbano, e onde.</p>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="aula-slide" data-slide="2">
+        <div class="aula-stamp olive">LEI Nº 9.069/2016 · PDDU SALVADOR</div>
+        <h2 class="aula-titulo">O PLANO QUE VIGORA EM SALVADOR</h2>
+        <p class="aula-texto">O <strong>Plano Diretor de Desenvolvimento Urbano (PDDU)</strong> de Salvador foi aprovado pela Lei nº 9.069 em 30 de junho de 2016. Tem 411 artigos e integra um plano estratégico maior: o <strong>Plano Salvador 500</strong>, com horizonte até 2049, ano em que a cidade completará cinco séculos desde sua fundação.</p>
+
+        <div class="aula-timeline-mini">
+          <div class="aula-tl-point">
+            <div class="aula-tl-dot olive"></div>
+            <div class="aula-tl-year">2016</div>
+            <div class="aula-tl-event">PDDU é aprovado</div>
+          </div>
+          <div class="aula-tl-point">
+            <div class="aula-tl-dot brick"></div>
+            <div class="aula-tl-year">2022</div>
+            <div class="aula-tl-event">PDTCI é apresentado</div>
+          </div>
+          <div class="aula-tl-point">
+            <div class="aula-tl-dot brick"></div>
+            <div class="aula-tl-year">2025</div>
+            <div class="aula-tl-event">PDTCI vira Lei Complementar nº 92</div>
+          </div>
+          <div class="aula-tl-point">
+            <div class="aula-tl-dot mustard"></div>
+            <div class="aula-tl-year">2049</div>
+            <div class="aula-tl-event">Horizonte do Salvador 500</div>
+          </div>
+        </div>
+
+        <div class="aula-destaque-box">
+          <div class="aula-destaque-label">O QUE O PDDU 2016 DEFINIU</div>
+          <div class="aula-destaque-text">Princípios da política urbana, função social da propriedade, gestão democrática da cidade, sustentabilidade ambiental. Estabeleceu um <strong>macrozoneamento</strong> que divide todo o território municipal em camadas hierárquicas: macrozonas, macroáreas e zonas de uso. Cada camada com regras próprias de adensamento, gabarito, uso permitido e instrumentos urbanísticos aplicáveis.</div>
+        </div>
+
+        <p class="aula-texto" style="opacity:.75;font-size:12px;">O PDDU é a moldura jurídica. Tudo o que se constrói, demole, financia ou planeja na cidade precisa, em tese, respeitar o que está nele.</p>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="aula-slide" data-slide="3">
+        <div class="aula-stamp">AS DIVISÕES DO TERRITÓRIO</div>
+        <h2 class="aula-titulo">MACROZONAS, MACROÁREAS E ZONAS DE USO</h2>
+        <p class="aula-texto">O PDDU divide Salvador em <strong>duas macrozonas</strong> (Ocupação Urbana e Conservação Ambiental). A Macrozona de Ocupação Urbana se desdobra em <strong>cinco macroáreas</strong>, cada uma com características socioeconômicas e estratégias próprias:</p>
+
+        <div class="aula-svg-wrap">
+          <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="aula-hatch-brick" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="5" stroke="#A8412A" stroke-width=".6" opacity=".5"/>
+              </pattern>
+              <pattern id="aula-hatch-mustard" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
+                <line x1="0" y1="0" x2="0" y2="5" stroke="#C89339" stroke-width=".6" opacity=".5"/>
+              </pattern>
+            </defs>
+            <!-- Baía de Todos os Santos (oeste) -->
+            <rect x="0" y="0" width="200" height="360" fill="#577387" opacity=".25"/>
+            <text x="100" y="180" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" fill="#1A1611" opacity=".55" letter-spacing="2">BAÍA DE TODOS OS SANTOS</text>
+            <!-- Oceano Atlântico (leste) -->
+            <rect x="600" y="0" width="100" height="360" fill="#577387" opacity=".35"/>
+            <text x="650" y="180" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" fill="#1A1611" opacity=".55" letter-spacing="2" transform="rotate(90 650 180)">OCEANO ATLÂNTICO</text>
+
+            <!-- Península de Salvador (forma simplificada) -->
+            <!-- MIM (norte/eixo metropolitano) -->
+            <polygon points="200,0 600,0 600,90 540,110 400,100 280,90 200,80" fill="#577387" opacity=".55" stroke="#1A1611" stroke-width="1"/>
+            <text x="400" y="50" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#F7EFD9" letter-spacing="2">MIM</text>
+            <text x="400" y="65" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#F7EFD9" letter-spacing="1">Integração Metropolitana</text>
+
+            <!-- MEU (centro/miolo) -->
+            <polygon points="280,90 400,100 540,110 540,230 400,240 280,230" fill="#5B6B3F" opacity=".6" stroke="#1A1611" stroke-width="1"/>
+            <text x="410" y="160" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#F7EFD9" letter-spacing="2">MEU</text>
+            <text x="410" y="175" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#F7EFD9" letter-spacing="1">Estruturação Urbana · "Miolo"</text>
+
+            <!-- MRB (oeste/subúrbio ferroviário) -->
+            <polygon points="200,80 280,90 280,230 230,290 200,300" fill="#A8412A" opacity=".7" stroke="#1A1611" stroke-width="1"/>
+            <polygon points="200,80 280,90 280,230 230,290 200,300" fill="url(#aula-hatch-brick)"/>
+            <text x="240" y="180" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="12" fill="#F7EFD9" letter-spacing="2">MRB</text>
+            <text x="240" y="195" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#F7EFD9" letter-spacing=".8">Reestruturação</text>
+            <text x="240" y="205" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#F7EFD9" letter-spacing=".8">Borda da Baía</text>
+
+            <!-- MRBA (leste/orla atlântica) -->
+            <polygon points="540,110 600,90 600,300 560,300 540,230" fill="#C89339" opacity=".7" stroke="#1A1611" stroke-width="1"/>
+            <polygon points="540,110 600,90 600,300 560,300 540,230" fill="url(#aula-hatch-mustard)"/>
+            <text x="570" y="190" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="12" fill="#1A1611" letter-spacing="2">MRBA</text>
+            <text x="570" y="205" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#1A1611" letter-spacing=".8">Requalificação</text>
+            <text x="570" y="215" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#1A1611" letter-spacing=".8">Borda Atlântica</text>
+
+            <!-- MUC (sul/centro histórico) -->
+            <polygon points="280,230 540,230 560,300 400,330 230,290" fill="#DDD0B0" stroke="#1A1611" stroke-width="1"/>
+            <text x="400" y="280" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#1A1611" letter-spacing="2">MUC</text>
+            <text x="400" y="295" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#1A1611" letter-spacing="1">Urbanização Consolidada · Centro tradicional</text>
+
+            <!-- Pontos cardeais -->
+            <text x="350" y="15" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="9" fill="#1A1611" letter-spacing="2" opacity=".5">NORTE → AEROPORTO · PARALELA</text>
+            <text x="350" y="350" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="9" fill="#1A1611" letter-spacing="2" opacity=".5">SUL → CENTRO HISTÓRICO · PELOURINHO</text>
+          </svg>
+          <div class="aula-svg-legenda">Esquema simplificado das 5 macroáreas do PDDU 2016 · Mapa 01A do Anexo 03</div>
+        </div>
+
+        <div class="aula-grade">
+          <div class="aula-card-mini blue">
+            <div class="aula-card-mini-label">MIM</div>
+            <div class="aula-card-mini-text">Corredor BR-324 + Paralela. Espaços de articulação metropolitana, polos logísticos, ocupação rarefeita em áreas de alta valorização.</div>
+          </div>
+          <div class="aula-card-mini olive">
+            <div class="aula-card-mini-label">MEU · "MIOLO"</div>
+            <div class="aula-card-mini-text">Cabula, Tancredo Neves, Pau da Lima, Cajazeiras. Assentamentos precários e conjuntos habitacionais, urbanização fragmentada.</div>
+          </div>
+          <div class="aula-card-mini">
+            <div class="aula-card-mini-label">MRB · SUBÚRBIO FERROVIÁRIO</div>
+            <div class="aula-card-mini-text">Do Lobato a São Tomé de Paripe. O próprio PDDU a reconhece como "extenso bolsão de pobreza" com infraestrutura deficitária.</div>
+          </div>
+          <div class="aula-card-mini mustard">
+            <div class="aula-card-mini-label">MRBA · ORLA ATLÂNTICA</div>
+            <div class="aula-card-mini-text">Costa Azul até Lauro de Freitas. Patrimônio ambiental e cultural, baixa densidade, infraestrutura sobrando.</div>
+          </div>
+        </div>
+
+        <p class="aula-texto" style="margin-top:14px;">Dentro dessas macroáreas, o PDDU ainda define <strong>zonas de uso</strong> específicas: ZPR (residencial), <strong>ZEIS</strong> (Especial de Interesse Social, com 5 subtipos que vão de favelas a comunidades quilombolas), ZCM (centralidades), ZIT (turística), ZPAM (proteção ambiental) e outras. Cada uma com regras próprias.</p>
+
+        <div class="aula-destaque-box">
+          <div class="aula-destaque-label">PONTO CRÍTICO</div>
+          <div class="aula-destaque-text">O PDDU já reconhecia juridicamente, em 2016, que <strong>MRB e MRBA são territórios desiguais</strong>: uma é bolsão de pobreza, a outra é patrimônio com infraestrutura sobrando. Guarde isso. A "cidade inteligente" vai operar sobre os dois como se fossem o mesmo território técnico.</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="aula-slide" data-slide="4">
+        <div class="aula-stamp">PDTCI · A CAMADA QUE VEIO DEPOIS</div>
+        <h2 class="aula-titulo">POR QUE CRIARAM O PDTCI EM SALVADOR</h2>
+        <p class="aula-texto">O Plano Salvador 500 estabeleceu metas para 2049 que a administração municipal não tinha como monitorar em tempo real. Faltavam sensores, faltava conectividade pública, faltava capacidade de processamento de dados integrados. Tornou-se evidente, segundo o relatório oficial da CAF, que <strong>a realização física do Salvador 500 exigia uma contrapartida lógica</strong>.</p>
+
+        <div class="aula-fluxo">
+          <div class="aula-fluxo-step">
+            <div class="aula-fluxo-ano">2018</div>
+            <div class="aula-fluxo-label">Salvador contrata financiamento da CAF (Banco de Desenvolvimento da América Latina)</div>
+          </div>
+          <div class="aula-fluxo-arrow">▶</div>
+          <div class="aula-fluxo-step">
+            <div class="aula-fluxo-ano">2020</div>
+            <div class="aula-fluxo-label">Consórcio Salvador Smart City vence licitação e inicia trabalhos</div>
+          </div>
+          <div class="aula-fluxo-arrow">▶</div>
+          <div class="aula-fluxo-step">
+            <div class="aula-fluxo-ano">2022</div>
+            <div class="aula-fluxo-label">PDTCI é formalmente apresentado pela prefeitura</div>
+          </div>
+          <div class="aula-fluxo-arrow">▶</div>
+          <div class="aula-fluxo-step dest">
+            <div class="aula-fluxo-ano">2025</div>
+            <div class="aula-fluxo-label">Lei Complementar nº 92 institui o PDTCI</div>
+          </div>
+        </div>
+
+        <p class="aula-texto">O plano foi estruturado pela <strong>COGEL</strong> (Companhia de Governança Eletrônica de Salvador), em parceria com a <strong>CAF</strong>, usando como referência metodológica as normas internacionais <strong>ISO 37120 e ISO 37122</strong>, que definem indicadores para "cidades sustentáveis" e "cidades inteligentes".</p>
+
+        <div class="aula-grade">
+          <div class="aula-card-mini">
+            <div class="aula-card-mini-label">50 OCIs</div>
+            <div class="aula-card-mini-text">Objetivos de Cidade Inteligente, organizados em conectividade, infraestrutura, sistemas e bancos de dados.</div>
+          </div>
+          <div class="aula-card-mini mustard">
+            <div class="aula-card-mini-label">75 PROGRAMAS</div>
+            <div class="aula-card-mini-text">Distribuídos em horizontes de curto, médio e longo prazo, executados por consórcios privados.</div>
+          </div>
+          <div class="aula-card-mini blue">
+            <div class="aula-card-mini-label">R$ 5 BILHÕES</div>
+            <div class="aula-card-mini-text">Investimento global projetado nos sistemas municipais para implementação completa.</div>
+          </div>
+          <div class="aula-card-mini olive">
+            <div class="aula-card-mini-label">ABNT/ISO</div>
+            <div class="aula-card-mini-text">Indicadores definidos por normas internacionais, não por audiências públicas locais.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="aula-slide" data-slide="5">
+        <div class="aula-stamp blue">CONCEITO-CHAVE · CITAÇÃO DA CAF</div>
+        <h2 class="aula-titulo">DA PORTA PRA FORA, DA PORTA PRA DENTRO</h2>
+        <p class="aula-texto">A própria publicação da CAF sobre o aprendizado de Salvador explica, em poucas linhas, o que está em jogo:</p>
+
+        <blockquote class="aula-quote">
+          "O Plano Diretor diz respeito à cidade, externo à prefeitura, ou seja, 'da porta para fora'. Ao passo que o PDTI planeja as TICs da administração pública 'da porta para dentro'. Um PDTCI une as duas coisas, usando a TIC 'da porta para dentro' para resolver os problemas 'da porta para fora'."
+          <div class="aula-quote-fonte">— Planejando a Cidade Inteligente: o aprendizado da elaboração do PDTCI de Salvador, Bahia · CAF, 2022</div>
+        </blockquote>
+
+        <div class="aula-comparacao">
+          <div class="aula-comp-coluna fora">
+            <div class="aula-comp-titulo">PDDU</div>
+            <div class="aula-comp-texto">Plano da cidade, externo à prefeitura. Define o que pode ser construído, onde, com qual densidade. Pacto territorial.</div>
+          </div>
+          <div class="aula-comp-plus">+</div>
+          <div class="aula-comp-coluna dentro">
+            <div class="aula-comp-titulo">PDTI</div>
+            <div class="aula-comp-texto">Plano interno da prefeitura. Define as tecnologias da administração: servidores, redes, softwares de gestão.</div>
+          </div>
+        </div>
+        <div style="text-align:center;font-family:'Archivo Black',sans-serif;font-size:14px;letter-spacing:3px;color:var(--ink);margin:8px 0;">↓ &nbsp; FUSÃO &nbsp; ↓</div>
+        <div class="aula-comp-coluna uniao" style="margin-top:0;">
+          <div class="aula-comp-titulo">PDTCI</div>
+          <div class="aula-comp-texto">A tecnologia interna da prefeitura passa a operar sobre a cidade. O plano de tecnologia se torna, de fato, um plano urbanístico. Sensores, câmeras, algoritmos e bancos de dados deixam de ser ferramentas de gestão e passam a redesenhar o território.</div>
+        </div>
+
+        <p class="aula-texto" style="margin-top:14px;opacity:.85;">O ponto importante: <strong>essa fusão nunca passou pelo mesmo processo de participação social</strong> que o PDDU exigiu. O Plano Diretor foi debatido em audiências públicas obrigatórias, com mais de 400 artigos discutidos. O PDTCI foi formulado por consórcio técnico contratado, com base em normas ISO, e apresentado pronto à Câmara em 2025.</p>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="aula-slide" data-slide="6">
+        <div class="aula-stamp">A SOBREPOSIÇÃO · O QUE VOCÊ VAI VER NA PRANCHA</div>
+        <h2 class="aula-titulo">QUANDO A CAMADA TÉCNICA PASSA POR CIMA DO PACTO</h2>
+        <p class="aula-texto">O PDDU 2016 já tinha mapeado a desigualdade. Reconhecia, em texto de lei, que MRB era bolsão de pobreza e MRBA era patrimônio com infraestrutura sobrando. Reconhecia que existiam ZEIS-1 (favelas), ZEIS-4 (assentamentos precários em áreas ambientalmente frágeis) e ZEIS-5 (comunidades quilombolas). A vulnerabilidade tinha endereço jurídico.</p>
+        <p class="aula-texto">Sobre esse mesmo território, o PDTCI passa a executar uma camada técnica que <strong>opera como se não houvesse essa distinção</strong>. Os sensores não consultam o mapa do macrozoneamento antes de capturar. Os algoritmos não diferenciam ZEIS de ZPR-3. As câmeras do projeto Vídeo Polícia processam rostos da Cidade Baixa e da orla atlântica com a mesma calibração herdada das cartelas Shirley dos anos 1950.</p>
+
+        <div class="aula-destaque-box">
+          <div class="aula-destaque-label">O QUE ISSO PRODUZ</div>
+          <div class="aula-destaque-text">Onde o PDDU reconhecia uma ZEIS, o aplicativo turístico marca como "zona vermelha". Onde a Macroárea de Reestruturação da Borda reconhecia déficit de infraestrutura, o algoritmo de mobilidade simplesmente não instala sensor. Onde a Cidade Baixa pedia investimento urbanístico, o PDTCI instala biometria. <strong>A cidade inteligente não desfaz a desigualdade que o PDDU reconheceu. Ela a executa em escala automática, sem precisar passar por audiência pública.</strong></div>
+        </div>
+
+        <p class="aula-texto">É essa sobreposição que o artefato que você vai abrir documenta. Nove vinhetas. Seis dispositivos não-humanos. Vinte cadeias de coação. Cada uma operando sobre o território que o PDDU 2016 já tinha mapeado — e que o PDTCI atravessou sem renegociar.</p>
+
+        <p class="aula-texto" style="font-style:italic;opacity:.75;font-size:12px;margin-top:18px;">A prancha que você está prestes a abrir começa exatamente no ponto em que o decreto da iluminação LED de 2020 instalou os primeiros 47 mil postes. Sob cada poste, 840 km de fibra ótica. Em cada cruzamento, uma câmera. No final do contrato, em 2045, cinco gestões municipais terão passado sem poder rescindir o que foi assinado em uma única tarde.</p>
+      </div>
+
+    </div>
+
+    <div class="aula-footer">
+      <button class="aula-btn-skip" onclick="pularAula()">PULAR INTRODUÇÃO →</button>
+      <div style="display:flex;gap:8px;">
+        <button class="aula-btn secondary" id="aula-prev" onclick="aulaPrev()" disabled>← ANTERIOR</button>
+        <button class="aula-btn" id="aula-next" onclick="aulaNext()">PRÓXIMO →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+  <div id="app" class="hidden">
 
   <header>
     <div class="header-left">
@@ -2407,8 +3024,91 @@ function startApp() {
   document.getElementById('prologue').style.transition = 'opacity .5s';
   setTimeout(() => {
     document.getElementById('prologue').style.display = 'none';
+    iniciarAula();
+  }, 500);
+}
+  // ════════════════════════════════════════
+// AULA CONTEXTUAL · PDDU + PDTCI
+// ════════════════════════════════════════
+let aulaSlideAtual = 1;
+const AULA_TOTAL_SLIDES = 6;
+
+function iniciarAula() {
+  aulaSlideAtual = 1;
+  const aula = document.getElementById('aula-pddu');
+  aula.style.opacity = '';
+  aula.style.transition = '';
+  aula.classList.add('show');
+  atualizarAula();
+}
+
+function atualizarAula() {
+  const n = aulaSlideAtual;
+  const total = AULA_TOTAL_SLIDES;
+
+  // Mostra apenas o slide atual
+  document.querySelectorAll('#aula-pddu .aula-slide').forEach(s => {
+    s.classList.remove('active');
+  });
+  const slideAtual = document.querySelector(`#aula-pddu .aula-slide[data-slide="${n}"]`);
+  if (slideAtual) slideAtual.classList.add('active');
+
+  // Atualiza indicador de progresso
+  const numEl = document.getElementById('aula-progress-num');
+  const fillEl = document.getElementById('aula-progress-fill');
+  if (numEl) numEl.textContent = `${n} / ${total}`;
+  if (fillEl) fillEl.style.width = (n / total * 100) + '%';
+
+  // Habilita/desabilita botão anterior
+  const prevBtn = document.getElementById('aula-prev');
+  if (prevBtn) prevBtn.disabled = (n === 1);
+
+  // Ajusta botão próximo: no último slide vira "ENTRAR NA CIDADE"
+  const nextBtn = document.getElementById('aula-next');
+  if (nextBtn) {
+    if (n === total) {
+      nextBtn.textContent = '→ ENTRAR NA CIDADE';
+      nextBtn.onclick = entrarNaCidade;
+    } else {
+      nextBtn.textContent = 'PRÓXIMO →';
+      nextBtn.onclick = aulaNext;
+    }
+  }
+
+  // Rola o body da aula pro topo a cada troca de slide
+  const body = document.querySelector('#aula-pddu .aula-body');
+  if (body) body.scrollTop = 0;
+}
+
+function aulaNext() {
+  if (aulaSlideAtual < AULA_TOTAL_SLIDES) {
+    aulaSlideAtual++;
+    atualizarAula();
+  }
+}
+
+function aulaPrev() {
+  if (aulaSlideAtual > 1) {
+    aulaSlideAtual--;
+    atualizarAula();
+  }
+}
+
+function pularAula() {
+  entrarNaCidade();
+}
+
+function entrarNaCidade() {
+  const aula = document.getElementById('aula-pddu');
+  aula.style.transition = 'opacity .5s';
+  aula.style.opacity = '0';
+  setTimeout(() => {
+    aula.classList.remove('show');
+    aula.style.opacity = '';
+    aula.style.transition = '';
     document.getElementById('app').classList.remove('hidden');
     initApp();
+    window.scrollTo(0, 0);
   }, 500);
 }
 
