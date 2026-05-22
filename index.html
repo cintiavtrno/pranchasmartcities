@@ -1675,12 +1675,50 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 }
 .aula-btn-skip:hover { opacity: 1; text-decoration: underline; }
 
-@media (max-width: 600px) {
-  .aula-grade { grid-template-columns: 1fr; }
-  .aula-comparacao { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  /* 1. Ajustes da Aula Contextual originais mantidos */
+  .aula-grade, .aula-comparacao { grid-template-columns: 1fr; }
   .aula-comp-plus { transform: rotate(90deg); padding: 4px 0; }
   .aula-fluxo { flex-wrap: wrap; }
   .aula-tl-event { font-size: 8px; max-width: 70px; }
+  
+  /* 2. Header e Footer - Empilhar elementos para não encavalar */
+  header, footer, .p2-header, .p2-footer { padding: 12px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .header-right, .footer-btns, .p2-footer-btns { width: 100%; justify-content: flex-start; }
+  .header-btn, .p2-header-btn { flex: 1; justify-content: center; }
+  .leg-wrap, .p2-cadeias-wrap { width: 100%; align-items: flex-start; margin-bottom: 8px; }
+  .leg-label, .p2-cadeias-label, .leg-status, .p2-cadeias-status { text-align: left; }
+  
+  /* 3. Mapas com rolagem horizontal (Swipe/Arrastar com o dedo) */
+  .map-wrapper, .p2-rede-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  #city-svg, #rede-svg { min-width: 900px; /* Impede o mapa de encolher, forçando a rolagem lateral */ }
+  
+  /* 4. Modais, Prologue e Finalização - Aproveitar a tela toda */
+  .modal-card { width: 95vw; max-height: 90vh; }
+  .prol-form, .prol-reveal-list, .finalizacao-box, .p2-trans-box { width: 95vw; padding: 16px; margin: 0 auto; }
+  .modal-body, .challenge-body, .reveal-body, .cal-arena { padding: 16px; }
+  .prol-h1, .p2-trans-title, .finalizacao-h { font-size: 22px !important; }
+  
+  /* 5. Grids de Desafios (Vinhetas) */
+  .ch-faces { grid-template-columns: repeat(2, 1fr); }
+  .ch-metrics { grid-template-columns: 1fr; }
+  .ch-map-layers { flex-direction: column; }
+  .ch-layer-btn { width: 100%; }
+  
+  /* 6. Calibragem de Rosto */
+  .cal-buttons { flex-direction: column; width: 100%; }
+  .cal-btn { width: 100%; }
+  .cal-stats-row { flex-direction: column; gap: 16px; }
+  
+  /* 7. Botões de Ação (Avançar, Confirmar, etc) no final das janelas */
+  .modal-nav { flex-direction: column; padding: 12px 16px; }
+  .modal-nav-btn { width: 100%; text-align: center; margin-bottom: 8px; }
+  .modal-nav-btn:last-child { margin-bottom: 0; }
+  
+  /* 8. Reagregação (Painel inferior ao traçar as redes) */
+  .reagreg-painel { padding: 16px; max-height: 70vh; }
+  .reagreg-stats { flex-direction: column; gap: 12px; }
+  .reagreg-guia { bottom: 10px; padding: 12px; width: 95vw; }
 }
 </style>
 </head>
