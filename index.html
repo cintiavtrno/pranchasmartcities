@@ -14,12 +14,8 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--paper);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;}
-
-/* ─── UTILITIES ─── */
 .hidden{display:none!important;}
 .visivel{display:block;}
-
-/* ─── PROLOGUE ─── */
 #prologue{
   position:fixed;inset:0;z-index:1000;
   background:var(--paper);
@@ -125,7 +121,6 @@ body{background:var(--paper);font-family:'Archivo',sans-serif;-webkit-font-smoot
 }
 .prol-reveal-msg.show{opacity:1;}
 
-/* ─── APP ─── */
 #app{display:flex;flex-direction:column;min-height:100vh;}
 
 header{
@@ -199,8 +194,6 @@ footer{
 .footer-count{margin-left:auto;display:flex;align-items:center;gap:8px;}
 .count-label{font-size:9px;letter-spacing:1.5px;color:var(--ink);opacity:.7;}
 .count-num{font-family:'Archivo Black',sans-serif;font-size:14px;color:var(--ink);}
-
-/* ─── MODAL ─── */
 #modal-overlay{
   display:none;position:fixed;inset:0;
   background:rgba(26,22,17,.55);z-index:200;
@@ -256,8 +249,6 @@ footer{
 .modal-nav-btn:hover{background:var(--brick);border-color:var(--brick);}
 .modal-nav-btn.secondary{background:transparent;color:var(--ink);}
 .modal-nav-btn.secondary:hover{background:var(--paperDark);border-color:var(--ink);}
-
-/* ─── CHALLENGE ─── */
 .challenge-body{padding:22px 26px;flex:1;}
 .ch-header{
   font-family:'Archivo Black',sans-serif;font-size:9px;letter-spacing:3px;
@@ -410,8 +401,6 @@ footer{
 .ch-layer-btn:hover{background:var(--paperDark);}
 .ch-layer-btn.active{background:var(--ink);color:var(--bone);}
 .ch-map-legend{font-size:9px;color:var(--ink);opacity:.7;letter-spacing:.5px;}
-
-/* ─── CALIBRAGEM (NOVO) ─── */
 .cal-arena{
   display:flex;flex-direction:column;align-items:center;
   gap:14px;padding:18px 26px 22px;flex:1;
@@ -508,8 +497,6 @@ footer{
   font-family:'DM Serif Display',serif;font-style:italic;
   font-size:13px;line-height:1.4;color:var(--bone);margin-top:6px;
 }
-
-/* ─── REVEAL ─── */
 .reveal-body{padding:22px 26px;flex:1;}
 .reveal-stamp{
   font-family:'Archivo Black',sans-serif;font-size:9px;letter-spacing:3px;
@@ -531,8 +518,6 @@ footer{
 .reveal-ficha-label{font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:2px;color:var(--mustard);margin-bottom:6px;}
 .reveal-ficha-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:13px;color:var(--ink);line-height:1.4;margin-bottom:4px;}
 .reveal-ficha-fonte{font-size:9px;color:var(--ink);opacity:.6;letter-spacing:.5px;}
-
-/* ─── CADERNETA & TIMELINE PANEL ─── */
 #caderneta-panel, #timeline-panel{
   position:fixed;top:0;right:0;bottom:0;width:min(360px,92vw);
   background:var(--bone);border-left:2px solid var(--ink);
@@ -561,8 +546,6 @@ footer{
 .ficha-num{font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:2.5px;color:var(--brick);margin-bottom:6px;}
 .ficha-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:12px;color:var(--ink);line-height:1.4;margin-bottom:6px;}
 .ficha-fonte{font-size:9px;color:var(--ink);opacity:.55;letter-spacing:.5px;}
-
-/* TIMELINE ITEM */
 .tl-intro{
   padding:18px 18px 8px;font-size:11px;color:var(--ink);line-height:1.5;opacity:.8;
   border-bottom:1px solid var(--paperDark);
@@ -594,8 +577,6 @@ footer{
   padding:2px 6px;background:var(--paperDark);color:var(--ink);
   margin-top:6px;
 }
-
-/* ─── TOAST ─── */
 #toast{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
   background:var(--ink);color:var(--bone);
@@ -605,8 +586,6 @@ footer{
   white-space:nowrap;pointer-events:none;
 }
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* ─── FIM OVERLAY ─── */
 #fim-overlay{
   display:none;position:absolute;inset:0;
   background:rgba(239,229,206,.94);align-items:center;
@@ -635,7 +614,6 @@ footer{
 .fio-line.show{opacity:.75;}
 .fio-label-g{opacity:0;transition:opacity .8s ease .3s;}
 .fio-label-g.show{opacity:1;}
-/* ─── ANIMAÇÕES DA MALHA DE DADOS (SMART CITY) ─── */
 @keyframes data-stream {
   from { stroke-dashoffset: 24; }
   to { stroke-dashoffset: 0; }
@@ -653,7 +631,6 @@ footer{
 .sensor-blink {
   animation: pulse-sensor 3s ease-in-out infinite;
 }
-  /* ─── ESTÉTICA OPERACIONAL E RUÍDO DE PIXEL ─── */
 .op-blueprint {
   filter: grayscale(100%) contrast(1.8) sepia(1) hue-rotate(180deg);
   opacity: 0.85;
@@ -680,9 +657,6 @@ footer{
   text-align: left;
   border-left: 2px solid var(--ink);
 }
-  /* ═══════════════════════════════════════
-   REAGREGAÇÃO · TEIA SOBRE O MAPA
-═══════════════════════════════════════ */
 
 #reagregacao-layer {
   display:none;position:fixed;inset:0;z-index:550;
@@ -771,15 +745,10 @@ footer{
 @keyframes reagregFlow {
   to {stroke-dashoffset:-22;}
 }
-
-/* Reforça a visibilidade dos fios vermelhos no momento da reagregação */
 #reagregacao-layer.show ~ * .fio-line.show,
 body:has(#reagregacao-layer.show) .fio-line.show {
   stroke-width:1.8;opacity:.9;
 }
-  /* ═══════════════════════════════════════
-   INSPECIONAR MEDIADORES · IN-LINE NO REVEAL
-═══════════════════════════════════════ */
 
 .btn-inspecionar {
   display:block;width:100%;
@@ -874,9 +843,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 }
 .mediador-cadeia.mapped .mediador-cadeia-cb {background:var(--bone);}
 .mediador-cadeia-text {font-size:10px;color:var(--ink);line-height:1.45;}
-  /* ═══════════════════════════════════════
-   PRANCHA 2 · DOS ACTANTES NÃO-HUMANOS
-═══════════════════════════════════════ */
 
 #app-2 {display:none !important;}
 #app-2.active {display:none !important;}
@@ -948,8 +914,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .p2-count {margin-left:auto;display:flex;align-items:center;gap:8px;}
 .p2-count-label {font-size:9px;letter-spacing:1.5px;color:var(--ink);opacity:.7;}
 .p2-count-num {font-family:'Archivo Black',sans-serif;font-size:14px;color:var(--ink);}
-
-/* Painel do actante */
 .actante-section {padding:14px 26px;border-bottom:1px solid var(--paperDark);}
 .actante-section:last-child {border-bottom:none;}
 .actante-section-label {font-family:'Archivo Black',sans-serif;font-size:9px;letter-spacing:3px;color:var(--brick);margin-bottom:8px;}
@@ -966,16 +930,12 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .cadeia-item.mapped .cadeia-cb {background:var(--bone);}
 .cadeia-text {font-size:11px;color:var(--ink);line-height:1.5;}
 .cadeia-text strong {font-family:'Archivo Black',sans-serif;font-size:10px;letter-spacing:1px;}
-
-/* Botão da Prancha 1 que abre a 2 */
 .fim-btn-prancha2 {
   font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:3px;
   color:var(--bone);background:var(--ink);border:2px solid var(--ink);
   padding:12px 26px;cursor:pointer;margin-top:18px;transition:background .2s;
 }
 .fim-btn-prancha2:hover {background:var(--brick);border-color:var(--brick);}
-
-/* Transição entre Pranchas */
 #p2-transicao {
   position:fixed;inset:0;z-index:900;background:var(--ink);color:var(--bone);
   display:none;align-items:center;justify-content:center;padding:32px;
@@ -998,8 +958,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   padding:12px 26px;cursor:pointer;transition:background .2s;
 }
 .p2-trans-btn:hover {background:var(--bone);border-color:var(--bone);}
-
-/* Fim da Prancha 2 */
 #p2-fim-overlay {
   display:none;position:absolute;inset:0;background:rgba(26,22,17,.94);
   align-items:center;justify-content:center;padding:24px;z-index:10;color:var(--bone);
@@ -1009,8 +967,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .p2-fim-stamp {font-family:'Archivo Black',sans-serif;font-size:10px;letter-spacing:3px;color:var(--mustard);margin-bottom:14px;}
 .p2-fim-quote {font-family:'DM Serif Display',serif;font-style:italic;font-size:19px;line-height:1.4;margin-bottom:18px;color:var(--bone);}
 .p2-fim-text {font-size:12px;line-height:1.55;opacity:.8;}
-
-/* Painel de protocolo (substitui caderneta na P2) */
 #protocolo-panel {
   position:fixed;top:0;right:0;bottom:0;width:min(380px,92vw);
   background:var(--ink);color:var(--bone);
@@ -1034,10 +990,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .protocolo-num {font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:2.5px;color:var(--mustard);margin-bottom:6px;}
 .protocolo-text {font-size:12px;line-height:1.5;color:var(--bone);}
 .protocolo-text strong {color:var(--mustard);}
- /* ═══════════════════════════════════════
-   FINALIZAÇÃO · RETOMADA DOS RECURSOS
-═══════════════════════════════════════ */
-
 #finalizacao-overlay {
   display:none;position:fixed;inset:0;z-index:700;
   background:rgba(26,22,17,.95);color:var(--bone);
@@ -1112,10 +1064,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 
 @keyframes fadein {from{opacity:0;}to{opacity:1;}}
 
-/* ═══════════════════════════════════════
-   GUIA DE TRANSIÇÃO PARA A FINALIZAÇÃO
-═══════════════════════════════════════ */
-
 .reagreg-guia {
   position:absolute;bottom:34px;left:50%;
   transform:translateX(-50%);
@@ -1163,8 +1111,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   border-left: 4px solid var(--mustard);
   background: rgba(200,147,57,.05);
 }
-
-/* ─── TOOLTIP FLUTUANTE DA TEIA MINI ─── */
 .conduto-tooltip {
   position: absolute;
   background: var(--ink);
@@ -1262,8 +1208,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-/* ─── FEIXES ANIMADOS NOS FIOS ─── */
 @keyframes feixe-flow-ida {
   to { stroke-dashoffset: -20; }
 }
@@ -1276,12 +1220,9 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .feixe-volta {
   animation: feixe-flow-volta 1.8s linear infinite;
 }
-
-/* ─── WRAP RELATIVO DA TEIA MINI (pra ancorar tooltip) ─── */
 .teia-mini-wrap {
   position: relative;
 }
-  /* ─── FICHA TÉCNICA · alinha com a identidade dos stamps ─── */
 .ficha-geral {
   margin-bottom: 14px;
 }
@@ -1347,10 +1288,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
   background: var(--brick);
   border-color: var(--brick);
 }
-  /* ═══════════════════════════════════════
-   AULA CONTEXTUAL · PDDU + PDTCI
-═══════════════════════════════════════ */
-
 #aula-pddu {
   position: fixed; inset: 0; z-index: 1000;
   background: var(--paper);
@@ -1678,46 +1615,31 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 .aula-btn-skip:hover { opacity: 1; text-decoration: underline; }
 
 @media (max-width: 768px) {
-  /* 1. Ajustes da Aula Contextual originais mantidos */
   .aula-grade, .aula-comparacao { grid-template-columns: 1fr; }
   .aula-comp-plus { transform: rotate(90deg); padding: 4px 0; }
   .aula-fluxo { flex-wrap: wrap; }
   .aula-tl-event { font-size: 8px; max-width: 70px; }
-  
-  /* 2. Header e Footer - Empilhar elementos para não encavalar */
   header, footer, .p2-header, .p2-footer { padding: 12px; flex-direction: column; align-items: flex-start; gap: 12px; }
   .header-right, .footer-btns, .p2-footer-btns { width: 100%; justify-content: flex-start; }
   .header-btn, .p2-header-btn { flex: 1; justify-content: center; }
   .leg-wrap, .p2-cadeias-wrap { width: 100%; align-items: flex-start; margin-bottom: 8px; }
   .leg-label, .p2-cadeias-label, .leg-status, .p2-cadeias-status { text-align: left; }
-  
-  /* 3. Mapas com rolagem horizontal (Swipe/Arrastar com o dedo) */
   .map-wrapper, .p2-rede-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  #city-svg, #rede-svg { min-width: 900px; /* Impede o mapa de encolher, forçando a rolagem lateral */ }
-  
-  /* 4. Modais, Prologue e Finalização - Aproveitar a tela toda */
+  #city-svg, #rede-svg { min-width: 900px; 
   .modal-card { width: 95vw; max-height: 90vh; }
   .prol-form, .prol-reveal-list, .finalizacao-box, .p2-trans-box { width: 95vw; padding: 16px; margin: 0 auto; }
   .modal-body, .challenge-body, .reveal-body, .cal-arena { padding: 16px; }
   .prol-h1, .p2-trans-title, .finalizacao-h { font-size: 22px !important; }
-  
-  /* 5. Grids de Desafios (Vinhetas) */
   .ch-faces { grid-template-columns: repeat(2, 1fr); }
   .ch-metrics { grid-template-columns: 1fr; }
   .ch-map-layers { flex-direction: column; }
   .ch-layer-btn { width: 100%; }
-  
-  /* 6. Calibragem de Rosto */
   .cal-buttons { flex-direction: column; width: 100%; }
   .cal-btn { width: 100%; }
   .cal-stats-row { flex-direction: column; gap: 16px; }
-  
-  /* 7. Botões de Ação (Avançar, Confirmar, etc) no final das janelas */
   .modal-nav { flex-direction: column; padding: 12px 16px; }
   .modal-nav-btn { width: 100%; text-align: center; margin-bottom: 8px; }
   .modal-nav-btn:last-child { margin-bottom: 0; }
-  
-  /* 8. Reagregação (Painel inferior ao traçar as redes) */
   .reagreg-painel { padding: 16px; max-height: 70vh; }
   .reagreg-stats { flex-direction: column; gap: 12px; }
   .reagreg-guia { bottom: 10px; padding: 12px; width: 95vw; }
@@ -1725,21 +1647,14 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 </style>
 </head>
 <body>
-<!-- ═══════════════════════════════════════════════
-     PROLOGUE
-═══════════════════════════════════════════════ -->
 <section id="prologue">
   <div class="prol-bg-grid"></div>
-
-  <!-- Screen 0: Intro -->
   <div class="prol-screen active" id="prol-0">
     <div class="prol-stamp">DECRETO Nº 33.405 · PREFEITURA DO SALVADOR · 2020</div>
     <div class="prol-h1">PLANO DIRETOR DE TECNOLOGIA E COMUNICAÇÃO INTELIGENTE</div>
     <div class="prol-sub">UMA DECISÃO ADMINISTRATIVA · UM ARTEFATO INTERATIVO · UMA PRANCHA</div>
     <button class="prol-btn" onclick="prolNext()">→ LER O DECRETO</button>
   </div>
-
-  <!-- Screen 1: Formulário de aprovação -->
   <div class="prol-screen" id="prol-1">
     <div class="prol-form">
       <div class="prol-form-header">PROPOSTA DE MODERNIZAÇÃO URBANA · ITEM 1 DE 1 · PARA APROVAÇÃO DO GESTOR</div>
@@ -1761,8 +1676,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       </div>
     </div>
   </div>
-
-  <!-- Screen 2: O que foi instalado -->
   <div class="prol-screen" id="prol-2">
     <div class="prol-reveal-list" id="prol-reveal-list">
       <div class="prol-reveal-head">INFRAESTRUTURA EFETIVAMENTE IMPLANTADA · DECRETO 33.405/2020</div>
@@ -1779,8 +1692,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       <button class="prol-btn" onclick="prolNext()">→ ENTRAR NA CIDADE</button>
     </div>
   </div>
-
-  <!-- Screen 3: Transição -->
   <div class="prol-screen" id="prol-3">
     <div class="prol-stamp">PRANCHA Nº 01 · CORTE TRANSVERSAL · ESC. VARIÁVEL</div>
     <div class="prol-h1" style="font-size:clamp(18px,3vw,32px);">A CIDADE INTELIGENTE</div>
@@ -1794,13 +1705,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <button class="prol-btn" onclick="startApp()">→ INICIAR A LEITURA</button>
   </div>
 </section>
-
-<!-- ═══════════════════════════════════════════════
-     APP
-═══════════════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════════════
-     AULA CONTEXTUAL · PDDU + PDTCI
-═══════════════════════════════════════════════ -->
 <section id="aula-pddu">
   <div class="aula-bg-grid"></div>
 
@@ -1814,8 +1718,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
 
     <div class="aula-body">
-
-      <!-- SLIDE 1 -->
       <div class="aula-slide active" data-slide="1">
         <div class="aula-stamp">CONCEITO · INSTRUMENTO JURÍDICO</div>
         <h2 class="aula-titulo">O QUE É UM PLANO DIRETOR</h2>
@@ -1843,8 +1745,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 
         <p class="aula-texto" style="opacity:.75;font-size:12px;">Em resumo: o Plano Diretor é o <strong>pacto territorial</strong> que a cidade firma consigo mesma. Define o que pode e o que não pode ser feito sobre o solo urbano, e onde.</p>
       </div>
-
-      <!-- SLIDE 2 -->
       <div class="aula-slide" data-slide="2">
         <div class="aula-stamp olive">LEI Nº 9.069/2016 · PDDU SALVADOR</div>
         <h2 class="aula-titulo">O PLANO QUE VIGORA EM SALVADOR</h2>
@@ -1880,8 +1780,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 
         <p class="aula-texto" style="opacity:.75;font-size:12px;">O PDDU é a moldura jurídica. Tudo o que se constrói, demole, financia ou planeja na cidade precisa, em tese, respeitar o que está nele.</p>
       </div>
-
-      <!-- SLIDE 3 -->
       <div class="aula-slide" data-slide="3">
         <div class="aula-stamp">AS DIVISÕES DO TERRITÓRIO</div>
         <h2 class="aula-titulo">MACROZONAS, MACROÁREAS E ZONAS DE USO</h2>
@@ -1897,44 +1795,29 @@ body:has(#reagregacao-layer.show) .fio-line.show {
                 <line x1="0" y1="0" x2="0" y2="5" stroke="#C89339" stroke-width=".6" opacity=".5"/>
               </pattern>
             </defs>
-            <!-- Baía de Todos os Santos (oeste) -->
             <rect x="0" y="0" width="200" height="360" fill="#577387" opacity=".25"/>
             <text x="100" y="180" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" fill="#1A1611" opacity=".55" letter-spacing="2">BAÍA DE TODOS OS SANTOS</text>
-            <!-- Oceano Atlântico (leste) -->
             <rect x="600" y="0" width="100" height="360" fill="#577387" opacity=".35"/>
             <text x="650" y="180" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" fill="#1A1611" opacity=".55" letter-spacing="2" transform="rotate(90 650 180)">OCEANO ATLÂNTICO</text>
-
-            <!-- Península de Salvador (forma simplificada) -->
-            <!-- MIM (norte/eixo metropolitano) -->
             <polygon points="200,0 600,0 600,90 540,110 400,100 280,90 200,80" fill="#577387" opacity=".55" stroke="#1A1611" stroke-width="1"/>
             <text x="400" y="50" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#F7EFD9" letter-spacing="2">MIM</text>
             <text x="400" y="65" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#F7EFD9" letter-spacing="1">Integração Metropolitana</text>
-
-            <!-- MEU (centro/miolo) -->
             <polygon points="280,90 400,100 540,110 540,230 400,240 280,230" fill="#5B6B3F" opacity=".6" stroke="#1A1611" stroke-width="1"/>
             <text x="410" y="160" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#F7EFD9" letter-spacing="2">MEU</text>
             <text x="410" y="175" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#F7EFD9" letter-spacing="1">Estruturação Urbana · "Miolo"</text>
-
-            <!-- MRB (oeste/subúrbio ferroviário) -->
             <polygon points="200,80 280,90 280,230 230,290 200,300" fill="#A8412A" opacity=".7" stroke="#1A1611" stroke-width="1"/>
             <polygon points="200,80 280,90 280,230 230,290 200,300" fill="url(#aula-hatch-brick)"/>
             <text x="240" y="180" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="12" fill="#F7EFD9" letter-spacing="2">MRB</text>
             <text x="240" y="195" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#F7EFD9" letter-spacing=".8">Reestruturação</text>
             <text x="240" y="205" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#F7EFD9" letter-spacing=".8">Borda da Baía</text>
-
-            <!-- MRBA (leste/orla atlântica) -->
             <polygon points="540,110 600,90 600,300 560,300 540,230" fill="#C89339" opacity=".7" stroke="#1A1611" stroke-width="1"/>
             <polygon points="540,110 600,90 600,300 560,300 540,230" fill="url(#aula-hatch-mustard)"/>
             <text x="570" y="190" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="12" fill="#1A1611" letter-spacing="2">MRBA</text>
             <text x="570" y="205" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#1A1611" letter-spacing=".8">Requalificação</text>
             <text x="570" y="215" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="7" fill="#1A1611" letter-spacing=".8">Borda Atlântica</text>
-
-            <!-- MUC (sul/centro histórico) -->
             <polygon points="280,230 540,230 560,300 400,330 230,290" fill="#DDD0B0" stroke="#1A1611" stroke-width="1"/>
             <text x="400" y="280" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="13" fill="#1A1611" letter-spacing="2">MUC</text>
             <text x="400" y="295" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" fill="#1A1611" letter-spacing="1">Urbanização Consolidada · Centro tradicional</text>
-
-            <!-- Pontos cardeais -->
             <text x="350" y="15" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="9" fill="#1A1611" letter-spacing="2" opacity=".5">NORTE → AEROPORTO · PARALELA</text>
             <text x="350" y="350" text-anchor="middle" font-family="'Archivo Black',sans-serif" font-size="9" fill="#1A1611" letter-spacing="2" opacity=".5">SUL → CENTRO HISTÓRICO · PELOURINHO</text>
           </svg>
@@ -1967,8 +1850,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           <div class="aula-destaque-text">O PDDU já reconhecia juridicamente, em 2016, que <strong>MRB e MRBA são territórios desiguais</strong>: uma é bolsão de pobreza, a outra é patrimônio com infraestrutura sobrando. Guarde isso. A "cidade inteligente" vai operar sobre os dois como se fossem o mesmo território técnico.</div>
         </div>
       </div>
-
-      <!-- SLIDE 4 -->
       <div class="aula-slide" data-slide="4">
         <div class="aula-stamp">PDTCI · A CAMADA QUE VEIO DEPOIS</div>
         <h2 class="aula-titulo">POR QUE CRIARAM O PDTCI EM SALVADOR</h2>
@@ -2017,8 +1898,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           </div>
         </div>
       </div>
-
-      <!-- SLIDE 5 -->
       <div class="aula-slide" data-slide="5">
         <div class="aula-stamp blue">CONCEITO-CHAVE · CITAÇÃO DA CAF</div>
         <h2 class="aula-titulo">DA PORTA PRA FORA, DA PORTA PRA DENTRO</h2>
@@ -2048,8 +1927,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 
         <p class="aula-texto" style="margin-top:14px;opacity:.85;">O ponto importante: <strong>essa fusão nunca passou pelo mesmo processo de participação social</strong> que o PDDU exigiu. O Plano Diretor foi debatido em audiências públicas obrigatórias, com mais de 400 artigos discutidos. O PDTCI foi formulado por consórcio técnico contratado, com base em normas ISO, e apresentado pronto à Câmara em 2025.</p>
       </div>
-
-      <!-- SLIDE 6 -->
       <div class="aula-slide" data-slide="6">
         <div class="aula-stamp blue">QUEM CONSTRÓI A CIDADE INTELIGENTE</div>
         <h2 class="aula-titulo">TRÊS ESFERAS, UMA CIDADE</h2>
@@ -2084,8 +1961,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 
         <p class="aula-texto" style="opacity:.75;font-size:12px;font-style:italic;">Olhar para uma única esfera (só a prefeitura, só o estado, só a Huawei) embaça o quadro. As nove vinhetas do artefato atravessam essas três camadas. Cada cena que você vai abrir tem dispositivos contratados por agentes diferentes operando sobre o mesmo corpo, no mesmo segundo.</p>
       </div>
-
-      <!-- SLIDE 7 -->
       <div class="aula-slide" data-slide="7">
         <div class="aula-stamp">A SOBREPOSIÇÃO · O QUE VOCÊ VAI VER NA PRANCHA</div>
         <h2 class="aula-titulo">QUANDO A CAMADA TÉCNICA PASSA POR CIMA DO PACTO</h2>
@@ -2170,9 +2045,7 @@ body:has(#reagregacao-layer.show) .fio-line.show {
         </defs>
         <rect width="1000" height="600" fill="#EFE5CE"/>
         <rect width="1000" height="600" fill="url(#grid-paper)"/>
-        <!-- ════ MALHA DE SENSORES (DENSA NA ÁREA NOBRE, INEXISTENTE NA PERIFERIA) ════ -->
         <g id="malha-sensores" opacity="0.4">
-          <!-- Conexões da teia (Cidade Alta e Centros de Operação) -->
           <line x1="580" y1="100" x2="650" y2="120" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
           <line x1="650" y1="120" x2="710" y2="180" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
           <line x1="710" y1="180" x2="850" y2="150" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
@@ -2180,30 +2053,20 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           <line x1="150" y1="100" x2="180" y2="250" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
           <line x1="180" y1="250" x2="90" y2="310" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
           <line x1="710" y1="180" x2="900" y2="300" stroke="#C89339" stroke-width="0.5" stroke-dasharray="2 2"/>
-          
-          <!-- Nós / Sensores piscando -->
           <circle cx="650" cy="120" r="1.5" fill="#C89339" class="sensor-blink"/>
           <circle cx="710" cy="180" r="1.5" fill="#C89339" class="sensor-blink" style="animation-delay: 0.5s"/>
           <circle cx="850" cy="150" r="1.5" fill="#C89339" class="sensor-blink" style="animation-delay: 1s"/>
           <circle cx="180" cy="250" r="1.5" fill="#C89339" class="sensor-blink" style="animation-delay: 0.3s"/>
           <circle cx="900" cy="300" r="1.5" fill="#C89339" class="sensor-blink" style="animation-delay: 0.8s"/>
         </g>
-
-        <!-- ════ ALVOS / CROSSHAIRS DO SISTEMA ════ -->
         <g transform="translate(680, 250)" opacity="0.5">
            <path d="M -15 -15 L -15 -20 L -10 -20 M 15 -15 L 15 -20 L 10 -20 M -15 15 L -15 20 L -10 20 M 15 15 L 15 20 L 10 20" fill="none" stroke="#A8412A" stroke-width="1"/>
            <text x="0" y="28" text-anchor="middle" font-size="4" font-family="'Archivo Black',sans-serif" fill="#A8412A" letter-spacing="1">ÁREA PERFILADA</text>
         </g>
 
-        <!-- ════ CAMADA DE DADOS E GPS (BRT) ════ -->
-        <!-- Se você colocou aquele código do passo anterior aqui embaixo, pode substituí-lo por este! -->
         <g id="camada-fluxo-gps">
-          <!-- Linha base fantasma -->
           <line x1="0" y1="285" x2="1000" y2="285" stroke="#577387" stroke-width="4" opacity="0.15"/>
-          <!-- Linha animada simulando transmissão GPS -->
           <line x1="0" y1="285" x2="1000" y2="285" class="data-flow-line"/>
-          
-          <!-- Bloco do "Veículo" Rastreado -->
           <rect x="330" y="278" width="40" height="14" fill="none" stroke="#577387" stroke-width="0.8" stroke-dasharray="2 2"/>
           <circle cx="350" cy="285" r="4" fill="#EFE5CE" stroke="#577387" stroke-width="1.5"/>
           <circle cx="350" cy="285" r="1.5" fill="#C89339" class="sensor-blink"/>
@@ -2277,12 +2140,10 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           <g><rect x="430" y="285" width="14" height="12" fill="#F7EFD9" stroke="#1A1611" stroke-width=".4"/><polygon points="429,285 445,285 437,280" fill="#A8412A" stroke="#1A1611" stroke-width=".4"/><rect x="435" y="291" width="3" height="6" fill="#1A1611"/></g>
         </g>
         <text x="350" y="140" text-anchor="middle" font-size="6" font-family="'Archivo',sans-serif" fill="#1A1611" letter-spacing="2" opacity=".7">AUTO-CONSTRUÇÃO · ZONA INFORMAL</text>
-        <!-- SENSOR GEOLÓGICO / ANTENA DE ALERTA -->
         <g transform="translate(350, 110)">
           <line x1="0" y1="0" x2="0" y2="-20" stroke="#1A1611" stroke-width="1.5"/>
           <polygon points="-4,-5 4,-5 0,-20" fill="#A8412A"/>
           <circle cx="0" cy="-20" r="1.5" fill="#C89339" class="sensor-blink"/>
-          <!-- Ondas de sinal -->
           <path d="M -5 -25 Q 0 -28 5 -25" fill="none" stroke="#577387" stroke-width="0.8" opacity="0.6"/>
           <path d="M -8 -28 Q 0 -33 8 -28" fill="none" stroke="#577387" stroke-width="0.8" opacity="0.3"/>
         </g>
@@ -2380,7 +2241,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           </g>
         </g>
         <text x="900" y="397" font-size="6" font-family="'Archivo',sans-serif" fill="#1A1611" letter-spacing="1.5">→ DADOS · 89ms</text>
-        <!-- CAMADA DE FLUXO (BRT / BRT) -->
         <g id="camada-fluxo" opacity="0.8">
           <line x1="0" y1="285" x2="1000" y2="285" stroke="#577387" stroke-width="3" opacity="0.4"/>
           <line x1="0" y1="285" x2="1000" y2="285" stroke="#F7EFD9" stroke-width="1.5" stroke-dasharray="12 6"/>
@@ -2429,9 +2289,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
   </footer>
 </div>
-  <!-- ═══════════════════════════════════════════════
-     TRANSIÇÃO ENTRE PRANCHAS
-═══════════════════════════════════════════════ -->
 <div id="p2-transicao">
   <div class="p2-trans-box">
     <div class="p2-trans-stamp">PRANCHA Nº 02 · INVERSÃO DE PERSPECTIVA</div>
@@ -2442,10 +2299,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <button class="p2-trans-btn" onclick="entrarPrancha2()">→ ATRAVESSAR</button>
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════════
-     APP 2 · PRANCHA DOS ACTANTES
-═══════════════════════════════════════════════ -->
 <div id="app-2">
 
   <header class="p2-header">
@@ -2485,18 +2338,15 @@ body:has(#reagregacao-layer.show) .fio-line.show {
         <rect width="1000" height="600" fill="#1A1611"/>
         <rect width="1000" height="600" fill="url(#p2-grid)"/>
 
-        <!-- Cabeçalho técnico -->
         <text x="20" y="30" font-size="11" font-family="'Archivo Black',sans-serif" fill="#F7EFD9" letter-spacing="3">PRANCHA Nº 02 · DIAGRAMA DE REDE</text>
         <text x="20" y="43" font-size="7" font-family="'Archivo',sans-serif" fill="#F7EFD9" letter-spacing="2" opacity=".55">A REDE NÃO-HUMANA · TOPOLOGIA: HEXAGONAL · CLIQUE NOS NÓS</text>
         <text x="980" y="30" text-anchor="end" font-size="7" font-family="'Archivo',sans-serif" fill="#C89339" letter-spacing="2" opacity=".7">⌖ ABRA CADA PAINEL</text>
 
-        <!-- Aro central simbólico -->
         <circle cx="500" cy="320" r="180" fill="none" stroke="#C89339" stroke-width=".5" stroke-dasharray="3 4" opacity=".3"/>
         <circle cx="500" cy="320" r="110" fill="none" stroke="#C89339" stroke-width=".5" stroke-dasharray="2 3" opacity=".25"/>
         <text x="500" y="150" text-anchor="middle" font-size="7" font-family="'Archivo Black',sans-serif" fill="#C89339" letter-spacing="3" opacity=".55">REDE OPERACIONAL</text>
         <text x="500" y="162" text-anchor="middle" font-size="6" font-family="'Archivo',sans-serif" fill="#F7EFD9" letter-spacing="2" opacity=".35">SISTEMA DE COAÇÕES MÚTUAS</text>
 
-        <!-- Edges (arestas) entre actantes — id corresponde a pares -->
         <g id="rede-edges">
 
           <line class="actante-edge" id="edge-1-3" x1="250" y1="180" x2="850" y2="320"/>
@@ -2519,8 +2369,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
           <line class="actante-edge edge-humano" id="edge-6-7" x1="150" y1="320" x2="500" y2="320"/>
 
         </g>
-
-        <!-- Camada dos nós (será preenchida via JS) -->
         <g id="actantes-layer"></g>
       </svg>
     </div>
@@ -2543,10 +2391,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
   </footer>
 </div>
-
-<!-- ═══════════════════════════════════════════════
-     PROTOCOLO DE COAÇÃO (Caderneta da Prancha 2)
-═══════════════════════════════════════════════ -->
 <div id="protocolo-panel">
   <div class="protocolo-head">
     <div class="protocolo-head-title">▤ CONEXÕES TRAÇADAS</div>
@@ -2556,10 +2400,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <div class="protocolo-empty" id="protocolo-empty">Nenhuma conexão traçada ainda.<br><br>Ao concluir o desafio de cada vinheta, clique em "⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA" no reveal. Na teia mini, clique no dispositivo que força, depois no dispositivo que é forçado. Cada conexão traçada entra aqui como registro do que opera concretamente naquela cena.</div>
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════════
-     MODAL
-═══════════════════════════════════════════════ -->
 <div id="modal-overlay">
   <div class="modal-card" id="modal-card">
     <div class="modal-header" id="modal-header">
@@ -2573,12 +2413,10 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       <button class="modal-close" id="modal-close" aria-label="fechar">×</button>
     </div>
 
-    <!-- NOVO: Phase Calibragem (apenas V2) -->
     <div class="modal-phase" id="phase-calibragem">
       <div class="cal-arena" id="cal-arena"></div>
     </div>
 
-    <!-- Phase narrative -->
     <div class="modal-phase active" id="phase-narrative">
       <div class="modal-body" id="modal-body"></div>
       <div class="modal-nav">
@@ -2587,12 +2425,10 @@ body:has(#reagregacao-layer.show) .fio-line.show {
       </div>
     </div>
 
-    <!-- Phase challenge -->
     <div class="modal-phase" id="phase-challenge">
       <div class="challenge-body" id="challenge-body"></div>
     </div>
 
-    <!-- Phase reveal -->
     <div class="modal-phase" id="phase-reveal">
       <div class="reveal-body" id="reveal-body"></div>
       <div class="modal-nav">
@@ -2601,10 +2437,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════════
-     CADERNETA
-═══════════════════════════════════════════════ -->
 <div id="caderneta-panel">
   <div class="caderneta-head">
     <div class="caderneta-head-title">▤ CADERNETA DE CAMPO</div>
@@ -2614,10 +2446,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <div class="caderneta-empty" id="caderneta-empty">Nenhuma ficha arquivada ainda.<br><br>Complete os desafios de cada vinheta para acumular fichas bibliográficas.</div>
   </div>
 </div>
-
-<!-- ═══════════════════════════════════════════════
-     TIMELINE PANEL (NOVO)
-═══════════════════════════════════════════════ -->
 <div id="timeline-panel">
   <div class="timeline-head">
     <div class="timeline-head-title">▶ LINHA DO TEMPO · SMART CITY BR</div>
@@ -2696,9 +2524,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     </div>
   </div>
 </div>
-<!-- ═══════════════════════════════════════════════
-     REAGREGAÇÃO · TEIA SOBRE O MAPA
-═══════════════════════════════════════════════ -->
 <div id="reagregacao-layer">
   <div class="reagreg-veu"></div>
   <svg class="reagreg-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -2737,9 +2562,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
     <button class="reagreg-close" onclick="passarParaTeia()">→ VER A TEIA</button>
   </div>
 </div>
-<!-- ═══════════════════════════════════════════════
-     FINALIZAÇÃO DO ARTEFATO
-═══════════════════════════════════════════════ -->
 <div id="finalizacao-overlay">
   <div class="finalizacao-box">
     <div class="finalizacao-stamp">ENCERRAMENTO · ARTEFATO COMPLETO</div>
@@ -2785,8 +2607,6 @@ body:has(#reagregacao-layer.show) .fio-line.show {
 </div>
 <div id="toast"></div>
 <script>
-// ════════════════════════════════════════
-// DATA
 const PALETA = {paper:'#EFE5CE',paperDark:'#DDD0B0',ink:'#1A1611',brick:'#A8412A',mustard:'#C89339',blue:'#577387',olive:'#5B6B3F',bone:'#F7EFD9'};
 
 const LEG_STAGES = [
@@ -2821,9 +2641,6 @@ const FIO_PARES = [
   {ids:[2,3], el:'fio-2-3'},
   {ids:[4,5], el:'fio-4-5'},
 ];
-
-// ─── Tempos de exibição dos resultados intermediários (antes do reveal) ───
-// Aumentados para o usuário ter tempo de ler o que aconteceu.
 const REVEAL_DELAY = {
   decisao: 1800,
   score: 2000,
@@ -2833,12 +2650,6 @@ const REVEAL_DELAY = {
   relatorio: 3800,
   mapa: 5500
 };
-
-// ─── PERFIS DA CALIBRAGEM (V2 pré-fase) ───
-// 10 perfis em silhueta. Diversidade controlada para expor o viés.
-// pele: 1=clara, 2=média, 3=escura, 4=muito escura
-// cabelo: 'liso','cacheado','crespo','curto','calva'
-// roupa: 'terno','capuz','bone','fone','mochila','casual'
 const CAL_PERFIS = [
   {id:'A1', pele:1, cabelo:'liso',     roupa:'terno',   verdade:'seguro'},
   {id:'A2', pele:3, cabelo:'crespo',   roupa:'capuz',   verdade:'seguro'},
@@ -3059,10 +2870,6 @@ const VINHETAS = [
     }
   }
 ];
-
-// ════════════════════════════════════════
-// STATE
-// ════════════════════════════════════════
 const state = {
   visited: new Set(),
   completed: new Set(),
@@ -3075,10 +2882,6 @@ const state = {
   v6Layers: {tourists:false, alerts:false, demo:false},
   cal: { idx:0, choices:[], tickInterval:null, audioCtx:null }
 };
-
-// ════════════════════════════════════════
-// PROLOGUE
-// ════════════════════════════════════════
 let prologueStep = 0;
 function prolNext() {
   const screens = document.querySelectorAll('.prol-screen');
@@ -3113,9 +2916,6 @@ function startApp() {
     iniciarAula();
   }, 500);
 }
-  // ════════════════════════════════════════
-// AULA CONTEXTUAL · PDDU + PDTCI
-// ════════════════════════════════════════
 let aulaSlideAtual = 1;
 const AULA_TOTAL_SLIDES = 7;
 
@@ -3132,24 +2932,20 @@ function atualizarAula() {
   const n = aulaSlideAtual;
   const total = AULA_TOTAL_SLIDES;
 
-  // Mostra apenas o slide atual
   document.querySelectorAll('#aula-pddu .aula-slide').forEach(s => {
     s.classList.remove('active');
   });
   const slideAtual = document.querySelector(`#aula-pddu .aula-slide[data-slide="${n}"]`);
   if (slideAtual) slideAtual.classList.add('active');
 
-  // Atualiza indicador de progresso
   const numEl = document.getElementById('aula-progress-num');
   const fillEl = document.getElementById('aula-progress-fill');
   if (numEl) numEl.textContent = `${n} / ${total}`;
   if (fillEl) fillEl.style.width = (n / total * 100) + '%';
 
-  // Habilita/desabilita botão anterior
   const prevBtn = document.getElementById('aula-prev');
   if (prevBtn) prevBtn.disabled = (n === 1);
 
-  // Ajusta botão próximo: no último slide vira "ENTRAR NA CIDADE"
   const nextBtn = document.getElementById('aula-next');
   if (nextBtn) {
     if (n === total) {
@@ -3161,7 +2957,6 @@ function atualizarAula() {
     }
   }
 
-  // Rola o body da aula pro topo a cada troca de slide
   const body = document.querySelector('#aula-pddu .aula-body');
   if (body) body.scrollTop = 0;
 }
@@ -3198,18 +2993,12 @@ function entrarNaCidade() {
   }, 500);
 }
 
-// ════════════════════════════════════════
-// APP INIT
-// ════════════════════════════════════════
 function initApp() {
   renderHotspots();
   renderFooter();
   addWindowRows();
 }
 
-// ════════════════════════════════════════
-// HOTSPOTS
-// ════════════════════════════════════════
 function renderHotspots() {
   const layer = document.getElementById('hotspots-layer');
   layer.innerHTML = '';
@@ -3256,10 +3045,6 @@ function renderHotspots() {
     layer.appendChild(g);
   });
 }
-
-// ════════════════════════════════════════
-// FOOTER
-// ════════════════════════════════════════
 function renderFooter() {
   const container = document.getElementById('footer-btns');
   container.innerHTML = '';
@@ -3311,9 +3096,6 @@ function updateFioVermelho() {
   const all = state.completed.size === 9;
   document.getElementById('fio-label').classList.toggle('show', all);
 }
-// ════════════════════════════════════════
-// OPEN VINHETA
-// ════════════════════════════════════════
 function openVinheta(id) {
   state.currentVinheta = id;
   state.visited.add(id);
@@ -3328,7 +3110,6 @@ function openVinheta(id) {
   document.getElementById('modal-titulo').textContent = v.titulo;
   document.getElementById('modal-subtitulo').textContent = v.subtitulo;
 
-  // V2 começa com a calibragem (se ainda não foi feita nessa abertura)
   if (v.preCalibragem && !state.completed.has(v.id)) {
     setupCalibragem(v);
     setModalPhase('calibragem');
@@ -3399,13 +3180,11 @@ function checkFim() {
   const cadeiasMarcadas = stateP2.cadeiasMapeadas.size;
   const pctCadeias = Math.round((cadeiasMarcadas / TOTAL_CADEIAS) * 100);
 
-  // Caminho 1: rastreou tudo → vai direto pra Reagregação, sem impasse
   if (cadeiasMarcadas === TOTAL_CADEIAS) {
     setTimeout(() => abrirReagregacao(), 800);
     return;
   }
 
-  // Caminho 2 e 3: prepara o overlay adaptativo
   document.getElementById('fim-fichas').textContent = state.fichas.length;
   configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias);
   setTimeout(() => document.getElementById('fim-overlay').classList.add('show'), 600);
@@ -3414,16 +3193,11 @@ function checkFim() {
 function configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias) {
   const fimBox = document.querySelector('.fim-box');
   if (!fimBox) return;
-
-  // Calcula percentual visual de legibilidade
-  // Quem marcou 0 cadeias = 50% (visão humana completa, rede zero)
-  // Quem marcou parcialmente = 50% + (metade do progresso das cadeias)
   const legibilidadeVisual = 50 + Math.round(pctCadeias / 2);
 
   let label, quote, statsHtml, corpo, btnLabel;
 
   if (cadeiasMarcadas === 0) {
-    // VERSÃO FORTE: não rastreou nada
     label = 'IMPASSE ANTROPOCÊNTRICO · DECRETO 33.405/2020 · VIGÊNCIA: 25 ANOS';
     quote = '"A cidade inteligente não mascara forças invisíveis, mas traduz e materializa ativamente a exclusão por meio de seus sensores, algoritmos e contratos."';
     statsHtml = `
@@ -3434,7 +3208,6 @@ function configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias) {
     corpo = 'Você mapeou as pessoas atingidas, mas a sua leitura ainda é míope. A velha sociologia faria você acreditar que existem "dinâmicas ocultas por trás" da cidade. Não se iluda: não há nada escondido. Existem apenas redes de cabos, algoritmos, sensores e contratos agindo ativamente ao lado de Dona Edna e de Marcus, mas que você ignorou como se fossem mero cenário. O social não é feito apenas de humanos. Para realmente compreender o que aconteceu, você não precisa buscar forças invisíveis. Você precisa inspecionar as máquinas e abrir as caixas-pretas destas mesmas cenas.';
     btnLabel = '→ FECHAR E INSPECIONAR OS MEDIADORES';
   } else {
-    // VERSÃO SUAVIZADA: já rastreou parcialmente
     label = 'RASTREAMENTO PARCIAL · DECRETO 33.405/2020 · VIGÊNCIA: 25 ANOS';
     quote = '"A cidade inteligente não mascara forças invisíveis, mas traduz e materializa ativamente a exclusão por meio de seus sensores, algoritmos e contratos."';
     statsHtml = `
@@ -3456,9 +3229,6 @@ function configurarImpasseAdaptativo(cadeiasMarcadas, pctCadeias) {
     <div style="margin-top:14px;font-size:10px;color:var(--ink);opacity:.7;line-height:1.5;font-style:italic;">Ao fechar, clique novamente nos números das vinhetas no mapa. Em cada reveal, o botão "⊕ INSPECIONAR O QUE MAIS OPERA NESTA CENA" abre a ficha dos dispositivos e a teia mini onde você traça as conexões clicando origem e destino.</div>
   `;
 }
-// ════════════════════════════════════════
-// CALIBRAGEM (NOVO · pré-fase V2)
-// ════════════════════════════════════════
 function setupCalibragem(v) {
   state.cal.idx = 0;
   state.cal.choices = [];
@@ -3523,7 +3293,6 @@ function calShowNext() {
   wrap.innerHTML = svgHTML;
   if (p.pele >= 3) wrap.querySelector('svg').classList.add('op-noise');
 
-  // Nota algorítmica dinâmica
   const sysNote = document.getElementById('cal-sys-note');
   if (sysNote) {
     if (p.pele >= 3) {
@@ -3589,7 +3358,6 @@ function playMetalClick(freq) {
 }
 
 function calFinish() {
-  // estatísticas
   const escuroR = state.cal.choices.filter(c => c.pele >= 3 && c.escolha === 'R').length;
   const escuroTotal = state.cal.choices.filter(c => c.pele >= 3).length;
   const claroR = state.cal.choices.filter(c => c.pele <= 2 && c.escolha === 'R').length;
@@ -3597,9 +3365,6 @@ function calFinish() {
   const auto = state.cal.choices.filter(c => c.auto).length;
   const pctEscuro = escuroTotal > 0 ? Math.round((escuroR/escuroTotal)*100) : 0;
   const pctClaro = claroTotal > 0 ? Math.round((claroR/claroTotal)*100) : 0;
-
-  // mensagem dinâmica
-  // Dado técnico: confiança de extração por tonalidade
   const confidenceEscuro = 62 + Math.round((escuroR / Math.max(escuroTotal,1)) * 15);
   const confidenceClaro  = 94 + Math.round((1 - claroR / Math.max(claroTotal,1)) * 4);
   let msg = `Você acaba de participar do treinamento, no qual cada escolha sobre o que representa um padrão visual seguro ou de risco foi registrada.A calibração herdada da Shirley, soma-se uma segunda camada de viés: a rede de cálculos é alimentada por bancos de imagens historicamente desbalanceados. 79,6% das imagens globais utilizadas para ensinar o software a reconhecer faces pertencem a pessoas de pele clara (uma disparidade estrutural amplamente documentada por iniciativas como o projeto Coded Bias
@@ -3643,7 +3408,6 @@ Consequentemente, como o modelo e o sensor foram programados para priorizar essa
     showNarrative(v);
   };
 }
-// ─── FACE EMBEDDING OVERLAY ───
 function renderFaceEmbedding(pele, idSuffix) {
   // Pontos de landmarks faciais (coordenadas baseadas na silhueta 100x170)
   const landmarks = [
@@ -3664,7 +3428,6 @@ function renderFaceEmbedding(pele, idSuffix) {
     {x:54, y:29}, {x:58, y:28}, {x:62, y:30},
   ];
 
-  // Conexões da malha triangular (índices dos pontos acima)
   const edges = [
     [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],   // olho esq
     [6,7],[7,8],[8,9],[9,10],[10,11],[11,6], // olho dir
@@ -3678,7 +3441,6 @@ function renderFaceEmbedding(pele, idSuffix) {
     [33,0],[34,0],[35,6],[36,6],
   ];
 
-  // Viés do pixel: perfis escuros têm pontos deslocados e cor de alerta
   const isEscuro = pele >= 3;
   const jitter = (base, magnitude) => base + (isEscuro ? (Math.sin(base * 7.3) * magnitude) : 0);
   const ptColor = isEscuro ? PALETA.brick : PALETA.blue;
@@ -3697,7 +3459,6 @@ function renderFaceEmbedding(pele, idSuffix) {
     return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${ptColor}" opacity="${ptOpacity}"/>`;
   }).join('');
 
-  // Label de confiança
   const confidence = isEscuro
     ? (62 + Math.floor(Math.abs(Math.sin(pele * 13.7)) * 15)) // 62–77%
     : (94 + Math.floor(Math.abs(Math.sin(pele * 5.1)) * 4));  // 94–98%
@@ -3712,35 +3473,27 @@ function renderFaceEmbedding(pele, idSuffix) {
     </g>
   `;
 }
-// ─── Silhueta de perfil (estilo planta técnica) ───
 function renderPerfilSilhueta(p) {
   const tom = TONS_PELE[p.pele];
-  // Perfil de cabeça em vista lateral, simplificado, estilo blueprint
   let cabelo = '';
   if (p.cabelo === 'liso') {
-    // RECALCULADO: Centralizado no eixo 50. Faixa horizontal agora vai de 33 a 67.
     cabelo = `<path d="M 33 35 Q 27 22 45 18 Q 63 18 67 28 L 67 42 L 63 42 Q 59 30 45 28 Q 37 28 33 35 Z" fill="${PALETA.ink}" opacity=".85"/>`;
   } else if (p.cabelo === 'cacheado') {
-    // RECALCULADO: Círculos e curva central deslocados para a esquerda para alinhar com o eixo 50.
     cabelo = `<g fill="${PALETA.ink}" opacity=".85">
       <circle cx="38" cy="22" r="6"/><circle cx="48" cy="18" r="6"/><circle cx="58" cy="20" r="6"/>
       <circle cx="64" cy="28" r="5"/><circle cx="34" cy="32" r="5"/>
       <path d="M 34 30 Q 46 22 66 30 L 66 40 L 34 40 Z"/>
     </g>`;
   } else if (p.cabelo === 'crespo') {
-    // RECALCULADO: Faixa de pontos (dx) e centro da máscara (hypot) ajustados para centralizar no eixo 50.
     let dots = '';
     for (let dy = -4; dy < 25; dy += 3) {
-      // Loop dx ajustado para gerar pontos centrados em 0 (relativo a 50)
       for (let dx = -18; dx < 18; dx += 3) {
         const cx = 50 + dx + (dy%6===0?1.5:0);
         const cy = 22 + dy;
-        // hypot ajustado para recortar forma arredondada centrada em 50.
         const dist = Math.hypot(cx-50, cy-25);
         if (dist < 18) dots += `<circle cx="${cx}" cy="${cy}" r="1.3" fill="${PALETA.ink}" opacity=".85"/>`;
       }
     }
-    // Máscara de base (path) também deslocada ligeiramente para a esquerda para alinhar.
     cabelo = `<path d="M 32 32 Q 28 14 50 12 Q 72 14 72 34 L 72 40 L 32 40 Z" fill="${PALETA.ink}" opacity=".7"/>${dots}`;
   } else if (p.cabelo === 'curto') {
     cabelo = `<path d="M 38 32 Q 38 22 52 22 Q 66 22 66 32 L 66 38 L 38 38 Z" fill="${PALETA.ink}" opacity=".85"/>`;
@@ -3748,7 +3501,6 @@ function renderPerfilSilhueta(p) {
     cabelo = `<path d="M 40 36 Q 40 32 50 32 Q 60 32 60 36" fill="none" stroke="${PALETA.ink}" stroke-width="1" opacity=".5"/>`;
   }
 
-  // Acessório
   let acessorio = '';
   if (p.roupa === 'capuz') {
     acessorio = `<path d="M 28 38 Q 26 14 50 10 Q 78 12 76 40 L 76 60 L 28 60 Z" fill="${PALETA.ink}" opacity=".8"/>`;
@@ -3759,7 +3511,6 @@ function renderPerfilSilhueta(p) {
     acessorio = `<path d="M 30 38 Q 30 22 50 20 Q 70 22 70 38" fill="none" stroke="${PALETA.ink}" stroke-width="2"/><circle cx="30" cy="42" r="5" fill="${PALETA.ink}"/><circle cx="70" cy="42" r="5" fill="${PALETA.ink}"/>`;
   }
 
-  // Roupa do tronco
   let tronco;
   if (p.roupa === 'terno') {
     tronco = `
@@ -3780,7 +3531,6 @@ function renderPerfilSilhueta(p) {
     tronco = `<path d="M 18 110 L 22 80 Q 50 70 78 80 L 82 110 Z" fill="${PALETA.blue}" opacity=".75"/>`;
   }
 
-  // Pescoço + cabeça (silhueta bege/marrom conforme tom)
   return `
     <svg width="100" height="170" viewBox="0 0 100 170" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -3788,7 +3538,6 @@ function renderPerfilSilhueta(p) {
           <path d="M 0 0 L 3 3 M 3 0 L 0 3" stroke="${PALETA.ink}" stroke-width=".15" opacity=".4"/>
         </pattern>
       </defs>
-      <!-- pescoço -->
       <rect x="44" y="58" width="12" height="20" fill="${tom}" stroke="${PALETA.ink}" stroke-width=".5"/>
       <!-- cabeça (oval) -->
       <ellipse cx="50" cy="40" rx="18" ry="22" fill="${tom}" stroke="${PALETA.ink}" stroke-width=".7"/>
@@ -3798,26 +3547,17 @@ function renderPerfilSilhueta(p) {
       <path d="M 44 49 Q 50 52 56 49" fill="none" stroke="${PALETA.ink}" stroke-width=".7" opacity=".55"/>
       <!-- cabelo -->
       ${cabelo}
-      <!-- acessório (boné/capuz/fone sobrepõem) -->
       ${acessorio}
-      <!-- tronco -->
       ${tronco}
-      <!-- linhas técnicas de marcação -->
       <line x1="2" y1="40" x2="14" y2="40" stroke="${PALETA.ink}" stroke-width=".3"/>
       <line x1="86" y1="40" x2="98" y2="40" stroke="${PALETA.ink}" stroke-width=".3"/>
       <text x="6" y="38" font-size="5" font-family="'Archivo',sans-serif" fill="${PALETA.ink}" opacity=".6">y₁</text>
       <text x="89" y="38" font-size="5" font-family="'Archivo',sans-serif" fill="${PALETA.ink}" opacity=".6">y₂</text>
- <!-- embedding overlay -->
       ${renderFaceEmbedding(p.pele, p.id)}
     </svg>
   `;
 }
-
-// ════════════════════════════════════════
-// CHALLENGES
-// ════════════════════════════════════════
 function renderChallenge(id) {
-  // Limpa qualquer timer anterior antes de qualquer coisa
   if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
   const v = VINHETAS.find(x => x.id === id);
   const ch = v.challenge;
@@ -3825,7 +3565,6 @@ function renderChallenge(id) {
   const body = document.getElementById('challenge-body');
   body.innerHTML = '';
 
-  // remove possíveis nav-btns extras de renders anteriores
   const phaseEl = document.getElementById('phase-challenge');
   phaseEl.querySelectorAll('.modal-nav').forEach(n => n.remove());
 
@@ -3849,7 +3588,6 @@ function renderChallenge(id) {
   else if (ch.tipo === 'onda_verde') renderOndaVerde(body, v, ch, color);
   else if (ch.tipo === 'alerta_clima') renderAlertaClima(body, v, ch, color); // <--- ADICIONE ESTA
 }
-// V1 — Decisão
 function renderDecisao(body, v, ch, color) {
   const wrap = document.createElement('div');
   wrap.className = 'ch-opcoes';
@@ -3873,7 +3611,6 @@ function renderDecisao(body, v, ch, color) {
   body.appendChild(wrap);
 }
 
-// V7 — Onda Verde
 function renderOndaVerde(body, v, ch, color) {
   const container = document.createElement('div');
   container.style.cssText = 'padding:14px; background:var(--paperDark); border:1.5px solid var(--ink); margin-bottom:14px;';
@@ -3909,17 +3646,14 @@ function renderOndaVerde(body, v, ch, color) {
   slider.addEventListener('input', (e) => {
     const val = parseInt(e.target.value);
     
-    // BRT Status
     if (val < 30) BRTStatus.innerHTML = 'Atraso: <span style="color:var(--brick);font-weight:bold">12 min (CRÍTICO)</span>';
     else if (val < 75) BRTStatus.innerHTML = 'Atraso: 6 min';
     else BRTStatus.innerHTML = 'Atraso: <span style="color:var(--olive);font-weight:bold">0 min (CRONOGRAMA SALVO)</span>';
 
-    // Bus Status
     if (val < 30) busStatus.innerHTML = 'Fila: Rápida';
     else if (val < 75) busStatus.innerHTML = 'Fila: Padrão';
     else busStatus.innerHTML = 'Fila: <span style="color:var(--brick);font-weight:bold">Espera > 45 min</span>';
 
-    // Só permite confirmar se o BRT estiver salvo (val >= 75)
     if (val >= 75) {
       btnConfirma.disabled = false;
       btnConfirma.style.opacity = '1';
@@ -3939,7 +3673,6 @@ function renderOndaVerde(body, v, ch, color) {
   });
 }
 
-// V8 — Alerta Climático
 function renderAlertaClima(body, v, ch, color) {
   const container = document.createElement('div');
   container.style.cssText = 'display:flex; flex-direction:column; gap:10px;';
@@ -3992,12 +3725,10 @@ function renderAlertaClima(body, v, ch, color) {
 
   body.appendChild(container);
 }
-// V2 — Protocolo de Ratificação (Epistemicídio Computacional)
 function renderRatificacao(body, v, ch, color) {
   const container = document.createElement('div');
   container.style.cssText = 'padding:14px; background:var(--bone); border:2px solid var(--ink);';
 
-  // Cabeçalho de Alerta
   const alertHeader = document.createElement('div');
   alertHeader.style.cssText = 'text-align:center; border-bottom:2px dashed var(--brick); padding-bottom:10px; margin-bottom:14px;';
   alertHeader.innerHTML = `
@@ -4006,11 +3737,9 @@ function renderRatificacao(body, v, ch, color) {
   `;
   container.appendChild(alertHeader);
 
-  // Telas de Comparação
   const painelCompare = document.createElement('div');
   painelCompare.style.cssText = 'display:flex; justify-content:space-between; gap:10px; margin-bottom:16px;';
 
-  // Lado Esquerdo (Câmera Rua - Marcus)
   const boxCamera = document.createElement('div');
   boxCamera.style.cssText = 'flex:1; background:var(--ink); padding:8px; border:1px solid var(--paperDark); text-align:center; position:relative; overflow:hidden;';
   boxCamera.innerHTML = `
@@ -4022,7 +3751,6 @@ function renderRatificacao(body, v, ch, color) {
   `;
   painelCompare.appendChild(boxCamera);
 
-  // Lado Direito (Banco de Dados)
   const boxBanco = document.createElement('div');
   boxBanco.style.cssText = 'flex:1; background:var(--paper); padding:8px; border:1px solid var(--ink); text-align:center;';
   boxBanco.innerHTML = `
@@ -4036,7 +3764,6 @@ function renderRatificacao(body, v, ch, color) {
 
   container.appendChild(painelCompare);
 
-  // Nota de Sistema Histórica
   const sysNota = document.createElement('div');
   sysNota.style.cssText = 'font-size:9px; color:var(--ink); line-height:1.4; border-left:2px solid var(--mustard); padding-left:8px; margin-bottom:16px;';
   sysNota.innerHTML = `<strong>AVISO DE SISTEMA:</strong> Calibragem de base operacional: Shirley Card. Ponto zero de iluminação configurado para tom de pele claro. Suscetibilidade a colapso de categoria em alvos secundários.`;
@@ -4044,7 +3771,6 @@ function renderRatificacao(body, v, ch, color) {
 
   body.appendChild(container);
 
-  // Botão Ratificar (A Armadilha)
   const btnRatificar = document.createElement('button');
   btnRatificar.className = 'modal-nav-btn';
   btnRatificar.style.cssText = 'width:100%; background:var(--brick); border-color:var(--ink); margin-top:8px;';
@@ -4088,7 +3814,6 @@ function renderPerfilSilhuetaMini(p) {
       <circle cx="33" cy="14" r="2.5"/><circle cx="15" cy="14" r="2.5"/>
     </g>`;
   } else if (p.cabelo === 'liso') {
-    // RECALCULADO: Curvas e retângulo base centrados no eixo 24 (range 13 a 33). Estava pendendo pra direita.
     cabelo = `<path d="M 13 16 Q 11 8 23 6 Q 35 8 33 18 L 33 22 L 13 22 Z" fill="${PALETA.ink}" opacity=".85"/>`;
   } else if (p.cabelo === 'curto') {
     cabelo = `<path d="M 16 16 Q 16 10 24 10 Q 32 10 32 16 L 32 20 L 16 20 Z" fill="${PALETA.ink}" opacity=".85"/>`;
@@ -4124,7 +3849,6 @@ function renderPerfilSilhuetaMini(p) {
   </svg>`;
 }
 
-// V3 — Contrato
 function renderContrato(body, v, ch, color) {
   let foundCount = 0;
   const duracao = ch.duracao || 45;
@@ -4193,7 +3917,6 @@ function renderContrato(body, v, ch, color) {
   }, 1000);
 }
 
-// V4 — Rota do dado
 function renderRota(body, v, ch, color) {
   state.v4Step = 0;
   const nodesWrap = document.createElement('div');
@@ -4218,7 +3941,6 @@ function renderRota(body, v, ch, color) {
         }
         state.v4Step++;
       } else {
-        // último nó clicado → após delay, mostra reveal
         setTimeout(() => showReveal(v.id,
           'PERCURSO COMPLETO · 8.743 KM · 89ms · MILHÕES DE LITROS',
           'Você acaba de transmitir seus dados por 3 jurisdições diferentes. Eles foram compartilhados com 14 parceiros sem que você saiba seus nomes. A LGPD garante seus direitos em território brasileiro, e nenhum servidor neste percurso está em território brasileiro. Cada operação consumiu, ainda, mililitros de água potável de comunidades que nunca verão um real do contrato.',
@@ -4241,7 +3963,6 @@ function renderRota(body, v, ch, color) {
   factBox.id = 'ch-node-fact';
   factBox.innerHTML = '<strong>· · ·</strong>Clique no primeiro nó para iniciar a transmissão.';
   body.appendChild(factBox);
-  // Botão de saída para não prender o usuário
   const navWrap = document.createElement('div');
   navWrap.className = 'modal-nav';
   navWrap.id = 'v4-nav';
@@ -4263,7 +3984,6 @@ function showNodeFact(i, no, color) {
   }
 }
 
-// V5 — Relatório
 function renderRelatorio(body, v, ch, color) {
   const grid = document.createElement('div');
   grid.className = 'ch-metrics';
@@ -4302,11 +4022,9 @@ function renderRelatorio(body, v, ch, color) {
 
   genBtn.addEventListener('click', () => {
     result.classList.add('show');
-    // Mostra quais métricas foram escolhidas — mas o resultado não muda
     const escolhidas = [...state.v5Selected].map(id => ch.metricas.find(m => m.id === id).label);
     const bannerMsg = `MÉTRICAS SELECIONADAS: ${escolhidas.join(' · ')} → RESULTADO: -23%`;
     showToast(bannerMsg, 5000);
-    // Adiciona nota explicativa abaixo do resultado
     const nota = document.createElement('div');
     nota.style.cssText = 'font-size:9px;color:var(--bone);opacity:.7;margin-top:10px;letter-spacing:.5px;font-style:italic;';
     nota.textContent = `Você escolheu: ${escolhidas.join(', ')}. Qualquer combinação produz este número.`;
@@ -4325,7 +4043,6 @@ function renderRelatorio(body, v, ch, color) {
   document.getElementById('phase-challenge').appendChild(navWrap);
 }
 
-// V6 — Mapa redlining
 function renderMapaRedlining(body, v, ch, color) {
   const layers = document.createElement('div');
   layers.className = 'ch-map-layers';
@@ -4351,7 +4068,6 @@ function renderMapaRedlining(body, v, ch, color) {
     btnD.classList.toggle('active', state.v6Layers.demo);
     updateMapCells();
     if (state.v6Layers.demo) {
-      // Banner de análise: dá tempo do usuário comparar % nas células vermelhas vs verdes
       const challengeBody = document.getElementById('challenge-body');
       const banner = document.createElement('div');
       banner.id = 'v6-analysis-banner';
@@ -4364,7 +4080,6 @@ function renderMapaRedlining(body, v, ch, color) {
       `;
       banner.innerHTML = `▶ COMPARANDO % NAS ZONAS VERMELHAS vs VERDES <span id="v6-dots">...</span>`;
       challengeBody.appendChild(banner);
-      // animação dos pontinhos
       let dots = 0;
       const dotsInterval = setInterval(() => {
         dots = (dots + 1) % 4;
@@ -4424,10 +4139,6 @@ function updateMapCells() {
     if (state.v6Layers.demo) cell.classList.add('show-pct');
   });
 }
-
-// ════════════════════════════════════════
-// Resultado breve (entre desafio e reveal)
-// ════════════════════════════════════════
 function showResultadoBreve(msg, color, delay, callback) {
   const body = document.getElementById('challenge-body');
   // Cria um overlay sobre o conteúdo do desafio
@@ -4442,10 +4153,6 @@ function showResultadoBreve(msg, color, delay, callback) {
   body.appendChild(overlay);
   setTimeout(callback, delay);
 }
-
-// ════════════════════════════════════════
-// REVEAL
-// ════════════════════════════════════════
 function showReveal(id, titulo, texto, toast) {
   if (state.timerInterval) clearInterval(state.timerInterval);
   const v = VINHETAS.find(x => x.id === id);
@@ -4453,9 +4160,6 @@ function showReveal(id, titulo, texto, toast) {
   const body = document.getElementById('reveal-body');
   const vinhetaTag = `V${id}`;
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
-
-  // Registra automaticamente todas as conexões desta cena
-  // Cadeias com campo `vinheta` definido só são registradas na cena correspondente.
   actantesNaCena.forEach(act => {
     act.cadeias.forEach(c => {
       if (c.vinheta && c.vinheta !== vinhetaTag) return;
@@ -4524,9 +4228,6 @@ function abrirInspecaoInline(vinhetaId) {
     container.innerHTML = '<div class="mediadores-section"><div class="mediadores-intro">Nenhum dispositivo adicional rastreado nesta cena.</div></div>';
     return;
   }
-
-  // Registra automaticamente todas as conexões desta cena no protocolo
-  // Cadeias com campo `vinheta` definido só são registradas na cena correspondente.
   actantesNaCena.forEach(act => {
     act.cadeias.forEach(c => {
       if (c.vinheta && c.vinheta !== vinhetaTag) return;
@@ -4572,8 +4273,6 @@ function abrirInspecaoInline(vinhetaId) {
   container.dataset.aberto = 'true';
   btn.classList.add('aberto');
   btn.textContent = '▲ FECHAR INSPEÇÃO';
-
-  // Renderiza a teia e a legenda
   renderTeiaMini(vinhetaId);
   renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag);
 }
@@ -4602,8 +4301,6 @@ function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverr
   const ns = 'http://www.w3.org/2000/svg';
 
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
-
-  // Setas direcionais coloridas por actante de origem
   actantesNaCena.forEach(act => {
     const corOrigem = COR_ACTANTE[act.id];
     act.cadeias.forEach(c => {
@@ -4611,7 +4308,6 @@ function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverr
         const posO = TEIA_MINI_POS[act.id];
         const posD = TEIA_MINI_POS[alvoId];
         if (!posO || !posD) return;
-        // Só desenha se o alvo também estiver na cena
         if (!actantesNaCena.find(a => a.id === alvoId)) return;
 
         const dx = posD.x - posO.x;
@@ -4648,8 +4344,6 @@ function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverr
       });
     });
   });
-
-  // Nós
   actantesNaCena.forEach(act => {
     const pos = TEIA_MINI_POS[act.id];
     if (!pos) return;
@@ -4712,16 +4406,10 @@ function renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaIdOverr
 
     nosLayer.appendChild(g);
   });
-
-  // Legenda
   if (legendaId) {
     renderLegendaTeia(vinhetaId, actantesNaCena, vinhetaTag, legendaId);
   }
 }
-
-// Posições dos 7 nós dentro do viewBox 700x360 da teia mini
-// Os 6 actantes não-humanos formam o hexágono (raio ~225 do centro);
-// o humano (id 7) fica no centro do hexágono, materializando o oligóptico.
 const TEIA_MINI_POS = {
   1: { x: 175, y: 90 },
   2: { x: 525, y: 90 },
@@ -4752,7 +4440,6 @@ function renderTeiaMini(vinhetaId) {
 
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag));
 
-  // ── Desenha setas direcionais coloridas por actante de origem ──
   actantesNaCena.forEach(act => {
     const corOrigem = COR_ACTANTE[act.id];
     act.cadeias.forEach(c => {
@@ -4760,7 +4447,6 @@ function renderTeiaMini(vinhetaId) {
         const posO = TEIA_MINI_POS[act.id];
         const posD = TEIA_MINI_POS[alvoId];
         if (!posO || !posD) return;
-        // Só desenha se o alvo também estiver na cena
         if (!actantesNaCena.find(a => a.id === alvoId)) return;
 
         const dx = posD.x - posO.x;
@@ -4769,7 +4455,6 @@ function renderTeiaMini(vinhetaId) {
         const ux = dx/dist, uy = dy/dist;
         const raio = 34;
 
-        // Offset lateral para separar setas do mesmo par (ida vs volta)
         const ox = -uy * 4, oy = ux * 4;
 
         const x1 = posO.x + ux*raio + ox;
@@ -4777,7 +4462,6 @@ function renderTeiaMini(vinhetaId) {
         const x2 = posD.x - ux*raio + ox;
         const y2 = posD.y - uy*raio + oy;
 
-        // Linha
         const line = document.createElementNS(ns, 'line');
         line.setAttribute('x1', x1); line.setAttribute('y1', y1);
         line.setAttribute('x2', x2); line.setAttribute('y2', y2);
@@ -4786,7 +4470,6 @@ function renderTeiaMini(vinhetaId) {
         line.setAttribute('opacity', '0.85');
         fiosLayer.appendChild(line);
 
-        // Ponta da seta (marcador manual)
         const arrowSize = 9;
         const ax = x2 - ux*arrowSize + uy*arrowSize*0.4;
         const ay = y2 - uy*arrowSize - ux*arrowSize*0.4;
@@ -4802,7 +4485,6 @@ function renderTeiaMini(vinhetaId) {
     });
   });
 
-  // ── Desenha os nós ──
   actantesNaCena.forEach(act => {
     const pos = TEIA_MINI_POS[act.id];
     if (!pos) return;
@@ -4832,7 +4514,6 @@ function renderTeiaMini(vinhetaId) {
     lbl.textContent = siglaDisplay;
     g.appendChild(lbl);
 
-    // Nome abaixo ou acima do nó
     const yNome = pos.y > 180 ? 50 : -42;
     const palavras = nomeDisplay.split(' ');
     let l1 = nomeDisplay, l2 = '';
@@ -4868,19 +4549,16 @@ function renderTeiaMini(vinhetaId) {
 }
 function abrirTooltipConduto(vinhetaId, cond) {
   const vinhetaTag = `V${vinhetaId}`;
-  // Fecha tooltip anterior se houver
   fecharTooltipConduto(vinhetaId);
 
   const wrap = document.querySelector(`#mediadores-container-${vinhetaId} .teia-mini-wrap`);
   const svg = document.getElementById(`teia-mini-${vinhetaId}`);
   if (!wrap || !svg) return;
 
-  // Calcula posição do ponto médio do fio em coordenadas de tela
   const posA = TEIA_MINI_POS[cond.a], posB = TEIA_MINI_POS[cond.b];
   const midX = (posA.x + posB.x) / 2;
   const midY = (posA.y + posB.y) / 2;
 
-  // Converte coordenadas do viewBox (700x360) para pixels reais do SVG renderizado
   const svgRect = svg.getBoundingClientRect();
   const wrapRect = wrap.getBoundingClientRect();
   const scaleX = svgRect.width / 700;
@@ -4888,7 +4566,6 @@ function abrirTooltipConduto(vinhetaId, cond) {
   const pxX = (svgRect.left - wrapRect.left) + midX * scaleX;
   const pxY = (svgRect.top - wrapRect.top) + midY * scaleY;
 
-  // Nomes contextuais dos dois actantes nesta cena
   const actA = ACTANTES.find(a => a.id === cond.a);
   const actB = ACTANTES.find(a => a.id === cond.b);
   const ctxA = (actA.porCena && actA.porCena[vinhetaTag]) || null;
@@ -4896,7 +4573,6 @@ function abrirTooltipConduto(vinhetaId, cond) {
   const nomeA = (ctxA && ctxA.nomeCena) ? ctxA.nomeCena : actA.nome;
   const nomeB = (ctxB && ctxB.nomeCena) ? ctxB.nomeCena : actB.nome;
 
-  // Verifica se cada direção é válida E se já está rastreada
   const idaValida = cond.cadeiasIda.length > 0;
   const voltaValida = cond.cadeiasVolta.length > 0;
   const idaRastreada = cond.cadeiasIda.some(c => stateP2.cadeiasMapeadas.has(c.cadeiaId));
@@ -4925,19 +4601,15 @@ function abrirTooltipConduto(vinhetaId, cond) {
 
   tooltip.innerHTML = html;
 
-  // Posiciona tooltip: centralizado horizontalmente no ponto médio, deslocado pra cima
   tooltip.style.left = '0px';
   tooltip.style.top = '0px';
   wrap.appendChild(tooltip);
 
-  // Após inserir no DOM, ajusta posição considerando dimensões reais
   const tipRect = tooltip.getBoundingClientRect();
   let finalX = pxX - tipRect.width / 2;
   let finalY = pxY - tipRect.height - 12;
 
-  // Fallback: se sair pra cima, joga pra baixo
   if (finalY < 8) finalY = pxY + 16;
-  // Fallback horizontal: mantém dentro do wrap
   if (finalX < 4) finalX = 4;
   if (finalX + tipRect.width > wrap.clientWidth - 4) finalX = wrap.clientWidth - tipRect.width - 4;
 
@@ -4972,7 +4644,6 @@ function testarDirecao(vinhetaId, origemId, destinoId) {
     return;
   }
 
-  // Direção válida e nova: marca cadeia, adiciona ao protocolo
   stateP2.cadeiasMapeadas.add(par.cadeiaId);
   const actOrigem = ACTANTES.find(a => a.id === par.origemId);
   const cadeia = actOrigem.cadeias.find(c => c.id === par.cadeiaId);
@@ -4981,7 +4652,6 @@ function testarDirecao(vinhetaId, origemId, destinoId) {
   const todasMarcadas = actOrigem.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
   if (todasMarcadas) stateP2.completedActantes.add(par.origemId);
 
-  // Mostra texto da operação no próprio tooltip
   const textoLimpo = cadeia.texto.replace(/<[^>]+>/g, '');
   feedbackEl.innerHTML = `<div class="conduto-tooltip-sucesso"><strong style="color:var(--mustard);font-family:'Archivo Black',sans-serif;font-size:8px;letter-spacing:1.5px;display:block;margin-bottom:4px;">AÇÃO RASTREADA</strong>${textoLimpo}</div>`;
 
@@ -4990,7 +4660,6 @@ function testarDirecao(vinhetaId, origemId, destinoId) {
   updateLegibilidade();
   checkFimP2();
 
-  // Reabre tooltip atualizado após o redesenho da teia (pra mostrar a outra direção se houver)
   setTimeout(() => {
     const cond = getCondutosDaCena(vinhetaTag).find(c =>
       (c.a === par.origemId && c.b === par.destinoId) ||
@@ -5006,8 +4675,6 @@ function testarDirecao(vinhetaId, origemId, destinoId) {
   }, 1200);
 }
 
-// Gesto antigo neutralizado. O rastreamento agora é por clique nos fios cinzas
-// com tooltip flutuante de direção. Stub mantido para evitar erros de referência.
 function clicarNoTeiaMini(vinhetaId, actanteId) {
   return;
 }
@@ -5034,17 +4701,14 @@ function toggleMediador(vinhetaId, actanteId) {
 
   stateP2.visitedActantes.add(actanteId);
 
-  // Define se é primeira visita (mostra ficha completa) ou revisão (mostra só contextual)
   const vinhetaTag = `V${vinhetaId}`;
   const primeiraVez = !stateP2.fichaJaMostrada[actanteId];
   if (primeiraVez) stateP2.fichaJaMostrada[actanteId] = vinhetaTag;
 
-  // Recupera campos contextuais da cena, se existirem
   const ctx = (act.porCena && act.porCena[vinhetaTag]) || null;
 
   let fichaHtml = '';
   if (primeiraVez) {
-    // Ficha completa (5 campos gerais)
     fichaHtml = `
       <div class="ficha-geral">
         <div class="ficha-geral-stamp">FICHA TÉCNICA · PRIMEIRA INSPEÇÃO</div>
@@ -5071,7 +4735,6 @@ function toggleMediador(vinhetaId, actanteId) {
       </div>
     `;
   } else {
-    // Revisão: linha discreta + botão para reabrir ficha completa
     const cenaAnterior = stateP2.fichaJaMostrada[actanteId];
     fichaHtml = `
       <div class="ficha-revisao">
@@ -5081,7 +4744,6 @@ function toggleMediador(vinhetaId, actanteId) {
     `;
   }
 
-  // Campos contextuais da cena (sempre aparecem, independentemente de primeira vez ou não)
   let ctxHtml = '';
   if (ctx) {
     ctxHtml = `
@@ -5105,7 +4767,6 @@ function toggleMediador(vinhetaId, actanteId) {
   arrow.textContent = '−';
 }
 
-// Reabre a ficha geral expandida quando o usuário clica em "abrir ficha técnica" numa revisão
 function reabrirFichaGeral(vinhetaId, actanteId) {
   const body = document.getElementById(`body-${vinhetaId}-${actanteId}`);
   if (!body) return;
@@ -5158,18 +4819,12 @@ function reabrirFichaGeral(vinhetaId, actanteId) {
 }
 
 function marcarCadeiaInline(el) {
-  // Função neutralizada: o gesto agora é origem-destino na teia mini.
-  // Mantida como stub para compatibilidade caso algum onclick antigo ainda chame.
   return;
 }
 
 function fecharImpasse() {
   document.getElementById('fim-overlay').classList.remove('show');
 }
-
-// ════════════════════════════════════════
-// CADERNETA
-// ════════════════════════════════════════
 function addFicha(v) {
   if (state.fichas.find(f => f.id === v.id)) return;
   state.fichas.push({id: v.id, ficha: v.ficha, titulo: v.titulo});
@@ -5200,28 +4855,16 @@ function toggleTimeline() {
   document.getElementById('caderneta-panel').classList.remove('open');
   document.getElementById('timeline-panel').classList.toggle('open');
 }
-
-// ════════════════════════════════════════
-// TOAST
-// ════════════════════════════════════════
 function showToast(msg, duration = 3500) {
   const el = document.getElementById('toast');
   el.textContent = msg;
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), duration);
 }
-
-// ════════════════════════════════════════
-// EVENTS
-// ════════════════════════════════════════
 document.getElementById('modal-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
-
-// ════════════════════════════════════════
-// WINDOW ROWS
-// ════════════════════════════════════════
 function addWindowRows() {
   const svg = document.getElementById('city-svg');
   const ns = 'http://www.w3.org/2000/svg';
@@ -5238,9 +4881,6 @@ function addWindowRows() {
       }
     }
   }
-  // ════════════════════════════════════════════════════════
-// ░░░░░░░░░░░░░░  PRANCHA 2 · ACTANTES  ░░░░░░░░░░░░░░░░░
-// ════════════════════════════════════════════════════════
 
 const ACTANTES = [
   {
@@ -5434,7 +5074,6 @@ const ACTANTES = [
     ]
   }
 ];
-// Estado da Prancha 2
 const stateP2 = {
   visitedActantes: new Set(),
   completedActantes: new Set(),
@@ -5447,10 +5086,6 @@ const stateP2 = {
 };
 const TOTAL_CADEIAS = ACTANTES.reduce((acc, a) => acc + a.cadeias.length, 0);
 
-// ─── Calcula os condutos (pares de actantes ligados) presentes em cada cena ───
-// Cada conduto é um par de actantes que coabitam a cena E têm pelo menos uma
-// cadeia documentada entre eles (em qualquer direção). É a infraestrutura cinza
-// que aparece inerte na teia mini antes do usuário clicar.
 function getCondutosDaCena(vinhetaTag) {
   const actantesNaCena = ACTANTES.filter(a => a.atravessa.includes(vinhetaTag)).map(a => a.id);
   const condutos = new Map(); // chave: "menorId-maiorId", valor: { a, b, cadeiasIda, cadeiasVolta }
@@ -5474,8 +5109,6 @@ function getCondutosDaCena(vinhetaTag) {
   return Array.from(condutos.values());
 }
 
-// ─── Mapa de pares válidos (origem → destino → cadeia) ───
-// Construído a partir das cadeias documentadas. Usado pelo tooltip de direção.
 const PARES_VALIDOS = (() => {
   const map = {};
   ACTANTES.forEach(act => {
@@ -5488,12 +5121,8 @@ const PARES_VALIDOS = (() => {
   });
   return map;
 })();
-// ────────────────────────────────────────────
-// NAVEGAÇÃO ENTRE PRANCHAS
-// ────────────────────────────────────────────
+
 function abrirTransicaoPrancha2() {
-  // Função neutralizada: a antiga Prancha 2 foi incorporada à Prancha 1 como inspeção in-line.
-  // Mantida como stub para compatibilidade caso algum onclick antigo ainda a chame.
   return;
 }
 
@@ -5519,10 +5148,6 @@ function initP2() {
   renderActantesFooter();
   updateP2Status();
 }
-
-// ────────────────────────────────────────────
-// NÓS DOS ACTANTES
-// ────────────────────────────────────────────
 function renderActantesNodes() {
   const layer = document.getElementById('actantes-layer');
   layer.innerHTML = '';
@@ -5580,7 +5205,6 @@ function renderActantesNodes() {
     lbl.textContent = act.sigla;
     g.appendChild(lbl);
 
-    // legenda externa
     const legend = document.createElementNS(ns, 'text');
     legend.setAttribute('text-anchor', 'middle');
     legend.setAttribute('y', act.y > 320 ? 50 : -40);
@@ -5624,10 +5248,6 @@ function updateP2Status() {
   else if (n < TOTAL_CADEIAS) el.textContent = 'REDE PARCIALMENTE LEGÍVEL';
   else el.textContent = 'TOPOLOGIA COMPLETA';
 }
-
-// ────────────────────────────────────────────
-// PAINEL DE UM ACTANTE
-// ────────────────────────────────────────────
 function openActante(id) {
   stateP2.currentActante = id;
   stateP2.visitedActantes.add(id);
@@ -5637,7 +5257,6 @@ function openActante(id) {
 
   const act = ACTANTES.find(a => a.id === id);
 
-  // Reaproveita o modal existente
   document.getElementById('modal-header').style.backgroundColor = PALETA.ink;
   document.getElementById('modal-num').textContent = act.id;
   document.getElementById('modal-titulo').textContent = act.nome;
@@ -5686,14 +5305,12 @@ function openActante(id) {
 
   document.getElementById('modal-body').innerHTML = html;
 
-  // botão de nav
   const nav = document.querySelector('#phase-narrative .modal-nav');
   nav.innerHTML = `<button class="modal-nav-btn" onclick="fecharActante()">FECHAR PAINEL</button>`;
 
   setModalPhase('narrative');
   document.getElementById('modal-overlay').classList.add('show');
 
-  // listeners para marcar cadeias
   document.querySelectorAll('.cadeia-item').forEach(item => {
     item.addEventListener('click', () => marcarCadeia(item, act.id));
   });
@@ -5706,7 +5323,6 @@ function marcarCadeia(item, actanteId) {
   stateP2.cadeiasMapeadas.add(cadeiaId);
   item.classList.add('mapped');
 
-  // acende arestas correspondentes
   const alvos = item.dataset.alvos.split(',').map(Number);
   alvos.forEach(alvo => {
     const ids = [actanteId, alvo].sort((a,b) => a-b);
@@ -5714,12 +5330,10 @@ function marcarCadeia(item, actanteId) {
     if (edge) edge.classList.add('active');
   });
 
-  // adiciona ao protocolo
   const act = ACTANTES.find(a => a.id === actanteId);
   const cadeia = act.cadeias.find(c => c.id === cadeiaId);
   addProtocolo(act, cadeia);
 
-  // checa se o actante foi completado (todas as cadeias marcadas)
   const todasMarcadas = act.cadeias.every(c => stateP2.cadeiasMapeadas.has(c.id));
   if (todasMarcadas) {
     stateP2.completedActantes.add(actanteId);
@@ -5735,7 +5349,6 @@ function marcarCadeia(item, actanteId) {
 
 function fecharActante() {
   document.getElementById('modal-overlay').classList.remove('show');
-  // restaura o botão original do modal de narrativa da Prancha 1
   const nav = document.querySelector('#phase-narrative .modal-nav');
   nav.innerHTML = `
     <button class="modal-nav-btn secondary" id="btn-skip" onclick="closeModal()">FECHAR</button>
@@ -5743,16 +5356,10 @@ function fecharActante() {
   `;
 }
 
-// ────────────────────────────────────────────
-// PROTOCOLO DE COAÇÃO (Caderneta da P2)
-// ────────────────────────────────────────────
 function addProtocolo(act, cadeia, vinhetaTag) {
   // Evita duplicatas exatas
   const jaExiste = stateP2.protocolo.find(p => p.cadeiaId === cadeia.id);
   if (jaExiste) return;
-
-  // Helper: retorna a sigla a exibir para um actante numa dada cena.
-  // Para o actante 7 (CIDADÃO), sempre "CIDADÃO" com o personagem entre parênteses.
   function siglaContextual(actante, tag) {
     const ctx = (actante.porCena && actante.porCena[tag]) || null;
     if (actante.id === 7) {
@@ -5768,7 +5375,6 @@ function addProtocolo(act, cadeia, vinhetaTag) {
     if (ctx) nomeDisplay = ctx.nomeCena || act.nome;
   }
 
-  // Sigla contextual também para os alvos (caso o alvo seja o cidadão)
   const alvosSiglas = cadeia.alvos.map(id => {
     const alvoAct = ACTANTES.find(a => a.id === id);
     if (!alvoAct) return id;
@@ -5785,7 +5391,6 @@ function addProtocolo(act, cadeia, vinhetaTag) {
 
   const content = document.getElementById('protocolo-content');
 
-  // Cria ou encontra o grupo desta cena
   let grupoId = `protocolo-grupo-${vinhetaTag}`;
   let grupo = document.getElementById(grupoId);
   if (!grupo) {
@@ -5818,44 +5423,31 @@ function addProtocolo(act, cadeia, vinhetaTag) {
 function toggleProtocolo() {
   document.getElementById('protocolo-panel').classList.toggle('open');
 }
-
-// ────────────────────────────────────────────
-// FIM DA PRANCHA 2
-// ────────────────────────────────────────────
 function checkFimP2() {
   if (stateP2.cadeiasMapeadas.size !== TOTAL_CADEIAS) return;
 
-  // Só dispara a Reagregação se as 9 vinhetas já tiverem sido visitadas
   if (state.visited.size === 9) {
-    // Se o overlay de impasse estiver aberto, fecha primeiro
     const fimOverlay = document.getElementById('fim-overlay');
     if (fimOverlay.classList.contains('show')) {
       fimOverlay.classList.remove('show');
     }
     setTimeout(() => abrirReagregacao(), 1000);
   }
-  // Caso contrário, aguarda o usuário completar as 9 vinhetas para disparar
 }
 
 function abrirReagregacao() {
   const layer = document.getElementById('reagregacao-layer');
   if (!layer || layer.classList.contains('show')) return;
 
-  // Garante que todos os fios vermelhos da Prancha 1 estejam ativos
   document.querySelectorAll('.fio-line').forEach(l => l.classList.add('show'));
   const flabel = document.getElementById('fio-label');
   if (flabel) flabel.classList.add('show');
 
-  // Desenha os 6 nós hexagonais (recuperando a geometria da antiga Prancha 2)
   const nodesLayer = document.getElementById('reagreg-nodes');
   nodesLayer.innerHTML = '';
   const ns = 'http://www.w3.org/2000/svg';
-
-  // ─── NÓ CENTRAL: HABITANTE (sujeito-plataforma) ───
-  // Posicionado no centro geométrico do aro hexagonal (500, 320)
   const HX = 500, HY = 320;
 
-  // Fios de coação (dos 6 actantes para o centro) - mostarda como os outros
   ACTANTES.forEach(act => {
     const fioIn = document.createElementNS(ns, 'line');
     fioIn.setAttribute('x1', act.x);
@@ -5869,7 +5461,6 @@ function abrirReagregacao() {
     nodesLayer.appendChild(fioIn);
   });
 
-  // Fios de retroalimentação (do centro para os 6 actantes) - brick para marcar o retorno
   ACTANTES.forEach(act => {
     const fioOut = document.createElementNS(ns, 'line');
     fioOut.setAttribute('x1', HX);
@@ -5883,7 +5474,6 @@ function abrirReagregacao() {
     nodesLayer.appendChild(fioOut);
   });
 
-  // Nó central — círculo distinto dos hexágonos
   const habGroup = document.createElementNS(ns, 'g');
   habGroup.setAttribute('transform', `translate(${HX},${HY})`);
 
@@ -5987,13 +5577,10 @@ function abrirReagregacao() {
 }
 
 function passarParaTeia() {
-  // Tempo 2: fecha o painel de texto, deixa só a teia visível
   const painel = document.querySelector('.reagreg-painel');
   if (painel) painel.style.display = 'none';
-  // Suaviza o véu para a teia respirar
   const veu = document.querySelector('.reagreg-veu');
   if (veu) veu.style.background = 'rgba(26,22,17,.55)';
-  // Após 4 segundos de contemplação, surge o guia para a finalização
   setTimeout(() => mostrarGuiaFinalizacao(), 4000);
 }
 function mostrarGuiaFinalizacao() {
@@ -6012,10 +5599,8 @@ function mostrarGuiaFinalizacao() {
 function fecharReagregacao() {
   const layer = document.getElementById('reagregacao-layer');
   layer.classList.remove('show');
-  // Limpa guia caso ainda exista
   const guia = layer.querySelector('.reagreg-guia');
   if (guia) guia.remove();
-  // Restaura o painel para uma eventual reabertura
   const painel = document.querySelector('.reagreg-painel');
   if (painel) painel.style.display = '';
   const veu = document.querySelector('.reagreg-veu');
